@@ -5,9 +5,7 @@
   <title>Keywords.app</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    :root {
-      color-scheme: light dark;
-    }
+    :root { color-scheme: light dark; }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
@@ -64,22 +62,18 @@
       font-weight: 600;
       font-size: 0.95rem;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
-                  background 0.12s ease-out, color 0.12s ease-out;
+      cursor: default;
     }
     .btn.secondary {
       background: transparent;
       color: #ffffff;
       border-color: rgba(255, 255, 255, 0.65);
       box-shadow: none;
-    }
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+      cursor: pointer;
+      transition: background 0.12s ease-out;
     }
     .btn.secondary:hover {
       background: rgba(255, 255, 255, 0.08);
-      box-shadow: none;
     }
     .note {
       font-size: 0.85rem;
@@ -117,10 +111,9 @@
     </p>
 
     <div class="buttons">
-      <!-- Replace # with your real App Store URL when it’s live -->
-      <a class="btn" href="#" target="_blank" rel="noopener noreferrer">
-        View on the App&nbsp;Store
-      </a>
+      <span class="btn">
+        Coming soon to the App&nbsp;Store
+      </span>
       <a class="btn secondary" href="mailto:help@keywords.app">
         Contact support
       </a>
