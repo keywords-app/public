@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Keywords.app</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.5;
+    }
+    
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    header {
+      background: #fff;
+      padding: 20px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    
+    header .inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+    
+    header a {
+      font-size: 21px;
+      font-weight: 600;
+      color: #1d1d1f;
+      text-decoration: none;
+    }
+    
+    /* Main */
+    main {
+      padding: 60px 20px;
+      background: #fff;
+      min-height: calc(100vh - 180px);
+    }
+    
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    
+    .intro {
+      font-size: 19px;
+      color: #86868b;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    /* Contact options */
+    .contact-options {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    
+    .contact-card {
+      background: #f5f5f7;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+    
+    .contact-card h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .contact-card p {
+      font-size: 15px;
+      color: #86868b;
+      margin-bottom: 16px;
+    }
+    
+    .contact-card a.btn {
+      display: inline-block;
+      background: #06c;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 980px;
+      font-size: 17px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    
+    .contact-card a.btn:hover {
+      background: #0077ed;
+    }
+    
+    /* In-app support */
+    .in-app-section {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .in-app-section h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .in-app-section p {
+      font-size: 17px;
+      color: #86868b;
+      margin-bottom: 24px;
+    }
+    
+    .in-app-section img {
+      max-width: 280px;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    
+    /* FAQ placeholder */
+    .faq {
+      border-top: 1px solid #e5e5e5;
+      padding-top: 48px;
+    }
+    
+    .faq h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    
+    .faq-item {
+      border-bottom: 1px solid #f0f0f0;
+      padding: 20px 0;
+    }
+    
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    
+    .faq-item h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .faq-item p {
+      font-size: 15px;
+      color: #86868b;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 30px 20px;
+      background: #f5f5f7;
+      border-top: 1px solid #e5e5e5;
+      text-align: center;
+      font-size: 14px;
+      color: #86868b;
+    }
+    
+    footer a {
+      color: #06c;
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+    }
+    
+    footer .links {
+      margin-top: 8px;
+    }
+    
+    footer .links a {
+      margin: 0 12px;
+    }
+    
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 32px;
+      }
+      
+      .in-app-section img {
+        max-width: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="inner">
+      <img src="keywordsappicon1.png" alt="Keywords.app logo">
+      <a href="index.html">Keywords.app</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Support</h1>
+      <p class="intro">We're here to help. Reach out anytime.</p>
+      
+      <div class="contact-options">
+        <div class="contact-card">
+          <h2>Email Us</h2>
+          <p>Send us a message and we'll get back to you as soon as possible.</p>
+          <a href="mailto:help@keywords.app" class="btn">help@keywords.app</a>
+        </div>
+      </div>
+      
+      <div class="in-app-section">
+        <h2>Contact Support from the App</h2>
+        <p>Tap "Support" at the bottom of any screen to send us a message directly.</p>
+        <img src="images/support-form.png" alt="In-app support form">
+      </div>
+      
+      <div class="faq">
+        <h2>Common Questions</h2>
+        
+        <div class="faq-item">
+          <h3>How do I connect my Google Ads account?</h3>
+          <p>Sign in with Google on the welcome screen. Keywords.app will request access to your Google Ads accounts. You can connect multiple Google logins if you manage accounts under different emails.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>Is my data safe?</h3>
+          <p>Yes. Your campaign data stays on your device. We don't store or aggregate your Google Ads data on our servers. OAuth tokens are encrypted.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>What can I do with Keywords.app?</h3>
+          <p>Check campaign performance, enable/pause campaigns and keywords, triage search terms, and build negative keywords — all from your phone.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>How do I disconnect my Google account?</h3>
+          <p>Go to your Google account settings at myaccount.google.com, find "Third-party apps with account access," and revoke access for Keywords.app.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 In House Advantage LLC</p>
+      <p class="links">
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="index.html">Home</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
