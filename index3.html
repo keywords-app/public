@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keywords.app — Google Ads Search Term Triage for iOS</title>
+  <meta name="description" content="A focused iOS companion for performance marketers who live in Google Ads. Check campaigns, triage search terms, and build negative keywords — all from your phone.">
+  <meta property="og:title" content="Keywords.app — Google Ads Search Term Triage for iOS">
+  <meta property="og:description" content="Cut search term review time from an hour to 10 minutes. Swipe to triage, generate negatives, push to Google Ads.">
+  <meta property="og:image" content="https://keywords.app/keywordsappicon1.png">
+  <meta property="og:url" content="https://keywords.app">
+  <meta property="og:type" content="website">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 48px;
+      background: #fff;
+    }
+
+    .hero img.logo {
+      width: 140px;
+      height: 140px;
+      border-radius: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .hero .tagline {
+      font-size: 19px;
+      color: #86868b;
+      max-width: 600px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    .hero .app-store-badge {
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .hero .app-store-badge img {
+      height: 54px;
+    }
+
+    .hero .support-link {
+      display: block;
+      font-size: 15px;
+      color: #06c;
+      text-decoration: none;
+      margin-bottom: 36px;
+    }
+
+    .hero .support-link:hover {
+      text-decoration: underline;
+    }
+
+    .hero .hero-screenshot {
+      max-width: 320px;
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.14);
+    }
+
+    /* Feature Cards */
+    .feature-cards {
+      padding: 60px 20px;
+      background: #f5f5f7;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .card .card-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #86868b;
+      line-height: 1.5;
+    }
+
+    /* Screenshot Strip */
+    .screenshot-strip {
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    .screenshot-strip h2 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 36px;
+      text-align: center;
+    }
+
+    .strip-scroll {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      justify-content: center;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .strip-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .strip-item {
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .strip-item img {
+      width: 200px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    .strip-item .caption {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #86868b;
+    }
+
+    /* Social Proof */
+    .social-proof {
+      padding: 48px 20px;
+      background: #f8f8fa;
+      text-align: center;
+    }
+
+    .social-proof p {
+      font-size: 21px;
+      font-weight: 500;
+      color: #1d1d1f;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Footer CTA */
+    .footer-cta {
+      padding: 48px 20px;
+      background: #f5f5f7;
+      text-align: center;
+    }
+
+    .footer-cta p {
+      font-size: 17px;
+      color: #86868b;
+      margin-bottom: 24px;
+    }
+
+    .footer-cta .app-store-badge img {
+      height: 54px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 30px 20px;
+      background: #fff;
+      border-top: 1px solid #e5e5e5;
+      text-align: center;
+      font-size: 14px;
+      color: #86868b;
+    }
+
+    footer a {
+      color: #06c;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    footer .links {
+      margin-top: 8px;
+    }
+
+    footer .links a {
+      margin: 0 12px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero img.logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 24px;
+      }
+
+      .hero .tagline {
+        font-size: 17px;
+      }
+
+      .hero .hero-screenshot {
+        max-width: 240px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .strip-scroll {
+        justify-content: flex-start;
+        padding-left: 20px;
+      }
+
+      .strip-item img {
+        width: 160px;
+      }
+
+      .social-proof p {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <img src="keywordsappicon1.png" alt="Keywords.app logo" class="logo">
+      <h1>Search Term Triage for Google Ads</h1>
+      <p class="tagline">A focused iOS companion for performance marketers who live in Google Ads. Check campaigns, triage search terms, and build negative keywords — all from your phone.</p>
+      <a href="https://apps.apple.com/us/app/keywords-app/id6758259105" class="app-store-badge">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+      </a>
+      <a href="support.html" class="support-link">Get Support</a>
+      <img src="search-terms.png" alt="Search term triage interface" class="hero-screenshot">
+    </div>
+  </section>
+
+  <!-- Feature Cards -->
+  <section class="feature-cards">
+    <div class="container">
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>Check Performance Anywhere</h3>
+          <p>See how your accounts, campaigns, ad groups, and keywords are performing. One tap to pause or enable anything that needs attention.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧭</div>
+          <h3>Navigate Like You're At Your Desk</h3>
+          <p>Drill down from accounts to campaigns to ad groups to keywords with full metrics at every level.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">👆</div>
+          <h3>Triage Search Terms In Minutes</h3>
+          <p>Swipe to keep or block. The app remembers your decisions so you never review the same term twice.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🚫</div>
+          <h3>Build Negative Keywords Instantly</h3>
+          <p>The negative match generator turns your blocked terms into negative keywords in seconds. Push directly to Google Ads.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚠️</div>
+          <h3>Conflict Detection</h3>
+          <p>The app warns you before you accidentally block a search term that's actually making you money.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>Privacy-First Design</h3>
+          <p>Your data stays on your device. Google OAuth with limited scopes. Campaign data never stored on our servers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshot Strip -->
+  <section class="screenshot-strip">
+    <div class="container">
+      <h2>See It in Action</h2>
+      <div class="strip-scroll">
+        <div class="strip-item">
+          <img src="login.png" alt="Login screen">
+          <p class="caption">Sign in securely</p>
+        </div>
+        <div class="strip-item">
+          <img src="accounts.png" alt="Accounts list">
+          <p class="caption">All your accounts</p>
+        </div>
+        <div class="strip-item">
+          <img src="search-terms.png" alt="Search terms triage">
+          <p class="caption">Triage search terms</p>
+        </div>
+        <div class="strip-item">
+          <img src="negatives.png" alt="Negative Match Maker">
+          <p class="caption">Build negative keywords</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <p>One beta tester cut over a third off their new client's spend in less than 10 minutes.</p>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="footer-cta">
+    <div class="container">
+      <p>Your data stays on your device.</p>
+      <a href="https://apps.apple.com/us/app/keywords-app/id6758259105" class="app-store-badge">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 In House Advantage LLC</p>
+      <p class="links">
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
