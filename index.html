@@ -3,30 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keywords.app — Google Ads Management for iOS</title>
+  <title>Keywords.app — Google Ads Search Term Triage for iOS</title>
+  <meta name="description" content="A focused iOS companion for performance marketers who live in Google Ads. Check campaigns, triage search terms, and build negative keywords — all from your phone.">
+  <meta property="og:title" content="Keywords.app — Google Ads Search Term Triage for iOS">
+  <meta property="og:description" content="Cut search term review time from an hour to 10 minutes. Swipe to triage, generate negatives, push to Google Ads.">
+  <meta property="og:image" content="https://keywords.app/keywordsappicon1.png">
+  <meta property="og:url" content="https://keywords.app">
+  <meta property="og:type" content="website">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
       background: #f5f5f7;
       color: #1d1d1f;
       line-height: 1.5;
     }
-    
+
     .container {
       max-width: 980px;
       margin: 0 auto;
       padding: 0 20px;
     }
-    
+
     /* Hero */
     .hero {
       text-align: center;
-      padding: 60px 20px 40px;
+      padding: 60px 20px 48px;
       background: #fff;
     }
-    
+
     .hero img.logo {
       width: 120px;
       height: 120px;
@@ -34,285 +40,501 @@
       margin-bottom: 24px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
-    
+
     .hero h1 {
-      font-size: 48px;
+      font-size: 44px;
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    
+
     .hero .tagline {
-      font-size: 21px;
+      font-size: 19px;
       color: #86868b;
       max-width: 600px;
-      margin: 0 auto 24px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
     }
-    
-    .hero .cta {
+
+    .hero .app-store-badge {
       display: inline-block;
-      background: #000;
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 980px;
-      font-size: 17px;
-      font-weight: 500;
-      text-decoration: none;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
-    
-    .hero .cta:hover {
-      background: #333;
+
+    .hero .app-store-badge img {
+      height: 54px;
     }
-    
+
     .hero .support-link {
       display: block;
       font-size: 15px;
       color: #06c;
       text-decoration: none;
+      margin-bottom: 32px;
     }
-    
+
     .hero .support-link:hover {
       text-decoration: underline;
     }
-    
-    /* Features */
-    .features {
+
+    .hero .hero-screenshot {
+      max-width: 280px;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    /* Problem */
+    .problem {
+      padding: 60px 20px;
+      background: #f5f5f7;
+    }
+
+    .problem .inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .problem h2 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .problem p {
+      font-size: 17px;
+      color: #1d1d1f;
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .problem .social-proof {
+      margin-top: 28px;
+      padding: 20px 24px;
+      border-left: 4px solid #06c;
+      background: #fff;
+      border-radius: 0 12px 12px 0;
+      font-size: 17px;
+      font-weight: 500;
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
+
+    /* How It Works */
+    .how-it-works {
       padding: 60px 20px;
       background: #fff;
-      border-top: 1px solid #e5e5e5;
     }
-    
-    .features h2 {
+
+    .how-it-works h2 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 48px;
       text-align: center;
+    }
+
+    .how-it-works .steps {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .step:last-child {
+      margin-bottom: 0;
+    }
+
+    .step.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #06c;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .step-content h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step-content p {
+      font-size: 17px;
+      color: #86868b;
+      line-height: 1.6;
+    }
+
+    .step-image {
+      flex-shrink: 0;
+    }
+
+    .step-image img {
+      width: 220px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    /* Why It Works */
+    .why-it-works {
+      padding: 60px 20px;
+      background: #f5f5f7;
+    }
+
+    .why-it-works h2 {
       font-size: 32px;
       font-weight: 600;
       margin-bottom: 40px;
+      text-align: center;
     }
-    
-    .feature-list {
-      max-width: 680px;
+
+    .why-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .why-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .why-card .card-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .why-card h3 {
+      font-size: 19px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .why-card p {
+      font-size: 15px;
+      color: #86868b;
+      line-height: 1.6;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    .features-grid h2 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 800px;
       margin: 0 auto;
       list-style: none;
     }
-    
-    .feature-list li {
+
+    .features-list li {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
-      padding: 16px 0;
-      border-bottom: 1px solid #f0f0f0;
+      gap: 14px;
     }
-    
-    .feature-list li:last-child {
-      border-bottom: none;
-    }
-    
+
     .feature-icon {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       background: #f5f5f7;
-      border-radius: 8px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 18px;
       flex-shrink: 0;
     }
-    
-    .feature-text {
+
+    .feature-text h3 {
       font-size: 17px;
-      color: #1d1d1f;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
-    
-    /* Screenshots */
-    .screenshots {
+
+    .feature-text p {
+      font-size: 15px;
+      color: #86868b;
+      line-height: 1.5;
+    }
+
+    /* Final CTA */
+    .final-cta {
       padding: 60px 20px;
       background: #f5f5f7;
-    }
-    
-    .screenshots h2 {
       text-align: center;
+    }
+
+    .final-cta h2 {
       font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 40px;
-    }
-    
-    .screenshot-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
-    .screenshot-item {
-      text-align: center;
-    }
-    
-    .screenshot-item img {
-      width: 100%;
-      max-width: 220px;
-      border-radius: 24px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    }
-    
-    .screenshot-item .caption {
-      margin-top: 12px;
-      font-size: 14px;
-      color: #86868b;
-    }
-    
-    /* Privacy */
-    .privacy-note {
-      padding: 40px 20px;
-      background: #fff;
-      border-top: 1px solid #e5e5e5;
-    }
-    
-    .privacy-note .inner {
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .privacy-note h3 {
-      font-size: 24px;
       font-weight: 600;
       margin-bottom: 12px;
     }
-    
-    .privacy-note p {
-      font-size: 15px;
+
+    .final-cta p {
+      font-size: 19px;
       color: #86868b;
-      line-height: 1.6;
+      margin-bottom: 28px;
     }
-    
+
+    .final-cta .app-store-badge img {
+      height: 54px;
+    }
+
     /* Footer */
     footer {
       padding: 30px 20px;
-      background: #f5f5f7;
+      background: #fff;
       border-top: 1px solid #e5e5e5;
       text-align: center;
       font-size: 14px;
       color: #86868b;
     }
-    
+
     footer a {
       color: #06c;
       text-decoration: none;
     }
-    
+
     footer a:hover {
       text-decoration: underline;
     }
-    
+
     footer .links {
       margin-top: 8px;
     }
-    
+
     footer .links a {
       margin: 0 12px;
     }
-    
+
     @media (max-width: 600px) {
       .hero h1 {
-        font-size: 36px;
+        font-size: 32px;
       }
-      
+
       .hero .tagline {
-        font-size: 18px;
+        font-size: 17px;
       }
-      
-      .screenshot-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+
+      .hero .hero-screenshot {
+        max-width: 220px;
       }
-      
-      .screenshot-item img {
-        max-width: 160px;
+
+      .step {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .step.reverse {
+        flex-direction: column;
+      }
+
+      .step-image img {
+        width: 180px;
+      }
+
+      .why-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .features-list {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Hero -->
   <section class="hero">
     <div class="container">
       <img src="keywordsappicon1.png" alt="Keywords.app logo" class="logo">
-      <h1>Keywords.app</h1>
+      <h1>You're Losing Hours To A Task That Should Take Minutes</h1>
       <p class="tagline">A focused iOS companion for performance marketers who live in Google Ads. Check campaigns, triage search terms, and build negative keywords — all from your phone.</p>
-      <a href="#" class="cta">Coming Soon to the App Store</a>
+      <a href="https://apps.apple.com/us/app/keywords-app/id6758259105" class="app-store-badge">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+      </a>
       <a href="support.html" class="support-link">Get Support</a>
+      <img src="search-terms.png" alt="Search term triage interface" class="hero-screenshot">
     </div>
   </section>
 
-  <section class="features">
-    <div class="container">
-      <h2>What You Can Do</h2>
-      <ul class="feature-list">
-        <li>
-          <span class="feature-icon">📊</span>
-          <span class="feature-text">Check performance and enable/pause campaigns, ad groups, and keywords on the go</span>
-        </li>
-        <li>
-          <span class="feature-icon">🧭</span>
-          <span class="feature-text">Navigate accounts → campaigns → ad groups → keywords with full metrics</span>
-        </li>
-        <li>
-          <span class="feature-icon">👆</span>
-          <span class="feature-text">Triage search terms — swipe to keep or block</span>
-        </li>
-        <li>
-          <span class="feature-icon">🚫</span>
-          <span class="feature-text">Build negative keywords from blocked terms, push directly to Google Ads</span>
-        </li>
-        <li>
-          <span class="feature-icon">⚠️</span>
-          <span class="feature-text">Conflict detection warns before blocking terms you want to keep</span>
-        </li>
-        <li>
-          <span class="feature-icon">🔒</span>
-          <span class="feature-text">Your data stays on your device — privacy-first design</span>
-        </li>
-      </ul>
+  <!-- Problem -->
+  <section class="problem">
+    <div class="inner">
+      <h2>Why Search Term Reviews Keep Getting Put Off</h2>
+      <p>Hundreds of search terms across multiple campaigns. Each one needs a decision. Each negative keyword needs to be added manually.</p>
+      <p>You do the math. An hour minimum. Maybe two if you're thorough. You've got client calls, campaigns to optimize, proposals to write. So you close the tab. You'll do it next week.</p>
+      <p>Meanwhile, your clients are paying for clicks on "free," "cheap," and "how to do it myself."</p>
+      <div class="social-proof">One beta tester cut over a third off their new client's spend in less than 10 minutes with keywords.app.</div>
     </div>
   </section>
 
-  <section class="screenshots">
+  <!-- How It Works -->
+  <section class="how-it-works">
     <div class="container">
-      <h2>See It in Action</h2>
-      <div class="screenshot-grid">
-        <div class="screenshot-item">
-          <img src="login.png" alt="Login screen">
-          <p class="caption">Sign in securely</p>
+      <h2>Three Steps. Ten Minutes. Done.</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-content">
+            <span class="step-number">1</span>
+            <h3>Swipe Through Search Terms</h3>
+            <p>Left to block. Right to keep. The app shows you every search term triggering your ads. No menus. No clicking through campaign structures. Just swipe.</p>
+          </div>
+          <div class="step-image">
+            <img src="search-terms.png" alt="Swipe to triage search terms">
+          </div>
         </div>
-        <div class="screenshot-item">
-          <img src="accounts.png" alt="Accounts list">
-          <p class="caption">All your accounts</p>
+        <div class="step reverse">
+          <div class="step-content">
+            <span class="step-number">2</span>
+            <h3>Generate Negative Matches In Seconds</h3>
+            <p>After you've swiped through your terms, use the negative match generator. What used to mean typing out negatives one by one and selecting match types? Now it's automatic.</p>
+          </div>
+          <div class="step-image">
+            <img src="negatives.png" alt="Negative match generator">
+          </div>
         </div>
-        <div class="screenshot-item">
-          <img src="search-terms.png" alt="Search terms triage">
-          <p class="caption">Triage search terms</p>
-        </div>
-        <div class="screenshot-item">
-          <img src="negatives.png" alt="Negative Match Maker">
-          <p class="caption">Build negative keywords</p>
+        <div class="step">
+          <div class="step-content">
+            <span class="step-number">3</span>
+            <h3>Push Directly To Google Ads</h3>
+            <p>One tap sends your negative keywords straight to Google Ads. Campaign level, ad group level, or account level. The app remembers every decision. Next time you review, you'll only see the new ones.</p>
+          </div>
+          <div class="step-image">
+            <img src="search-terms.png" alt="Push negatives to Google Ads">
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="privacy-note">
-    <div class="inner">
-      <h3>Privacy First</h3>
-      <p>Keywords.app uses Google OAuth with limited scopes (profile, email, and Google Ads) and keeps your campaign data on your device. Tokens are stored encrypted; campaign performance data is not stored or aggregated on our servers.</p>
+  <!-- Why It Works -->
+  <section class="why-it-works">
+    <div class="container">
+      <h2>Why This Actually Works</h2>
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="card-icon">🧠</div>
+          <h3>Remembers Your Decisions</h3>
+          <p>Make a decision once. Never waste time on that search term again. Every review session gets faster because the app knows what you've already seen.</p>
+        </div>
+        <div class="why-card">
+          <div class="card-icon">⚠️</div>
+          <h3>Conflict Detection</h3>
+          <p>About to block a search term that's actually converting? The app warns you before you pull the trigger. No more accidentally blocking your best performers.</p>
+        </div>
+        <div class="why-card">
+          <div class="card-icon">🔒</div>
+          <h3>Your Data Stays On Your Device</h3>
+          <p>Google OAuth with limited scopes. Campaign data stored locally on your phone. Not on our servers. Not in the cloud. Your clients' data stays yours.</p>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- Features Grid -->
+  <section class="features-grid">
+    <div class="container">
+      <h2>Everything You Need To Manage Google Ads On The Go</h2>
+      <ul class="features-list">
+        <li>
+          <span class="feature-icon">📊</span>
+          <div class="feature-text">
+            <h3>Check Performance Anywhere</h3>
+            <p>See how your accounts, campaigns, ad groups, and keywords are performing. One tap to pause or enable anything that needs attention.</p>
+          </div>
+        </li>
+        <li>
+          <span class="feature-icon">🧭</span>
+          <div class="feature-text">
+            <h3>Navigate Like You're At Your Desk</h3>
+            <p>Drill down from accounts to campaigns to ad groups to keywords with full metrics at every level.</p>
+          </div>
+        </li>
+        <li>
+          <span class="feature-icon">👆</span>
+          <div class="feature-text">
+            <h3>Triage Search Terms In Minutes</h3>
+            <p>Swipe to keep or block. The app remembers your decisions so you never review the same term twice.</p>
+          </div>
+        </li>
+        <li>
+          <span class="feature-icon">🚫</span>
+          <div class="feature-text">
+            <h3>Build Negative Keywords Instantly</h3>
+            <p>The negative match generator turns your blocked terms into negative keywords in seconds. Push directly to Google Ads.</p>
+          </div>
+        </li>
+        <li>
+          <span class="feature-icon">⚠️</span>
+          <div class="feature-text">
+            <h3>Conflict Detection Protects Your Winners</h3>
+            <p>The app warns you before you accidentally block a search term that's actually making you money.</p>
+          </div>
+        </li>
+        <li>
+          <span class="feature-icon">🔒</span>
+          <div class="feature-text">
+            <h3>Privacy-First Design</h3>
+            <p>Your data stays on your device. We use Google OAuth with limited scopes. Campaign performance data is never stored on our servers.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Stop Putting Off Search Term Reviews</h2>
+      <p>Cut your search term review from an hour to 10 minutes.</p>
+      <a href="https://apps.apple.com/us/app/keywords-app/id6758259105" class="app-store-badge">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <div class="container">
-      <p>© 2025 In House Advantage LLC</p>
+      <p>&copy; 2025 In House Advantage LLC</p>
       <p class="links">
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
