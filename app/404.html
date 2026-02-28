@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Keywords</title>
+    <script>
+      // SPA redirect for GitHub Pages
+      // Converts /app/login to /app/?route=/login so index.html can handle it
+      var path = window.location.pathname;
+      var base = '/app/';
+      if (path.startsWith(base) && path !== base) {
+        var route = path.slice(base.length - 1); // keep leading slash
+        var search = window.location.search;
+        window.location.replace(
+          base + '?route=' + encodeURIComponent(route) + (search ? '&' + search.slice(1) : '') + window.location.hash
+        );
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
