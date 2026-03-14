@@ -174,21 +174,12 @@
   .pricing-sub { margin-top: 10px; font-size: 16px; color: var(--text-dim); font-weight: 300; max-width: 520px; }
   .pricing-sub strong { color: var(--text-mid); }
 
-  /* 5-card layout: 3 on top row, 2 on bottom — centered */
+  /* 3-card layout: Starter, Pro, Scale in one row */
   .pricing-grid {
     margin-top: 48px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-  }
-
-  .pricing-row-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-top: 12px;
-    max-width: calc(66.66% - 6px);
-    /* center the 2-card row under the 3-card row */
   }
 
   .p-card {
@@ -223,6 +214,8 @@
   .p-btn-green:hover { background: var(--green-light); transform: translateY(-1px); box-shadow: 0 0 40px rgba(52,168,83,0.38); }
 
   .p-upgrade { margin-top: 10px; font-size: 12px; color: var(--text-dim); text-align: center; line-height: 1.5; font-weight: 300; }
+  .p-monthly-link { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+  .p-monthly-link:hover { color: var(--text-mid); text-decoration: underline; }
 
   .guarantee { margin-top: 28px; display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-dim); font-weight: 300; max-width: 480px; }
   .guarantee strong { color: var(--text-mid); font-weight: 600; }
@@ -251,7 +244,6 @@
   @media (max-width: 860px) {
     nav { padding: 16px 20px; }
     .pricing-grid { grid-template-columns: 1fr 1fr; }
-    .pricing-row-2 { grid-template-columns: 1fr 1fr; max-width: 100%; }
     .proof-grid { grid-template-columns: 1fr; }
     .hstat-div { display: none; }
     .hero-stats { gap: 28px; }
@@ -261,7 +253,6 @@
 
   @media (max-width: 560px) {
     .pricing-grid { grid-template-columns: 1fr; }
-    .pricing-row-2 { grid-template-columns: 1fr; max-width: 100%; }
   }
 </style>
 </head>
@@ -410,8 +401,8 @@
   <h2 class="section-h">Flat rate. No surprises.</h2>
   <p class="pricing-sub">Priced on search terms processed — <strong>not on what your clients spend.</strong> iOS app included with every plan.</p>
 
-  <!-- Row 1: Starter, Pro, Scale -->
   <div class="pricing-grid">
+    <!-- Starter: monthly only, price anchor -->
     <div class="p-card">
       <div class="p-name">Starter</div>
       <div class="p-price"><sup>$</sup>27</div>
@@ -426,13 +417,14 @@
         <li>iOS app included</li>
       </ul>
       <button class="p-btn p-btn-ghost">Get started →</button>
-      <p class="p-upgrade">Upgrade to lifetime within 30 days — just pay the difference, if any spots are left.</p>
     </div>
 
-    <div class="p-card">
+    <!-- Pro: lifetime-primary, combined -->
+    <div class="p-card ltd">
+      <div class="ltd-pill">⚡ 50 SPOTS ONLY</div>
       <div class="p-name">Pro</div>
-      <div class="p-price"><sup>$</sup>57</div>
-      <div class="p-cadence">per month</div>
+      <div class="p-price"><sup>$</sup>297</div>
+      <div class="p-cadence">one time — yours forever</div>
       <div class="p-rule"></div>
       <ul class="p-features">
         <li>Up to 100,000 search terms/mo</li>
@@ -442,14 +434,16 @@
         <li>Savings tracking</li>
         <li>iOS app included</li>
       </ul>
-      <button class="p-btn p-btn-ghost">Get started →</button>
-      <p class="p-upgrade">Upgrade to lifetime within 30 days — just pay the difference, if any spots are left.</p>
+      <button class="p-btn p-btn-green">Get lifetime access →</button>
+      <p class="p-upgrade"><a href="#" class="p-monthly-link">or subscribe monthly for $57/mo</a></p>
     </div>
 
-    <div class="p-card">
+    <!-- Scale: lifetime-primary, combined -->
+    <div class="p-card ltd">
+      <div class="ltd-pill">⚡ 50 SPOTS ONLY</div>
       <div class="p-name">Scale</div>
-      <div class="p-price"><sup>$</sup>87</div>
-      <div class="p-cadence">per month</div>
+      <div class="p-price"><sup>$</sup>497</div>
+      <div class="p-cadence">one time — yours forever</div>
       <div class="p-rule"></div>
       <ul class="p-features">
         <li>Up to 200,000 search terms/mo</li>
@@ -459,43 +453,8 @@
         <li>Savings tracking</li>
         <li>iOS app included</li>
       </ul>
-      <button class="p-btn p-btn-ghost">Get started →</button>
-      <p class="p-upgrade">Upgrade to lifetime within 30 days — just pay the difference, if any spots are left.</p>
-    </div>
-  </div>
-
-  <!-- Row 2: Pro Lifetime, Scale Lifetime -->
-  <div class="pricing-row-2">
-    <div class="p-card ltd">
-      <div class="ltd-pill">⚡ 50 SPOTS ONLY</div>
-      <div class="p-name">Pro Lifetime</div>
-      <div class="p-price"><sup>$</sup>297</div>
-      <div class="p-cadence">one time — yours forever</div>
-      <div class="p-rule"></div>
-      <ul class="p-features">
-        <li>Everything in Pro</li>
-        <li>Up to 100,000 search terms/mo</li>
-        <li>No monthly bill. Ever.</li>
-        <li>All future updates included</li>
-        <li>iOS app included</li>
-      </ul>
       <button class="p-btn p-btn-green">Get lifetime access →</button>
-    </div>
-
-    <div class="p-card ltd">
-      <div class="ltd-pill">⚡ 50 SPOTS ONLY</div>
-      <div class="p-name">Scale Lifetime</div>
-      <div class="p-price"><sup>$</sup>497</div>
-      <div class="p-cadence">one time — yours forever</div>
-      <div class="p-rule"></div>
-      <ul class="p-features">
-        <li>Everything in Scale</li>
-        <li>Up to 200,000 search terms/mo</li>
-        <li>No monthly bill. Ever.</li>
-        <li>All future updates included</li>
-        <li>iOS app included</li>
-      </ul>
-      <button class="p-btn p-btn-green">Get lifetime access →</button>
+      <p class="p-upgrade"><a href="#" class="p-monthly-link">or subscribe monthly for $87/mo</a></p>
     </div>
   </div>
 
