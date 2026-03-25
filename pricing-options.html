@@ -206,6 +206,42 @@
     font-weight: 400;
   }
 
+  /* Variation labels */
+  .var-section {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+  }
+  .var-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    background: var(--border-light);
+    padding: 5px 14px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+  .var-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+
+  .var-divider {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 24px;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Variation C: darker excluded text */
+  .card-features li .off-dark { color: var(--text-dim); }
+
   @media (max-width: 900px) {
     .cards { grid-template-columns: repeat(2, 1fr); }
   }
@@ -223,7 +259,9 @@
   <p>Priced on what you use, not what your clients spend. Every plan includes unlimited seats.</p>
 </div>
 
-<div class="pricing-wrap">
+<div class="var-section">
+  <div class="var-label">Variation A</div>
+  <p class="var-desc">With one-time scan on Free tier, light excluded features</p>
   <div class="cards">
     <!-- Free -->
     <div class="card">
@@ -243,6 +281,182 @@
       </ul>
       <button class="card-btn card-btn-outline">Get started free &rarr;</button>
       <div class="card-note">One-time scan: $27</div>
+    </div>
+
+    <!-- $27/mo -->
+    <div class="card">
+      <div class="card-tier">Starter</div>
+      <div class="card-price"><sup>$</sup>27</div>
+      <div class="card-cadence">per month</div>
+      <div class="card-rule"></div>
+      <ul class="card-features">
+        <li><span class="ck">&#10003;</span> 1 account included</li>
+        <li><span class="ck">&#10003;</span> 100k/wk automated pulls</li>
+        <li><span class="ck">&#10003;</span> 1 AI clustering model</li>
+        <li><span class="ck">&#10003;</span> Weekly scans</li>
+        <li><span class="ck">&#10003;</span> Sync + push notifications</li>
+        <li><span class="ck">&#10003;</span> Unlimited seats</li>
+        <li><span class="ck">&#10003;</span> iOS app</li>
+        <li><span class="ck">&#10003;</span> Android app (May 1)</li>
+      </ul>
+      <button class="card-btn card-btn-outline">Get started &rarr;</button>
+      <div class="card-note">Extra accounts: $27 one-time each</div>
+    </div>
+
+    <!-- $47/mo -->
+    <div class="card pop">
+      <div class="card-tier">Pro</div>
+      <div class="card-price"><sup>$</sup>47</div>
+      <div class="card-cadence">per month</div>
+      <div class="card-rule"></div>
+      <ul class="card-features">
+        <li><span class="ck">&#10003;</span> 5 accounts included</li>
+        <li><span class="ck">&#10003;</span> 100k/wk automated pulls</li>
+        <li><span class="ck">&#10003;</span> 1 AI clustering model</li>
+        <li><span class="ck">&#10003;</span> Weekly scans</li>
+        <li><span class="ck">&#10003;</span> Sync + push notifications</li>
+        <li><span class="ck">&#10003;</span> Unlimited seats</li>
+        <li><span class="ck">&#10003;</span> iOS app</li>
+        <li><span class="ck">&#10003;</span> Android app (May 1)</li>
+      </ul>
+      <button class="card-btn card-btn-green">Get started &rarr;</button>
+      <div class="card-note">Extra accounts: $27 one-time each</div>
+    </div>
+
+    <!-- $77/mo -->
+    <div class="card">
+      <div class="card-tier">Scale</div>
+      <div class="card-price"><sup>$</sup>77</div>
+      <div class="card-cadence">per month</div>
+      <div class="card-rule"></div>
+      <ul class="card-features">
+        <li><span class="ck">&#10003;</span> 5 accounts included</li>
+        <li><span class="ck">&#10003;</span> 500k/wk automated pulls</li>
+        <li><span class="ck">&#10003;</span> 2 AI clustering models</li>
+        <li><span class="ck">&#10003;</span> Weekly scans</li>
+        <li><span class="ck">&#10003;</span> Sync + push notifications</li>
+        <li><span class="ck">&#10003;</span> Unlimited seats</li>
+        <li><span class="ck">&#10003;</span> iOS app</li>
+        <li><span class="ck">&#10003;</span> Android app (May 1)</li>
+      </ul>
+      <button class="card-btn card-btn-outline">Get started &rarr;</button>
+      <div class="card-note">Extra accounts: $27 one-time each</div>
+    </div>
+  </div>
+</div>
+
+<hr class="var-divider">
+
+<!-- VARIATION B: No one-time scan -->
+<div class="var-section" style="padding-top:64px;">
+  <div class="var-label">Variation B</div>
+  <p class="var-desc">No one-time scan on Free tier, light excluded features</p>
+  <div class="cards">
+    <!-- Free -->
+    <div class="card">
+      <div class="card-tier">Free</div>
+      <div class="card-price">Free</div>
+      <div class="card-cadence">forever</div>
+      <div class="card-rule"></div>
+      <ul class="card-features">
+        <li><span class="ck">&#10003;</span> 1 account</li>
+        <li><span class="ck">&#10003;</span> 1,000 on-demand search terms</li>
+        <li><span class="ck">&#10003;</span> Unlimited seats</li>
+        <li><span class="ck">&#10003;</span> iOS app</li>
+        <li><span class="ck">&#10003;</span> Android app (May 1)</li>
+        <li><span class="ck off">&mdash;</span> <span style="color:var(--muted)">No AI clustering</span></li>
+        <li><span class="ck off">&mdash;</span> <span style="color:var(--muted)">No weekly scans</span></li>
+        <li><span class="ck off">&mdash;</span> <span style="color:var(--muted)">No sync or push</span></li>
+      </ul>
+      <button class="card-btn card-btn-outline">Get started free &rarr;</button>
+    </div>
+
+    <!-- $27/mo -->
+    <div class="card">
+      <div class="card-tier">Starter</div>
+      <div class="card-price"><sup>$</sup>27</div>
+      <div class="card-cadence">per month</div>
+      <div class="card-rule"></div>
+      <ul class="card-features">
+        <li><span class="ck">&#10003;</span> 1 account included</li>
+        <li><span class="ck">&#10003;</span> 100k/wk automated pulls</li>
+        <li><span class="ck">&#10003;</span> 1 AI clustering model</li>
+        <li><span class="ck">&#10003;</span> Weekly scans</li>
+        <li><span class="ck">&#10003;</span> Sync + push notifications</li>
+        <li><span class="ck">&#10003;</span> Unlimited seats</li>
+        <li><span class="ck">&#10003;</span> iOS app</li>
+        <li><span class="ck">&#10003;</span> Android app (May 1)</li>
+      </ul>
+      <button class="card-btn card-btn-outline">Get started &rarr;</button>
+      <div class="card-note">Extra accounts: $27 one-time each</div>
+    </div>
+
+    <!-- $47/mo -->
+    <div class="card pop">
+      <div class="card-tier">Pro</div>
+      <div class="card-price"><sup>$</sup>47</div>
+      <div class="card-cadence">per month</div>
+      <div class="card-rule"></div>
+      <ul class="card-features">
+        <li><span class="ck">&#10003;</span> 5 accounts included</li>
+        <li><span class="ck">&#10003;</span> 100k/wk automated pulls</li>
+        <li><span class="ck">&#10003;</span> 1 AI clustering model</li>
+        <li><span class="ck">&#10003;</span> Weekly scans</li>
+        <li><span class="ck">&#10003;</span> Sync + push notifications</li>
+        <li><span class="ck">&#10003;</span> Unlimited seats</li>
+        <li><span class="ck">&#10003;</span> iOS app</li>
+        <li><span class="ck">&#10003;</span> Android app (May 1)</li>
+      </ul>
+      <button class="card-btn card-btn-green">Get started &rarr;</button>
+      <div class="card-note">Extra accounts: $27 one-time each</div>
+    </div>
+
+    <!-- $77/mo -->
+    <div class="card">
+      <div class="card-tier">Scale</div>
+      <div class="card-price"><sup>$</sup>77</div>
+      <div class="card-cadence">per month</div>
+      <div class="card-rule"></div>
+      <ul class="card-features">
+        <li><span class="ck">&#10003;</span> 5 accounts included</li>
+        <li><span class="ck">&#10003;</span> 500k/wk automated pulls</li>
+        <li><span class="ck">&#10003;</span> 2 AI clustering models</li>
+        <li><span class="ck">&#10003;</span> Weekly scans</li>
+        <li><span class="ck">&#10003;</span> Sync + push notifications</li>
+        <li><span class="ck">&#10003;</span> Unlimited seats</li>
+        <li><span class="ck">&#10003;</span> iOS app</li>
+        <li><span class="ck">&#10003;</span> Android app (May 1)</li>
+      </ul>
+      <button class="card-btn card-btn-outline">Get started &rarr;</button>
+      <div class="card-note">Extra accounts: $27 one-time each</div>
+    </div>
+  </div>
+</div>
+
+<hr class="var-divider">
+
+<!-- VARIATION C: No one-time scan, darker excluded text -->
+<div class="var-section" style="padding-top:64px;">
+  <div class="var-label">Variation C</div>
+  <p class="var-desc">No one-time scan on Free tier, darker excluded features text</p>
+  <div class="cards">
+    <!-- Free -->
+    <div class="card">
+      <div class="card-tier">Free</div>
+      <div class="card-price">Free</div>
+      <div class="card-cadence">forever</div>
+      <div class="card-rule"></div>
+      <ul class="card-features">
+        <li><span class="ck">&#10003;</span> 1 account</li>
+        <li><span class="ck">&#10003;</span> 1,000 on-demand search terms</li>
+        <li><span class="ck">&#10003;</span> Unlimited seats</li>
+        <li><span class="ck">&#10003;</span> iOS app</li>
+        <li><span class="ck">&#10003;</span> Android app (May 1)</li>
+        <li><span class="ck off">&mdash;</span> <span class="off-dark">No AI clustering</span></li>
+        <li><span class="ck off">&mdash;</span> <span class="off-dark">No weekly scans</span></li>
+        <li><span class="ck off">&mdash;</span> <span class="off-dark">No sync or push</span></li>
+      </ul>
+      <button class="card-btn card-btn-outline">Get started free &rarr;</button>
     </div>
 
     <!-- $27/mo -->
