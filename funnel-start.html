@@ -593,21 +593,37 @@ main {
   color: var(--text-dim);
 }
 
-.hero-image-placeholder {
+/* ===== Hero Animation ===== */
+.hero-anim {
   width: 100%;
   max-width: 460px;
   aspect-ratio: 4 / 3;
-  background: var(--border-light);
-  border: 2px dashed var(--muted);
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+}
+.hero-anim-stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.ha-beat {
+  position: absolute;
+  inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 24px;
-  text-align: center;
-  color: var(--text-dim);
-  font-size: 13px;
-  line-height: 1.5;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.ha-beat.active {
+  opacity: 1;
 }
 
 /* ===== Social Proof Strip ===== */
@@ -682,7 +698,7 @@ main {
     flex: 1;
   }
 
-  .hero-image-placeholder {
+  .hero-anim {
     flex: 1;
     max-width: 480px;
   }
@@ -1593,8 +1609,15 @@ main {
           <span class="hero-cta-note">No credit card required. Free forever.</span>
         </div>
       </div>
-      <div class="hero-image-placeholder">
-        [Screenshot: triage screen showing organized search term clusters with savings tracker]
+      <div class="hero-anim" id="hero-anim">
+        <div class="hero-anim-stage" id="hero-anim-stage">
+          <div class="ha-beat ha-beat-connect" id="ha-beat-1"></div>
+          <div class="ha-beat ha-beat-scan" id="ha-beat-2"></div>
+          <div class="ha-beat ha-beat-clusters" id="ha-beat-3"></div>
+          <div class="ha-beat ha-beat-sort" id="ha-beat-4"></div>
+          <div class="ha-beat ha-beat-push" id="ha-beat-5"></div>
+          <div class="ha-beat ha-beat-endcard" id="ha-beat-6"></div>
+        </div>
       </div>
     </div>
 
@@ -2520,6 +2543,64 @@ window.selectAccount = function(row) {
     btn.classList.add('enabled');
   }
 };
+
+/* ===== Hero Animation Sequencer ===== */
+(function() {
+  var HA_CLUSTERS = [
+    { label: 'plumber near me', good: true },
+    { label: 'emergency plumber', good: true },
+    { label: '24hr plumber', good: true },
+    { label: 'plumbing school', good: false }
+  ];
+  var HA_SAVINGS = 728;
+  var HA_TIMINGS = [2000, 3000, 4000, 4000, 3000, 2000];
+
+  window.HA_CLUSTERS = HA_CLUSTERS;
+  window.HA_SAVINGS = HA_SAVINGS;
+
+  var haTimer = null;
+  var haRunning = false;
+
+  function startHeroAnim() {
+    if (haRunning) return;
+    haRunning = true;
+    runBeatSequence();
+  }
+
+  function stopHeroAnim() {
+    haRunning = false;
+    if (haTimer) { clearTimeout(haTimer); haTimer = null; }
+  }
+
+  function runBeatSequence() {
+    var beatIndex = 0;
+    function nextBeat() {
+      if (!haRunning) return;
+      document.querySelectorAll('.ha-beat').forEach(function(b) { b.classList.remove('active'); });
+      var beat = document.getElementById('ha-beat-' + (beatIndex + 1));
+      if (beat) beat.classList.add('active');
+      if (window['ha_startBeat' + (beatIndex + 1)]) {
+        window['ha_startBeat' + (beatIndex + 1)]();
+      }
+      haTimer = setTimeout(function() {
+        beatIndex = (beatIndex + 1) % 6;
+        nextBeat();
+      }, HA_TIMINGS[beatIndex]);
+    }
+    nextBeat();
+  }
+
+  var heroAnimEl = document.getElementById('hero-anim');
+  if (heroAnimEl) {
+    var haObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { startHeroAnim(); }
+        else { stopHeroAnim(); }
+      });
+    }, { threshold: 0.3 });
+    haObserver.observe(heroAnimEl);
+  }
+})();
 </script>
 </body>
 </html>
