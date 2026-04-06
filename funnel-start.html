@@ -1642,6 +1642,22 @@ main {
 .ha-cluster-card.bad {
   border-color: #ea4335; background: rgba(234,67,53,0.05); color: #c62828;
 }
+
+/* Beat 4: Sort */
+.ha-sort-stage { width: 90%; display: flex; flex-direction: column; gap: 12px; }
+.ha-sort-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ha-sort-col { border-radius: 8px; padding: 8px; min-height: 80px; }
+.ha-sort-keep { background: rgba(45,154,73,0.06); border: 1px solid rgba(45,154,73,0.18); }
+.ha-sort-block { background: rgba(234,67,53,0.06); border: 1px solid rgba(234,67,53,0.18); }
+.ha-sort-col-header { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-bottom: 6px; }
+.ha-sort-col-header-block { color: #ea4335; }
+.ha-sort-col-cards { display: flex; flex-direction: column; gap: 4px; }
+.ha-sort-card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; font-size: 11px; color: var(--text); opacity: 0; transform: translateX(20px); transition: opacity 0.3s, transform 0.3s; }
+.ha-sort-card.placed { opacity: 1; transform: translateX(0); }
+.ha-sort-card.bad { border-color: rgba(234,67,53,0.3); }
+.ha-savings-counter { text-align: center; margin-top: 4px; }
+.ha-savings-label { font-size: 12px; color: var(--text-dim); }
+.ha-savings-value { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--green); margin-left: 6px; }
 </style>
 </head>
 <body>
@@ -1696,7 +1712,24 @@ main {
               <div class="ha-cluster-card bad" style="animation-delay: 0.45s">plumbing school</div>
             </div>
           </div>
-          <div class="ha-beat ha-beat-sort" id="ha-beat-4"></div>
+          <div class="ha-beat ha-beat-sort" id="ha-beat-4">
+            <div class="ha-sort-stage">
+              <div class="ha-sort-columns">
+                <div class="ha-sort-col ha-sort-keep">
+                  <div class="ha-sort-col-header">Keep</div>
+                  <div class="ha-sort-col-cards" id="ha-keep-cards"></div>
+                </div>
+                <div class="ha-sort-col ha-sort-block">
+                  <div class="ha-sort-col-header ha-sort-col-header-block">Block</div>
+                  <div class="ha-sort-col-cards" id="ha-block-cards"></div>
+                </div>
+              </div>
+              <div class="ha-savings-counter">
+                <span class="ha-savings-label">Savings:</span>
+                <span class="ha-savings-value" id="ha-savings-value">$0/mo</span>
+              </div>
+            </div>
+          </div>
           <div class="ha-beat ha-beat-push" id="ha-beat-5"></div>
           <div class="ha-beat ha-beat-endcard" id="ha-beat-6"></div>
         </div>
@@ -2720,6 +2753,34 @@ window.ha_startBeat1 = function() {
   setTimeout(function() { btn.classList.add('pressed'); }, 600);
   setTimeout(function() { btn.classList.remove('pressed'); btn.classList.add('done'); }, 900);
   setTimeout(function() { check.classList.add('show'); }, 1200);
+};
+
+window.ha_startBeat4 = function() {
+  var keepCol = document.getElementById('ha-keep-cards');
+  var blockCol = document.getElementById('ha-block-cards');
+  var savingsEl = document.getElementById('ha-savings-value');
+  if (!keepCol || !blockCol || !savingsEl) return;
+  keepCol.innerHTML = ''; blockCol.innerHTML = ''; savingsEl.textContent = '$0/mo';
+  var clusters = window.HA_CLUSTERS;
+  var delay = 400;
+  clusters.forEach(function(cluster, i) {
+    setTimeout(function() {
+      var card = document.createElement('div');
+      card.className = 'ha-sort-card' + (cluster.good ? '' : ' bad');
+      card.textContent = cluster.label;
+      if (cluster.good) { keepCol.appendChild(card); } else { blockCol.appendChild(card); }
+      requestAnimationFrame(function() { requestAnimationFrame(function() { card.classList.add('placed'); }); });
+    }, delay * (i + 1));
+  });
+  var target = Math.round(window.HA_SAVINGS * 0.7);
+  var current = 0; var steps = 30; var interval = 3000 / steps; var increment = target / steps;
+  if (window._haSavingsInterval) clearInterval(window._haSavingsInterval);
+  window._haSavingsInterval = setInterval(function() {
+    current += increment;
+    if (current >= target) { current = target; clearInterval(window._haSavingsInterval); }
+    savingsEl.textContent = '$' + Math.round(current) + '/mo';
+  }, interval);
+  window._haSavingsCurrent = function() { return current; };
 };
 
 })();
