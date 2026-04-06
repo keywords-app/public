@@ -1670,6 +1670,18 @@ main {
 .ha-push-btn.pressed { transform: scale(0.95); box-shadow: 0 1px 6px rgba(45,154,73,0.15); }
 .ha-push-btn.done { opacity: 0; transform: scale(0.9); }
 .ha-push-check { margin-top: 0; }
+
+/* Beat 6: End Card */
+.ha-endcard {
+  display: flex; align-items: center; justify-content: center; gap: 28px;
+  opacity: 0; transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.ha-endcard.show { opacity: 1; transform: scale(1); }
+.ha-endcard-label { display: block; font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 4px; }
+.ha-endcard-value { display: block; font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--text-dark); }
+.ha-endcard-green { color: var(--green); }
+.ha-endcard-divider { width: 1px; height: 44px; background: var(--border); }
 </style>
 </head>
 <body>
@@ -1752,7 +1764,19 @@ main {
               </div>
             </div>
           </div>
-          <div class="ha-beat ha-beat-endcard" id="ha-beat-6"></div>
+          <div class="ha-beat ha-beat-endcard" id="ha-beat-6">
+            <div class="ha-endcard" id="ha-endcard">
+              <div class="ha-endcard-item">
+                <span class="ha-endcard-label">Time</span>
+                <span class="ha-endcard-value">10 minutes</span>
+              </div>
+              <div class="ha-endcard-divider"></div>
+              <div class="ha-endcard-item">
+                <span class="ha-endcard-label">Savings</span>
+                <span class="ha-endcard-value ha-endcard-green" id="ha-endcard-amount">$728/mo</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2823,6 +2847,16 @@ window.ha_startBeat5 = function() {
     if (current >= target) { current = target; clearInterval(window._haSavingsInterval); }
     savingsEl.textContent = '$' + Math.round(current) + '/mo';
   }, interval);
+};
+
+window.ha_startBeat6 = function() {
+  if (window._haSavingsInterval) clearInterval(window._haSavingsInterval);
+  var endcard = document.getElementById('ha-endcard');
+  var amountEl = document.getElementById('ha-endcard-amount');
+  if (!endcard) return;
+  endcard.classList.remove('show');
+  if (amountEl) amountEl.textContent = '$' + window.HA_SAVINGS + '/mo';
+  setTimeout(function() { endcard.classList.add('show'); }, 100);
 };
 
 })();
