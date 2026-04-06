@@ -1658,6 +1658,18 @@ main {
 .ha-savings-counter { text-align: center; margin-top: 4px; }
 .ha-savings-label { font-size: 12px; color: var(--text-dim); }
 .ha-savings-value { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--green); margin-left: 6px; }
+
+/* Beat 5: Push */
+.ha-push-stage { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.ha-push-btn {
+  background: var(--green); color: #fff; font-family: 'Figtree', sans-serif; font-weight: 600;
+  font-size: 14px; padding: 11px 24px; border-radius: 8px; border: none; cursor: default;
+  transition: transform 0.15s, opacity 0.3s, box-shadow 0.15s;
+  box-shadow: 0 2px 12px rgba(45,154,73,0.2);
+}
+.ha-push-btn.pressed { transform: scale(0.95); box-shadow: 0 1px 6px rgba(45,154,73,0.15); }
+.ha-push-btn.done { opacity: 0; transform: scale(0.9); }
+.ha-push-check { margin-top: 0; }
 </style>
 </head>
 <body>
@@ -1730,7 +1742,16 @@ main {
               </div>
             </div>
           </div>
-          <div class="ha-beat ha-beat-push" id="ha-beat-5"></div>
+          <div class="ha-beat ha-beat-push" id="ha-beat-5">
+            <div class="ha-push-stage">
+              <button class="ha-push-btn" id="ha-push-btn">Push to Google</button>
+              <div class="ha-checkmark ha-push-check" id="ha-push-check"><div class="ha-checkmark-tick"></div></div>
+              <div class="ha-savings-counter">
+                <span class="ha-savings-label">Savings:</span>
+                <span class="ha-savings-value" id="ha-savings-value-2">$0/mo</span>
+              </div>
+            </div>
+          </div>
           <div class="ha-beat ha-beat-endcard" id="ha-beat-6"></div>
         </div>
       </div>
@@ -2781,6 +2802,27 @@ window.ha_startBeat4 = function() {
     savingsEl.textContent = '$' + Math.round(current) + '/mo';
   }, interval);
   window._haSavingsCurrent = function() { return current; };
+};
+
+window.ha_startBeat5 = function() {
+  var btn = document.getElementById('ha-push-btn');
+  var check = document.getElementById('ha-push-check');
+  var savingsEl = document.getElementById('ha-savings-value-2');
+  if (!btn || !check || !savingsEl) return;
+  btn.className = 'ha-push-btn'; check.classList.remove('show');
+  if (window._haSavingsInterval) clearInterval(window._haSavingsInterval);
+  var startVal = window._haSavingsCurrent ? window._haSavingsCurrent() : Math.round(window.HA_SAVINGS * 0.7);
+  savingsEl.textContent = '$' + Math.round(startVal) + '/mo';
+  setTimeout(function() { btn.classList.add('pressed'); }, 600);
+  setTimeout(function() { btn.classList.remove('pressed'); btn.classList.add('done'); }, 900);
+  setTimeout(function() { check.classList.add('show'); }, 1200);
+  var target = window.HA_SAVINGS; var current = startVal;
+  var steps = 15; var interval = 1800 / steps; var increment = (target - current) / steps;
+  window._haSavingsInterval = setInterval(function() {
+    current += increment;
+    if (current >= target) { current = target; clearInterval(window._haSavingsInterval); }
+    savingsEl.textContent = '$' + Math.round(current) + '/mo';
+  }, interval);
 };
 
 })();
