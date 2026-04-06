@@ -495,6 +495,191 @@ main {
     max-width: 480px;
   }
 }
+
+/* ===== How It Works Section ===== */
+.how-it-works {
+  text-align: center;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green);
+  margin-bottom: 40px;
+}
+
+.hiw-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.hiw-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.hiw-badge {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.hiw-step-title {
+  font-family: 'Figtree', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.hiw-step-desc {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.65;
+}
+
+.hiw-time {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--green);
+  margin-bottom: 40px;
+}
+
+.hiw-image-placeholder {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: var(--border-light);
+  border: 2px dashed var(--muted);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .hiw-steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 48px;
+  }
+}
+
+/* ===== Pricing Preview Section ===== */
+.pricing-preview {
+  text-align: center;
+}
+
+.pricing-preview h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 10px;
+}
+
+.pricing-preview-sub {
+  font-size: clamp(15px, 2vw, 17px);
+  color: var(--text-mid);
+  font-weight: 300;
+  margin-bottom: 44px;
+}
+
+.pricing-card-name {
+  font-family: 'Figtree', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.pricing-card-price {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  color: var(--text-dark);
+  line-height: 1.1;
+}
+
+.pricing-card-price-note {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.pricing-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  text-align: left;
+}
+
+.pricing-card-features li {
+  font-size: 14px;
+  color: var(--text-mid);
+  padding: 5px 0;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 20px;
+}
+
+.pricing-card-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.pricing-card-features .sparkle::after {
+  content: ' ✦';
+  color: var(--green);
+  font-size: 10px;
+  vertical-align: super;
+}
+
+.pricing-card .funnel-btn-primary,
+.pricing-card .funnel-btn-ghost {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* ===== Final CTA Section ===== */
+.final-cta {
+  text-align: center;
+  border-top: 1px solid var(--border-light);
+  background: var(--card);
+}
+
+.final-cta h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 12px;
+}
+
+.final-cta p {
+  font-size: clamp(15px, 2vw, 17px);
+  color: var(--text-mid);
+  font-weight: 300;
+  margin-bottom: 32px;
+}
 </style>
 </head>
 <body>
@@ -543,6 +728,108 @@ main {
           <span class="stat-number">125+</span>
           <span class="stat-label">beta users already on it</span>
         </div>
+      </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="funnel-section how-it-works">
+      <span class="section-eyebrow">How it works</span>
+      <div class="hiw-steps">
+        <div class="hiw-step">
+          <span class="hiw-badge">1</span>
+          <div>
+            <div class="hiw-step-title">AI fetches and groups your search terms</div>
+            <p class="hiw-step-desc">Connect your Google Ads account and our AI reads your search terms, then organizes them into clusters based on meaning and intent.</p>
+          </div>
+        </div>
+        <div class="hiw-step">
+          <span class="hiw-badge">2</span>
+          <div>
+            <div class="hiw-step-title">Tag good and bad clusters</div>
+            <p class="hiw-step-desc">Review organized clusters instead of individual terms. If one term in a cluster is bad, they're usually all bad. Negative keyword suggestions make it even faster.</p>
+          </div>
+        </div>
+        <div class="hiw-step">
+          <span class="hiw-badge">3</span>
+          <div>
+            <div class="hiw-step-title">Block the bad, keep the good</div>
+            <p class="hiw-step-desc">Our Negative Match Maker pushes your negative keywords to Google, locking in your savings for life. No typing required.</p>
+          </div>
+        </div>
+        <div class="hiw-step">
+          <span class="hiw-badge">4</span>
+          <div>
+            <div class="hiw-step-title">Track your savings live</div>
+            <p class="hiw-step-desc">Estimated savings (typically &gt;10%) shows live in the app as you work. Show your boss or client exactly what you saved.</p>
+          </div>
+        </div>
+      </div>
+      <p class="hiw-time">End-to-end: ~10 minutes.</p>
+      <div class="hiw-image-placeholder">
+        [Before/after: messy search term list vs. organized clusters with savings tracker]
+      </div>
+    </div>
+
+    <!-- Pricing Preview -->
+    <div class="funnel-section pricing-preview">
+      <h2>Simple, predictable pricing</h2>
+      <p class="pricing-preview-sub">Priced on what you use, not what your clients spend.</p>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <div class="pricing-card-name">Free</div>
+          <div class="pricing-card-price">$0</div>
+          <div class="pricing-card-price-note">forever</div>
+          <ul class="pricing-card-features">
+            <li>1 account</li>
+            <li>1,000 on-demand search terms</li>
+            <li>Search term clusters</li>
+            <li>Negative keyword suggestions</li>
+            <li>iOS app</li>
+            <li>Android (May 1)</li>
+          </ul>
+          <button class="funnel-btn-ghost" onclick="navigateTo('#signup')">Get Started Free &rarr;</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-card-name">Solo</div>
+          <div class="pricing-card-price">$27</div>
+          <div class="pricing-card-price-note">/mo</div>
+          <ul class="pricing-card-features">
+            <li>1 synced + AI account</li>
+            <li>50k/wk automated search terms</li>
+            <li class="sparkle">Search term clusters</li>
+            <li class="sparkle">Negative keyword suggestions</li>
+            <li>Weekly scans, sync &amp; push</li>
+            <li>iOS app</li>
+            <li>Android (May 1)</li>
+            <li>Extra accounts $27 one-time</li>
+          </ul>
+          <button class="funnel-btn-primary" onclick="navigateTo('#signup')">Get Started Free &rarr;</button>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-card-name">Pro</div>
+          <div class="pricing-card-price">$47</div>
+          <div class="pricing-card-price-note">/mo</div>
+          <ul class="pricing-card-features">
+            <li>5 synced + AI accounts</li>
+            <li>250k/wk automated search terms</li>
+            <li class="sparkle">Search term clusters</li>
+            <li class="sparkle">Negative keyword suggestions</li>
+            <li>Weekly scans, sync &amp; push</li>
+            <li>iOS app</li>
+            <li>Android (May 1)</li>
+            <li>Extra accounts $27 one-time</li>
+          </ul>
+          <button class="funnel-btn-primary" onclick="navigateTo('#signup')">Get Started Free &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="final-cta">
+      <div class="funnel-section">
+        <h2>Ready to stop wasting ad spend?</h2>
+        <p>Get your first scan free. No credit card required.</p>
+        <button class="funnel-btn-primary hero-cta-btn" onclick="navigateTo('#signup')">Get Started Free &rarr;</button>
       </div>
     </div>
 
