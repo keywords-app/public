@@ -1682,6 +1682,19 @@ main {
 .ha-endcard-value { display: block; font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--text-dark); }
 .ha-endcard-green { color: var(--green); }
 .ha-endcard-divider { width: 1px; height: 44px; background: var(--border); }
+
+@media (max-width: 360px) {
+  .ha-endcard-value { font-size: 20px; }
+  .ha-endcard { gap: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ha-beat { transition: none; }
+  .ha-google-btn, .ha-checkmark, .ha-progress-fill, .ha-cluster-card, .ha-sort-card, .ha-push-btn, .ha-endcard { transition: none; animation: none; }
+  .ha-beat-endcard { opacity: 1; }
+  .ha-endcard { opacity: 1; transform: none; }
+  .ha-pulse-dot { animation: none; }
+}
 </style>
 </head>
 <body>
@@ -2730,6 +2743,7 @@ window.selectAccount = function(row) {
   function stopHeroAnim() {
     haRunning = false;
     if (haTimer) { clearTimeout(haTimer); haTimer = null; }
+    if (window._haSavingsInterval) { clearInterval(window._haSavingsInterval); window._haSavingsInterval = null; }
   }
 
   function runBeatSequence() {
