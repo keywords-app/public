@@ -1605,6 +1605,28 @@ main {
   width: 12px; height: 18px; border-right: 3px solid #fff; border-bottom: 3px solid #fff;
   transform: rotate(45deg) translate(-1px, -2px);
 }
+
+/* Beat 2: Scan */
+.ha-scan-wrap { width: 75%; text-align: center; }
+.ha-progress-bar {
+  width: 100%; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;
+}
+.ha-progress-fill {
+  height: 100%; background: var(--green); border-radius: 3px; width: 0%;
+  transition: width 2.5s ease-out;
+}
+.ha-progress-fill.filling { width: 85%; }
+.ha-phase-row {
+  display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px;
+}
+.ha-pulse-dot {
+  width: 8px; height: 8px; background: var(--green); border-radius: 50%;
+  animation: haPulse 1.2s ease-in-out infinite;
+}
+@keyframes haPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.ha-phase-text {
+  font-size: 13px; color: var(--text-mid); transition: opacity 0.3s;
+}
 </style>
 </head>
 <body>
@@ -1642,7 +1664,15 @@ main {
             </button>
             <div class="ha-checkmark"><div class="ha-checkmark-tick"></div></div>
           </div>
-          <div class="ha-beat ha-beat-scan" id="ha-beat-2"></div>
+          <div class="ha-beat ha-beat-scan" id="ha-beat-2">
+            <div class="ha-scan-wrap">
+              <div class="ha-progress-bar"><div class="ha-progress-fill"></div></div>
+              <div class="ha-phase-row">
+                <div class="ha-pulse-dot"></div>
+                <div class="ha-phase-text">Analyzing search terms...</div>
+              </div>
+            </div>
+          </div>
           <div class="ha-beat ha-beat-clusters" id="ha-beat-3"></div>
           <div class="ha-beat ha-beat-sort" id="ha-beat-4"></div>
           <div class="ha-beat ha-beat-push" id="ha-beat-5"></div>
@@ -2630,6 +2660,26 @@ window.selectAccount = function(row) {
     }, { threshold: 0.3 });
     haObserver.observe(heroAnimEl);
   }
+window.ha_startBeat2 = function() {
+  var fill = document.querySelector('.ha-progress-fill');
+  var text = document.querySelector('.ha-phase-text');
+  if (!fill || !text) return;
+  fill.classList.remove('filling');
+  fill.style.width = '0%';
+  text.textContent = 'Analyzing search terms...';
+  text.style.opacity = '1';
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() { fill.classList.add('filling'); });
+  });
+  setTimeout(function() {
+    text.style.opacity = '0';
+    setTimeout(function() {
+      text.textContent = 'Building clusters...';
+      text.style.opacity = '1';
+    }, 300);
+  }, 1500);
+};
+
 window.ha_startBeat1 = function() {
   var btn = document.querySelector('.ha-google-btn');
   var check = document.querySelector('#ha-beat-1 .ha-checkmark');
