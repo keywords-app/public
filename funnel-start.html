@@ -1673,19 +1673,7 @@ main {
 .ha-savings-label { font-size: 12px; color: var(--text-dim); }
 .ha-savings-value { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--green); margin-left: 6px; }
 
-/* Beat 5: Push */
-.ha-push-stage { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-.ha-push-btn {
-  background: var(--green); color: #fff; font-family: 'Figtree', sans-serif; font-weight: 600;
-  font-size: 14px; padding: 11px 24px; border-radius: 8px; border: none; cursor: default;
-  transition: transform 0.15s, opacity 0.3s, box-shadow 0.15s;
-  box-shadow: 0 2px 12px rgba(45,154,73,0.2);
-}
-.ha-push-btn.pressed { transform: scale(0.95); box-shadow: 0 1px 6px rgba(45,154,73,0.15); }
-.ha-push-btn.done { opacity: 0; transform: scale(0.9); }
-.ha-push-check { margin-top: 0; }
-
-/* Beat 6: End Card */
+/* Beat 5: End Card + CTA */
 .ha-endcard {
   display: flex; align-items: center; justify-content: center; gap: 28px;
   opacity: 0; transform: scale(0.95);
@@ -1696,6 +1684,16 @@ main {
 .ha-endcard-value { display: block; font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--text-dark); }
 .ha-endcard-green { color: var(--green); }
 .ha-endcard-divider { width: 1px; height: 44px; background: var(--border); }
+.ha-endcard-cta {
+  margin-top: 16px; padding: 10px 28px; border-radius: 8px; border: none;
+  background: var(--green); color: #fff; font-family: 'Figtree', sans-serif;
+  font-weight: 600; font-size: 14px; cursor: pointer; pointer-events: auto;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.4s ease 0.8s, transform 0.4s ease 0.8s, background 0.2s;
+  box-shadow: 0 2px 12px rgba(45,154,73,0.25);
+}
+.ha-endcard-cta.show { opacity: 1; transform: translateY(0); }
+.ha-endcard-cta:hover { background: var(--green-light); }
 
 @media (max-width: 360px) {
   .ha-endcard-value { font-size: 20px; }
@@ -1704,9 +1702,10 @@ main {
 
 @media (prefers-reduced-motion: reduce) {
   .ha-beat { transition: none; }
-  .ha-google-btn, .ha-checkmark, .ha-connected-name, .ha-disc-tag, .ha-cluster-card, .ha-sort-card, .ha-push-btn, .ha-endcard { transition: none; animation: none; }
+  .ha-google-btn, .ha-checkmark, .ha-connected-name, .ha-disc-tag, .ha-cluster-card, .ha-sort-card, .ha-endcard, .ha-endcard-cta { transition: none; animation: none; }
   .ha-beat-endcard { opacity: 1; }
   .ha-endcard { opacity: 1; transform: none; }
+  .ha-endcard-cta { opacity: 1; transform: none; }
   .ha-discovery-cat-icon { animation: none; }
 }
 </style>
@@ -1785,28 +1784,19 @@ main {
               </div>
             </div>
           </div>
-          <div class="ha-beat ha-beat-push" id="ha-beat-5">
-            <div class="ha-push-stage">
-              <button class="ha-push-btn" id="ha-push-btn">Push to Google</button>
-              <div class="ha-checkmark ha-push-check" id="ha-push-check"><div class="ha-checkmark-tick"></div></div>
-              <div class="ha-savings-counter">
-                <span class="ha-savings-label">Savings:</span>
-                <span class="ha-savings-value" id="ha-savings-value-2">$0/mo</span>
-              </div>
-            </div>
-          </div>
-          <div class="ha-beat ha-beat-endcard" id="ha-beat-6">
+          <div class="ha-beat ha-beat-endcard" id="ha-beat-5">
             <div class="ha-endcard" id="ha-endcard">
               <div class="ha-endcard-item">
-                <span class="ha-endcard-label">Time</span>
+                <span class="ha-endcard-label">Time spent</span>
                 <span class="ha-endcard-value">10 minutes</span>
               </div>
               <div class="ha-endcard-divider"></div>
               <div class="ha-endcard-item">
-                <span class="ha-endcard-label">Savings</span>
-                <span class="ha-endcard-value ha-endcard-green" id="ha-endcard-amount">$728/mo</span>
+                <span class="ha-endcard-label">Total savings</span>
+                <span class="ha-endcard-value ha-endcard-green" id="ha-endcard-amount">$510/mo</span>
               </div>
             </div>
+            <button class="ha-endcard-cta" id="ha-endcard-cta" onclick="navigateTo('#signup')">Start now for free &rarr;</button>
           </div>
         </div>
       </div>
@@ -2743,8 +2733,8 @@ window.selectAccount = function(row) {
     { label: '24hr plumber', good: true },
     { label: 'plumbing school', good: false }
   ];
-  var HA_SAVINGS = 728;
-  var HA_TIMINGS = [2000, 3000, 4000, 4000, 3000, 2000];
+  var HA_SAVINGS = 510;
+  var HA_TIMINGS = [2000, 3000, 4000, 5000, 4000]; // 5 beats: connect, discover, clusters, sort, endcard+CTA
 
   window.HA_CLUSTERS = HA_CLUSTERS;
   window.HA_SAVINGS = HA_SAVINGS;
@@ -2776,7 +2766,7 @@ window.selectAccount = function(row) {
         window['ha_startBeat' + (beatIndex + 1)]();
       }
       haTimer = setTimeout(function() {
-        beatIndex = (beatIndex + 1) % 6;
+        beatIndex = (beatIndex + 1) % 5;
         nextBeat();
       }, HA_TIMINGS[beatIndex]);
     }
@@ -2885,8 +2875,8 @@ window.ha_startBeat4 = function() {
       requestAnimationFrame(function() { requestAnimationFrame(function() { card.classList.add('placed'); }); });
     }, delay * (i + 1));
   });
-  var target = Math.round(window.HA_SAVINGS * 0.7);
-  var current = 0; var steps = 30; var interval = 3000 / steps; var increment = target / steps;
+  var target = window.HA_SAVINGS;
+  var current = 0; var steps = 30; var interval = 3500 / steps; var increment = target / steps;
   if (window._haSavingsInterval) clearInterval(window._haSavingsInterval);
   window._haSavingsInterval = setInterval(function() {
     current += increment;
@@ -2897,34 +2887,18 @@ window.ha_startBeat4 = function() {
 };
 
 window.ha_startBeat5 = function() {
-  var btn = document.getElementById('ha-push-btn');
-  var check = document.getElementById('ha-push-check');
-  var savingsEl = document.getElementById('ha-savings-value-2');
-  if (!btn || !check || !savingsEl) return;
-  btn.className = 'ha-push-btn'; check.classList.remove('show');
-  if (window._haSavingsInterval) clearInterval(window._haSavingsInterval);
-  var startVal = window._haSavingsCurrent ? window._haSavingsCurrent() : Math.round(window.HA_SAVINGS * 0.7);
-  savingsEl.textContent = '$' + Math.round(startVal) + '/mo';
-  setTimeout(function() { btn.classList.add('pressed'); }, 600);
-  setTimeout(function() { btn.classList.remove('pressed'); btn.classList.add('done'); }, 900);
-  setTimeout(function() { check.classList.add('show'); }, 1200);
-  var target = window.HA_SAVINGS; var current = startVal;
-  var steps = 15; var interval = 1800 / steps; var increment = (target - current) / steps;
-  window._haSavingsInterval = setInterval(function() {
-    current += increment;
-    if (current >= target) { current = target; clearInterval(window._haSavingsInterval); }
-    savingsEl.textContent = '$' + Math.round(current) + '/mo';
-  }, interval);
-};
-
-window.ha_startBeat6 = function() {
   if (window._haSavingsInterval) clearInterval(window._haSavingsInterval);
   var endcard = document.getElementById('ha-endcard');
   var amountEl = document.getElementById('ha-endcard-amount');
+  var ctaEl = document.getElementById('ha-endcard-cta');
   if (!endcard) return;
   endcard.classList.remove('show');
+  if (ctaEl) ctaEl.classList.remove('show');
   if (amountEl) amountEl.textContent = '$' + window.HA_SAVINGS + '/mo';
+  // Stats fade in
   setTimeout(function() { endcard.classList.add('show'); }, 100);
+  // CTA overlays after a beat
+  setTimeout(function() { if (ctaEl) ctaEl.classList.add('show'); }, 1200);
 };
 
 })();
