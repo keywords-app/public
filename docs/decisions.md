@@ -1,8 +1,10 @@
 # Design Decisions
 
 ## Next Steps
-- All 11 tasks complete
-- Funnel page is ready for review
+- Create hero animation loop (storyboard TBD): connect → AI scan → clusters sorting → savings counter → push to Google → "10 min / $728 saved"
+- Produce remaining image assets for placeholders in funnel-start.html
+- Web app team: integrate funnel designs into app framework at /start route
+- Web app team: wire up actual auth, Google Ads OAuth, Stripe, and scan flows
 
 ## Decisions
 
@@ -20,6 +22,10 @@
 - Desktop CTA is an `<a>` tag with `.funnel-btn-primary` enlarged to 17px / 16px padding — feels more prominent than other views
 - Mobile variants shown below a text separator for web app team reference; iOS uses dark rounded "App Store" style button with  icon, Android shows text-only message
 - All contained in `.ready-wrapper` max-width 560px centered — slightly wider than standard `.funnel-card` (440px) to accommodate two-column mobile cards if needed later
+
+### 2026-04-05 — Landing Page Pricing Must Match Funnel Pricing
+- Landing page pricing preview now shows launch discount banner, strikethrough prices (~~$47~~ $27 Solo, ~~$77~~ $47 Pro), and 30-day MBG — same treatment as the #pricing offer view
+- Both the landing page and the in-funnel pricing view should always show consistent pricing/discount framing
 
 ### 2026-04-05 — Funnel Shell Architecture
 - Single-page app with hash-based routing (8 views)

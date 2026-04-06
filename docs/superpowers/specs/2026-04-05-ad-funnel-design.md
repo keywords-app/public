@@ -71,14 +71,17 @@ The entry point from Facebook ads. No nav bar — this is a funnel page, not a w
 End-to-end: ~10 minutes.
 
 **Pricing preview:**
-- 3-tier cards: Free / Solo $27/mo / Pro $47/mo
+- Launch discount banner: "Launch Discount — April only. Lock in these rates for life."
+- 3-tier cards: Free / Solo ~~$47~~ $27/mo / Pro ~~$77~~ $47/mo (strikethrough regular prices)
 - All CTAs say "Get Started Free" — not selling here, just showing the value ladder
 - Feature lists per the pricing spec
+- 30-day money-back guarantee below the cards
+- Pricing framing matches the in-funnel pricing offer view (#pricing) for consistency
 
 **Final CTA:** Repeat "Get Started Free"
 
 **Image placeholders needed:**
-- Hero: screenshot/mockup of the triage screen
+- Hero: animated loop (MP4 or GIF) showing the full workflow — connect Google Ads → AI scan → clusters sorting into keep/block → savings counter ticking up → "Push to Google" → end card: "Time: 10 minutes. Savings: $728/mo"
 - Phone mockup for mobile app
 - Before/after: messy search terms vs organized clusters
 
