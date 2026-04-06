@@ -1103,6 +1103,62 @@ main {
     gap: 6px;
   }
 }
+
+/* ===== Discovery detail card (account summary rows) ===== */
+.discovery-detail-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin: 28px 0 32px;
+}
+
+.discovery-detail-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.discovery-detail-row:last-child {
+  border-bottom: none;
+}
+
+.discovery-detail-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.discovery-detail-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-align: right;
+}
+
+.discovery-detail-value.is-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--green);
+}
+
+@media (max-width: 420px) {
+  .discovery-detail-row {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+  .discovery-detail-value {
+    text-align: left;
+  }
+}
 </style>
 </head>
 <body>
@@ -1644,14 +1700,81 @@ main {
   </section>
 
   <!-- View: Discovery -->
+  <!-- Loading state (~12 seconds): Web app team adapts existing discovery modal.
+       Progress: "Reading your ads..." → "Checking landing pages..." →
+       "Analyzing keywords..." → "Checking geographic targeting..." -->
   <section id="view-discovery" class="funnel-view">
-    <div class="view-placeholder">
-      <h2>Discovery</h2>
-      <p>Confirmation before AI scan begins.</p>
-      <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-        <button class="funnel-btn-ghost" onclick="navigateTo('#select')">Back</button>
-        <button class="funnel-btn-primary" onclick="navigateTo('#scanning')">Start Scan</button>
+    <div class="funnel-card wide">
+
+      <!-- Progress indicator: All 4 steps active -->
+      <div class="progress-steps">
+        <div class="progress-step-wrap">
+          <div class="progress-step">
+            <div class="progress-dot active"></div>
+            <span class="progress-label active">Sign up</span>
+          </div>
+        </div>
+        <div class="progress-step-connector active"></div>
+        <div class="progress-step-wrap">
+          <div class="progress-step">
+            <div class="progress-dot active"></div>
+            <span class="progress-label active">Connect</span>
+          </div>
+        </div>
+        <div class="progress-step-connector active"></div>
+        <div class="progress-step-wrap">
+          <div class="progress-step">
+            <div class="progress-dot active"></div>
+            <span class="progress-label active">Choose plan</span>
+          </div>
+        </div>
+        <div class="progress-step-connector active"></div>
+        <div class="progress-step-wrap">
+          <div class="progress-step">
+            <div class="progress-dot active"></div>
+            <span class="progress-label active">Scan</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Headline -->
+      <h2 style="font-size: clamp(22px, 4vw, 32px); text-align: center; margin-bottom: 8px;">We found your account details</h2>
+      <p style="text-align: center; font-size: 15px; color: var(--text-mid); margin-bottom: 0; line-height: 1.55;">Confirm this looks right before we run the scan.</p>
+
+      <!-- Discovered account data -->
+      <div class="discovery-detail-card">
+        <div class="discovery-detail-row">
+          <span class="discovery-detail-label">Business name</span>
+          <span class="discovery-detail-value">Acme Plumbing Co.</span>
+        </div>
+        <div class="discovery-detail-row">
+          <span class="discovery-detail-label">Geographic targets</span>
+          <span class="discovery-detail-value">Portland, OR metro area</span>
+        </div>
+        <div class="discovery-detail-row">
+          <span class="discovery-detail-label">Campaigns found</span>
+          <span class="discovery-detail-value is-number">12</span>
+        </div>
+        <div class="discovery-detail-row">
+          <span class="discovery-detail-label">Keywords found</span>
+          <span class="discovery-detail-value is-number">847</span>
+        </div>
+        <div class="discovery-detail-row">
+          <span class="discovery-detail-label">Landing pages detected</span>
+          <span class="discovery-detail-value is-number">6</span>
+        </div>
+      </div>
+
+      <!-- Primary CTA -->
+      <button class="funnel-btn-primary" style="width: 100%;" onclick="navigateTo('#scanning')">
+        Looks good &mdash; start the scan &rarr;
+      </button>
+
+      <!-- Secondary link -->
+      <p style="text-align: center; margin-top: 16px;">
+        <a href="#" onclick="event.preventDefault();" style="font-size: 13px; color: var(--text-dim); text-decoration: none; border-bottom: 1px solid var(--border);">Something&rsquo;s not right</a>
+      </p>
+
     </div>
   </section>
 
