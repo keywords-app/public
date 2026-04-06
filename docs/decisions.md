@@ -1,8 +1,9 @@
 # Design Decisions
 
 ## Next Steps
-- Task 1 complete: funnel shell created with routing and responsive framework
-- Tasks 2-11 remain: populate each view section with actual content
+- Tasks 1-9 complete
+- Task 10 next: Scan complete / handoff view
+- Tasks 10-11 remain
 
 ## Decisions
 

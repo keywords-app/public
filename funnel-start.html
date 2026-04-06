@@ -1159,6 +1159,195 @@ main {
     text-align: left;
   }
 }
+
+/* ===== View: AI Scanning ===== */
+.scan-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 60px 24px 40px;
+  text-align: center;
+}
+
+/* Progress bar */
+.scan-progress {
+  margin-bottom: 48px;
+}
+
+.scan-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.scan-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--green-light));
+  border-radius: 3px;
+  animation: scan-fill 180s ease-out forwards;
+}
+
+@keyframes scan-fill {
+  0%   { width: 0%; }
+  10%  { width: 12%; }
+  30%  { width: 35%; }
+  60%  { width: 60%; }
+  80%  { width: 78%; }
+  100% { width: 95%; }
+}
+
+/* Phase text */
+.scan-phase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-mid);
+  min-height: 24px;
+}
+
+#scan-phase-text {
+  transition: opacity 0.4s ease;
+}
+
+/* Pulsing dot */
+.scan-pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: scan-pulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes scan-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.35; transform: scale(0.75); }
+}
+
+/* Slideshow */
+.scan-slideshow {
+  margin-bottom: 40px;
+}
+
+.scan-slides-container {
+  position: relative;
+  min-height: 260px;
+}
+
+.scan-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  padding: 32px 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.scan-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
+.scan-slide-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border: 2px dashed var(--muted);
+  border-radius: 16px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scan-slide-icon span {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.2;
+  text-align: center;
+  padding: 4px;
+}
+
+.scan-slide h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.scan-slide p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-mid);
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* Slide dots */
+.scan-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.scan-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.scan-dot.active {
+  background: var(--green);
+  transform: scale(1.25);
+}
+
+/* Skip link */
+.scan-skip {
+  margin-top: 8px;
+}
+
+.scan-skip a {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+
+.scan-skip a:hover {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
+@media (max-width: 480px) {
+  .scan-wrapper {
+    padding: 40px 16px 32px;
+  }
+  .scan-slide {
+    padding: 24px 16px;
+  }
+  .scan-slide h3 {
+    font-size: 19px;
+  }
+}
 </style>
 </head>
 <body>
@@ -1780,10 +1969,89 @@ main {
 
   <!-- View: AI Scanning -->
   <section id="view-scanning" class="funnel-view">
-    <div class="view-placeholder">
-      <h2>AI Scan</h2>
-      <p>Loading animation with insight slideshow while scan runs.</p>
-      <button class="funnel-btn-primary" onclick="navigateTo('#ready')">Complete Scan</button>
+    <div class="scan-wrapper">
+
+      <!-- Progress indicator -->
+      <div class="scan-progress">
+        <div class="scan-progress-bar">
+          <div class="scan-progress-fill"></div>
+        </div>
+        <div class="scan-phase">
+          <span class="scan-pulse-dot"></span>
+          <span id="scan-phase-text">Analyzing search terms...</span>
+        </div>
+      </div>
+
+      <!-- Slideshow -->
+      <div class="scan-slideshow">
+        <div class="scan-slides-container">
+
+          <div class="scan-slide active" data-slide="0">
+            <div class="scan-slide-icon">
+              <span>Clustering icon</span>
+            </div>
+            <h3>AI-Powered Clustering</h3>
+            <p>Your search terms are grouped by meaning and intent &mdash; so similar terms are reviewed together, not one by one.</p>
+          </div>
+
+          <div class="scan-slide" data-slide="1">
+            <div class="scan-slide-icon">
+              <span>Savings icon</span>
+            </div>
+            <h3>Live Savings Tracker</h3>
+            <p>As you tag search terms, the app calculates how much monthly spend you&rsquo;re saving in real time.</p>
+          </div>
+
+          <div class="scan-slide" data-slide="2">
+            <div class="scan-slide-icon">
+              <span>Suggestions icon</span>
+            </div>
+            <h3>Negative Keyword Suggestions</h3>
+            <p>Our AI suggests which search terms to block, so most of the work is already done for you.</p>
+          </div>
+
+          <div class="scan-slide" data-slide="3">
+            <div class="scan-slide-icon">
+              <span>Mobile icon</span>
+            </div>
+            <h3>Review Anywhere</h3>
+            <p>The Keywords.app mobile app lets you triage search terms from your phone &mdash; waiting rooms, coffee shops, wherever.</p>
+          </div>
+
+          <div class="scan-slide" data-slide="4">
+            <div class="scan-slide-icon">
+              <span>Results icon</span>
+            </div>
+            <h3>Real Results</h3>
+            <p>Beta users save 10%+ on ad spend in their first month. Zero conversions lost.</p>
+          </div>
+
+          <div class="scan-slide" data-slide="5">
+            <div class="scan-slide-icon">
+              <span>Support icon</span>
+            </div>
+            <h3>Need Help?</h3>
+            <p>Email us at help@keywords.app or use in-app support. We&rsquo;re here for you.</p>
+          </div>
+
+        </div>
+
+        <!-- Slide indicator dots -->
+        <div class="scan-dots">
+          <button class="scan-dot active" data-dot="0" aria-label="Slide 1"></button>
+          <button class="scan-dot" data-dot="1" aria-label="Slide 2"></button>
+          <button class="scan-dot" data-dot="2" aria-label="Slide 3"></button>
+          <button class="scan-dot" data-dot="3" aria-label="Slide 4"></button>
+          <button class="scan-dot" data-dot="4" aria-label="Slide 5"></button>
+          <button class="scan-dot" data-dot="5" aria-label="Slide 6"></button>
+        </div>
+      </div>
+
+      <!-- Skip link for reviewers -->
+      <p class="scan-skip">
+        <a href="#" onclick="event.preventDefault(); navigateTo('#ready');">Demo: Skip to results &rarr;</a>
+      </p>
+
     </div>
   </section>
 
@@ -1821,6 +2089,9 @@ main {
    * Hides all .funnel-view sections, then shows and fades in the target.
    */
   function showView(viewId) {
+    // Stop scan timers whenever leaving any view
+    stopScanTimers();
+
     const views = document.querySelectorAll('.funnel-view');
     views.forEach(function(v) {
       v.classList.remove('active', 'fade-in');
@@ -1836,6 +2107,11 @@ main {
 
     // Scroll to top on view change
     window.scrollTo(0, 0);
+
+    // Start scan timers when entering the scanning view
+    if (viewId === 'view-scanning') {
+      startScanTimers();
+    }
   }
 
   /**
@@ -1864,6 +2140,90 @@ main {
 
   // Expose showView globally for flexibility
   window.showView = showView;
+
+  // ===== Scanning view: phase text + slideshow =====
+  var scanPhaseInterval = null;
+  var scanSlideInterval = null;
+
+  var scanPhases = [
+    'Analyzing search terms\u2026',
+    'Building clusters\u2026',
+    'Scoring relevance\u2026',
+    'Preparing your results\u2026'
+  ];
+  var currentPhase = 0;
+  var currentSlide = 0;
+  var totalSlides = 6;
+
+  function startScanTimers() {
+    currentPhase = 0;
+    currentSlide = 0;
+
+    var phaseEl = document.getElementById('scan-phase-text');
+    if (phaseEl) phaseEl.textContent = scanPhases[0];
+
+    // Reset progress bar animation
+    var fill = document.querySelector('.scan-progress-fill');
+    if (fill) {
+      fill.style.animation = 'none';
+      void fill.offsetWidth;
+      fill.style.animation = '';
+    }
+
+    // Reset slides to first
+    showScanSlide(0);
+
+    // Phase rotation every 10s
+    scanPhaseInterval = setInterval(function() {
+      currentPhase = (currentPhase + 1) % scanPhases.length;
+      if (phaseEl) {
+        phaseEl.style.opacity = '0';
+        setTimeout(function() {
+          phaseEl.textContent = scanPhases[currentPhase];
+          phaseEl.style.opacity = '1';
+        }, 400);
+      }
+    }, 10000);
+
+    // Slide rotation every 8s
+    scanSlideInterval = setInterval(function() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showScanSlide(currentSlide);
+    }, 8000);
+  }
+
+  function showScanSlide(index) {
+    var slides = document.querySelectorAll('.scan-slide');
+    var dots = document.querySelectorAll('.scan-dot');
+    slides.forEach(function(s) { s.classList.remove('active'); });
+    dots.forEach(function(d) { d.classList.remove('active'); });
+    if (slides[index]) slides[index].classList.add('active');
+    if (dots[index]) dots[index].classList.add('active');
+  }
+
+  function stopScanTimers() {
+    if (scanPhaseInterval) { clearInterval(scanPhaseInterval); scanPhaseInterval = null; }
+    if (scanSlideInterval) { clearInterval(scanSlideInterval); scanSlideInterval = null; }
+  }
+
+  // Dot click handlers
+  document.addEventListener('DOMContentLoaded', function() {
+    var dots = document.querySelectorAll('.scan-dot');
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        currentSlide = parseInt(dot.getAttribute('data-dot'), 10);
+        showScanSlide(currentSlide);
+        // Reset slide interval so it doesn't jump immediately
+        if (scanSlideInterval) {
+          clearInterval(scanSlideInterval);
+          scanSlideInterval = setInterval(function() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showScanSlide(currentSlide);
+          }, 8000);
+        }
+      });
+    });
+  });
 })();
 
 // ===== Account selection (view-select) =====
