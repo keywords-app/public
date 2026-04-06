@@ -1627,6 +1627,21 @@ main {
 .ha-phase-text {
   font-size: 13px; color: var(--text-mid); transition: opacity 0.3s;
 }
+
+/* Beat 3: Clusters */
+.ha-clusters { display: flex; flex-direction: column; gap: 8px; width: 75%; }
+.ha-cluster-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 10px 16px; font-size: 13px; color: var(--text); font-weight: 500;
+  opacity: 0; transform: translateY(12px);
+}
+.ha-beat.active .ha-cluster-card {
+  animation: haSlideIn 0.35s ease forwards;
+}
+@keyframes haSlideIn { to { opacity: 1; transform: translateY(0); } }
+.ha-cluster-card.bad {
+  border-color: #ea4335; background: rgba(234,67,53,0.05); color: #c62828;
+}
 </style>
 </head>
 <body>
@@ -1673,7 +1688,14 @@ main {
               </div>
             </div>
           </div>
-          <div class="ha-beat ha-beat-clusters" id="ha-beat-3"></div>
+          <div class="ha-beat ha-beat-clusters" id="ha-beat-3">
+            <div class="ha-clusters">
+              <div class="ha-cluster-card" style="animation-delay: 0s">plumber near me</div>
+              <div class="ha-cluster-card" style="animation-delay: 0.15s">emergency plumber</div>
+              <div class="ha-cluster-card" style="animation-delay: 0.3s">24hr plumber</div>
+              <div class="ha-cluster-card bad" style="animation-delay: 0.45s">plumbing school</div>
+            </div>
+          </div>
           <div class="ha-beat ha-beat-sort" id="ha-beat-4"></div>
           <div class="ha-beat ha-beat-push" id="ha-beat-5"></div>
           <div class="ha-beat ha-beat-endcard" id="ha-beat-6"></div>
@@ -2660,6 +2682,15 @@ window.selectAccount = function(row) {
     }, { threshold: 0.3 });
     haObserver.observe(heroAnimEl);
   }
+window.ha_startBeat3 = function() {
+  var cards = document.querySelectorAll('#ha-beat-3 .ha-cluster-card');
+  cards.forEach(function(card) {
+    card.style.animation = 'none';
+    card.offsetHeight;
+    card.style.animation = '';
+  });
+};
+
 window.ha_startBeat2 = function() {
   var fill = document.querySelector('.ha-progress-fill');
   var text = document.querySelector('.ha-phase-text');
