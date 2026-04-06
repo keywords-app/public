@@ -129,6 +129,45 @@ main {
   opacity: 1;
 }
 
+/* ===== Fade-up on scroll (landing page sections) ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== Focus states for keyboard accessibility ===== */
+.funnel-btn-primary:focus-visible,
+.funnel-btn-ghost:focus-visible,
+.funnel-btn-google:focus-visible,
+.funnel-btn-apple:focus-visible,
+.ready-appstore-btn:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.scan-dot:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.account-row:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-color: var(--green);
+}
+
+.site-header-login:focus-visible,
+.site-logo:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
 /* ===== Funnel section — generic content wrapper ===== */
 .funnel-section {
   max-width: var(--max-w);
@@ -939,7 +978,6 @@ main {
   width: 32px;
   background: var(--border);
   flex-shrink: 0;
-  margin-top: -20px; /* align with dot center */
   align-self: flex-start;
   margin-top: 10px;
 }
@@ -1561,7 +1599,7 @@ main {
     </div>
 
     <!-- Social Proof Strip -->
-    <div class="social-proof">
+    <div class="social-proof fade-up">
       <div class="social-proof-inner" style="max-width: var(--max-w); margin: 0 auto;">
         <div class="social-proof-stat">
           <span class="stat-number">10%+</span>
@@ -1579,7 +1617,7 @@ main {
     </div>
 
     <!-- How It Works -->
-    <div class="funnel-section how-it-works">
+    <div class="funnel-section how-it-works fade-up">
       <span class="section-eyebrow">How it works</span>
       <div class="hiw-steps">
         <div class="hiw-step">
@@ -1618,7 +1656,7 @@ main {
     </div>
 
     <!-- Pricing Preview -->
-    <div class="funnel-section pricing-preview">
+    <div class="funnel-section pricing-preview fade-up">
       <h2>Simple, predictable pricing</h2>
       <p class="pricing-preview-sub">Priced on what you use, not what your clients spend.</p>
       <div class="pricing-cards">
@@ -1672,7 +1710,7 @@ main {
     </div>
 
     <!-- Final CTA -->
-    <div class="final-cta">
+    <div class="final-cta fade-up">
       <div class="funnel-section">
         <h2>Ready to stop wasting ad spend?</h2>
         <p>Get your first scan free. No credit card required.</p>
@@ -2441,6 +2479,24 @@ main {
           }, 8000);
         }
       });
+    });
+  });
+})();
+
+// ===== Fade-up on scroll (IntersectionObserver) =====
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('#view-landing .fade-up').forEach(function(el) {
+      observer.observe(el);
     });
   });
 })();
