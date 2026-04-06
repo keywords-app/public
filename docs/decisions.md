@@ -1,12 +1,32 @@
 # Design Decisions
 
 ## Next Steps
-- Create hero animation loop (storyboard TBD): connect → AI scan → clusters sorting → savings counter → push to Google → "10 min / $728 saved"
 - Produce remaining image assets for placeholders in funnel-start.html
 - Web app team: integrate funnel designs into app framework at /start route
 - Web app team: wire up actual auth, Google Ads OAuth, Stripe, and scan flows
 
 ## Decisions
+
+### 2026-04-06 — Hero Animation Density & Discovery Waterfall
+- Reduced `.ha-beat` padding from 24px to 16px for tighter framing
+- Widened content areas: scan/clusters to 92%, sort to 94%
+- Replaced Beat 2 plain progress bar with discovery-style data waterfall cycling through Ad Copy, Keywords, Landing Pages, and Geo Targeting categories as animated pill tags
+- Added "Acme Plumbing Co." account name reveal after Beat 1 checkmark
+- Added two more cluster cards to Beat 3 for fuller layout
+- Updated reduced-motion media query for new elements
+
+### 2026-04-05 — Hero Animation Beats 4-6 + Polish
+- Beat 4 (Sort): Keywords sort into Keep/Block columns with staggered card animations; savings counter counts up to 70% of target ($728) over 3s
+- Beat 5 (Push): Green "Push to Google" button with press/done animation, reuses checkmark from Beat 1; savings counter continues from Beat 4 value to full target
+- Beat 6 (End Card): Two-stat summary card ("10 minutes" / "$728/mo") fades in with scale transition
+- Polish: Added `prefers-reduced-motion` media query disabling all transitions/animations; 360px breakpoint reduces end card font size; savings interval cleared on animation stop to prevent stale counters across loops
+
+### 2026-04-05 — Hero Animation Beats 1-3
+- Beat 1 (Connect): Google-styled button with press animation, then fade to green checkmark
+- Beat 2 (AI Scan): Progress bar fills to 85% over 2.5s, phase text swaps from "Analyzing search terms..." to "Building clusters..."
+- Beat 3 (Clusters): Four cards slide in with staggered delays (0/0.15/0.3/0.45s); last card styled red as a "bad" cluster (plumbing school)
+- All beat start functions are global (`window.ha_startBeatN`) called by the existing sequencer
+- CSS added at end of `<style>` block; JS added before the IIFE closing in `<script>` block
 
 ### 2026-04-05 — View Transitions, Scroll Animations, and Polish
 - View fade transitions already implemented (opacity 0→1, 0.3s ease) via `.funnel-view` / `.fade-in` classes

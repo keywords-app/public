@@ -617,7 +617,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 16px;
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -1605,31 +1605,45 @@ main {
   width: 12px; height: 18px; border-right: 3px solid #fff; border-bottom: 3px solid #fff;
   transform: rotate(45deg) translate(-1px, -2px);
 }
+.ha-connected-name {
+  font-size: 13px; color: var(--text-mid); margin-top: 8px;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.ha-connected-name.show { opacity: 1; transform: translateY(0); }
 
-/* Beat 2: Scan */
-.ha-scan-wrap { width: 75%; text-align: center; }
-.ha-progress-bar {
-  width: 100%; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;
+/* Beat 2: Discovery */
+.ha-discovery { width: 92%; text-align: left; }
+.ha-discovery-title {
+  font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--text-dark);
+  margin-bottom: 14px;
 }
-.ha-progress-fill {
-  height: 100%; background: var(--green); border-radius: 3px; width: 0%;
-  transition: width 2.5s ease-out;
+.ha-discovery-category {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
 }
-.ha-progress-fill.filling { width: 85%; }
-.ha-phase-row {
-  display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px;
-}
-.ha-pulse-dot {
-  width: 8px; height: 8px; background: var(--green); border-radius: 50%;
+.ha-discovery-cat-icon {
+  color: #4285f4; font-size: 10px;
   animation: haPulse 1.2s ease-in-out infinite;
 }
 @keyframes haPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-.ha-phase-text {
-  font-size: 13px; color: var(--text-mid); transition: opacity 0.3s;
+.ha-discovery-cat-label {
+  font-size: 12px; font-weight: 600; color: var(--text); text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
+.ha-discovery-tags {
+  display: flex; flex-wrap: wrap; gap: 5px; overflow: hidden; max-height: 200px;
+}
+.ha-disc-tag {
+  display: inline-block; padding: 4px 10px; font-size: 11px; color: var(--text-mid);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 100px;
+  white-space: nowrap; opacity: 0; transform: translateY(6px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.ha-disc-tag.show { opacity: 1; transform: translateY(0); }
+.ha-disc-tag.url { color: #4285f4; }
 
 /* Beat 3: Clusters */
-.ha-clusters { display: flex; flex-direction: column; gap: 8px; width: 75%; }
+.ha-clusters { display: flex; flex-direction: column; gap: 8px; width: 92%; }
 .ha-cluster-card {
   background: var(--card); border: 1px solid var(--border); border-radius: 8px;
   padding: 10px 16px; font-size: 13px; color: var(--text); font-weight: 500;
@@ -1644,7 +1658,7 @@ main {
 }
 
 /* Beat 4: Sort */
-.ha-sort-stage { width: 90%; display: flex; flex-direction: column; gap: 12px; }
+.ha-sort-stage { width: 94%; display: flex; flex-direction: column; gap: 12px; }
 .ha-sort-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .ha-sort-col { border-radius: 8px; padding: 8px; min-height: 80px; }
 .ha-sort-keep { background: rgba(45,154,73,0.06); border: 1px solid rgba(45,154,73,0.18); }
@@ -1690,10 +1704,10 @@ main {
 
 @media (prefers-reduced-motion: reduce) {
   .ha-beat { transition: none; }
-  .ha-google-btn, .ha-checkmark, .ha-progress-fill, .ha-cluster-card, .ha-sort-card, .ha-push-btn, .ha-endcard { transition: none; animation: none; }
+  .ha-google-btn, .ha-checkmark, .ha-connected-name, .ha-disc-tag, .ha-cluster-card, .ha-sort-card, .ha-push-btn, .ha-endcard { transition: none; animation: none; }
   .ha-beat-endcard { opacity: 1; }
   .ha-endcard { opacity: 1; transform: none; }
-  .ha-pulse-dot { animation: none; }
+  .ha-discovery-cat-icon { animation: none; }
 }
 </style>
 </head>
@@ -1731,14 +1745,16 @@ main {
               Connect Google Ads
             </button>
             <div class="ha-checkmark"><div class="ha-checkmark-tick"></div></div>
+            <div class="ha-connected-name" id="ha-connected-name">Acme Plumbing Co.</div>
           </div>
           <div class="ha-beat ha-beat-scan" id="ha-beat-2">
-            <div class="ha-scan-wrap">
-              <div class="ha-progress-bar"><div class="ha-progress-fill"></div></div>
-              <div class="ha-phase-row">
-                <div class="ha-pulse-dot"></div>
-                <div class="ha-phase-text">Analyzing search terms...</div>
+            <div class="ha-discovery">
+              <div class="ha-discovery-title">Analyzing Acme Plumbing</div>
+              <div class="ha-discovery-category">
+                <span class="ha-discovery-cat-icon">&#9679;</span>
+                <span class="ha-discovery-cat-label" id="ha-disc-label">Ad Copy</span>
               </div>
+              <div class="ha-discovery-tags" id="ha-disc-tags"></div>
             </div>
           </div>
           <div class="ha-beat ha-beat-clusters" id="ha-beat-3">
@@ -1747,6 +1763,8 @@ main {
               <div class="ha-cluster-card" style="animation-delay: 0.15s">emergency plumber</div>
               <div class="ha-cluster-card" style="animation-delay: 0.3s">24hr plumber</div>
               <div class="ha-cluster-card bad" style="animation-delay: 0.45s">plumbing school</div>
+              <div class="ha-cluster-card" style="animation-delay: 0.6s">pipe repair cost</div>
+              <div class="ha-cluster-card" style="animation-delay: 0.75s">clogged drain fix</div>
             </div>
           </div>
           <div class="ha-beat ha-beat-sort" id="ha-beat-4">
@@ -2750,6 +2768,7 @@ window.selectAccount = function(row) {
     var beatIndex = 0;
     function nextBeat() {
       if (!haRunning) return;
+      if (window._haDiscCleanup) window._haDiscCleanup();
       document.querySelectorAll('.ha-beat').forEach(function(b) { b.classList.remove('active'); });
       var beat = document.getElementById('ha-beat-' + (beatIndex + 1));
       if (beat) beat.classList.add('active');
@@ -2784,34 +2803,69 @@ window.ha_startBeat3 = function() {
 };
 
 window.ha_startBeat2 = function() {
-  var fill = document.querySelector('.ha-progress-fill');
-  var text = document.querySelector('.ha-phase-text');
-  if (!fill || !text) return;
-  fill.classList.remove('filling');
-  fill.style.width = '0%';
-  text.textContent = 'Analyzing search terms...';
-  text.style.opacity = '1';
-  requestAnimationFrame(function() {
-    requestAnimationFrame(function() { fill.classList.add('filling'); });
-  });
-  setTimeout(function() {
-    text.style.opacity = '0';
-    setTimeout(function() {
-      text.textContent = 'Building clusters...';
-      text.style.opacity = '1';
-    }, 300);
-  }, 1500);
+  var labelEl = document.getElementById('ha-disc-label');
+  var tagsEl = document.getElementById('ha-disc-tags');
+  if (!labelEl || !tagsEl) return;
+  tagsEl.innerHTML = '';
+
+  var categories = [
+    { label: 'Ad Copy', tags: ['Acme Plumbing Services', 'Licensed & Insured', '24/7 Emergency Service', 'Free Estimates Today', 'Fast, Reliable Plumbers', 'Drain Cleaning Experts', 'Water Heater Repair', 'No Job Too Small'] },
+    { label: 'Keywords', tags: ['plumber near me', 'emergency plumber', 'drain cleaning', 'water heater repair', 'plumbing company', 'leak repair', '24hr plumber', 'sewer line', 'toilet repair', 'plumbing school', 'how to plumb', 'plumber salary'] },
+    { label: 'Landing Pages', tags: ['acmeplumbing.com/', 'acmeplumbing.com/emergency', 'acmeplumbing.com/drains', 'acmeplumbing.com/water-heater', 'acmeplumbing.com/about', 'acmeplumbing.com/contact'] },
+    { label: 'Geo Targeting', tags: ['Portland, OR', 'Beaverton', 'Lake Oswego', 'Tigard', 'Hillsboro', 'Gresham', 'Oregon City', 'Milwaukie'] }
+  ];
+
+  var catIndex = 0;
+  var tagIndex = 0;
+  var tagInterval = null;
+  var catTimeout = null;
+
+  function showCategory() {
+    if (catIndex >= categories.length) return;
+    var cat = categories[catIndex];
+    labelEl.textContent = cat.label;
+    tagsEl.innerHTML = '';
+    tagIndex = 0;
+
+    tagInterval = setInterval(function() {
+      if (tagIndex >= cat.tags.length) {
+        clearInterval(tagInterval);
+        catTimeout = setTimeout(function() {
+          catIndex++;
+          if (catIndex < categories.length) showCategory();
+        }, 200);
+        return;
+      }
+      var tag = document.createElement('span');
+      tag.className = 'ha-disc-tag' + (cat.label === 'Landing Pages' ? ' url' : '');
+      tag.textContent = cat.tags[tagIndex];
+      tagsEl.appendChild(tag);
+      requestAnimationFrame(function() { requestAnimationFrame(function() { tag.classList.add('show'); }); });
+      tagIndex++;
+    }, 80);
+  }
+
+  showCategory();
+
+  // Store for cleanup
+  window._haDiscCleanup = function() {
+    if (tagInterval) clearInterval(tagInterval);
+    if (catTimeout) clearTimeout(catTimeout);
+  };
 };
 
 window.ha_startBeat1 = function() {
   var btn = document.querySelector('.ha-google-btn');
   var check = document.querySelector('#ha-beat-1 .ha-checkmark');
+  var nameEl = document.getElementById('ha-connected-name');
   if (!btn || !check) return;
   btn.className = 'ha-google-btn';
   check.classList.remove('show');
+  if (nameEl) { nameEl.classList.remove('show'); }
   setTimeout(function() { btn.classList.add('pressed'); }, 600);
   setTimeout(function() { btn.classList.remove('pressed'); btn.classList.add('done'); }, 900);
   setTimeout(function() { check.classList.add('show'); }, 1200);
+  setTimeout(function() { if (nameEl) nameEl.classList.add('show'); }, 1500);
 };
 
 window.ha_startBeat4 = function() {
