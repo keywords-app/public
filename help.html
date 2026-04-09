@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help — Keywords.app</title>
+  <meta name="description" content="User guide and FAQ for Keywords — the iOS app for Google Ads search term triage and negative keyword management.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.5;
+    }
+
+    /* Header */
+    header {
+      background: #fff;
+      padding: 20px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    header .inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+
+    header a {
+      font-size: 21px;
+      font-weight: 600;
+      color: #1d1d1f;
+      text-decoration: none;
+    }
+
+    /* Main */
+    main {
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      color: #6e6e73;
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-top: 24px;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    h2:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    h3 {
+      font-size: 19px;
+      font-weight: 600;
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+
+    h4 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    ul, ol {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #06c;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    th {
+      font-weight: 600;
+      background: #f5f5f7;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .badge-green { background: #d4edda; color: #155724; }
+    .badge-orange { background: #fff3cd; color: #856404; }
+    .badge-purple { background: #e8d5f5; color: #6f42c1; }
+    .badge-grey { background: #e9ecef; color: #495057; }
+
+    .toc {
+      background: #f5f5f7;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+    }
+
+    .toc h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .toc ol {
+      margin-bottom: 0;
+    }
+
+    .toc li {
+      margin-bottom: 4px;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      margin-bottom: 16px;
+    }
+
+    /* Footer */
+    footer {
+      background: #f5f5f7;
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #6e6e73;
+    }
+
+    footer a {
+      color: #6e6e73;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <a href="/">
+      <img src="keywordsappicon1.png" alt="Keywords.app icon">
+    </a>
+    <a href="/">Keywords.app</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1>Help</h1>
+    <p class="subtitle">User guide for Keywords — Google Ads search term triage for iOS.</p>
+
+    <div class="toc">
+      <h3>Contents</h3>
+      <ol>
+        <li><a href="#quickstart">Quickstart</a></li>
+        <li><a href="#concepts">Concepts &amp; Terminology</a></li>
+        <li><a href="#signing-up">Signing Up &amp; Connecting Google Ads</a></li>
+        <li><a href="#accounts">Your Ad Accounts Screen</a></li>
+        <li><a href="#triage">Search Term Triage</a></li>
+        <li><a href="#clusters">Clusters</a></li>
+        <li><a href="#negatives">Negative Keywords</a></li>
+        <li><a href="#ai-scan">AI Scan</a></li>
+        <li><a href="#campaigns">Campaign Management</a></li>
+        <li><a href="#billing">Plans &amp; Billing</a></li>
+        <li><a href="#settings">Settings</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </div>
+
+    <!-- QUICKSTART -->
+    <h2 id="quickstart">Quickstart — Your First Scan in 10 Minutes</h2>
+
+    <p><strong>Keywords helps you quickly decide which search terms are worth keeping, which to block, and how to organize the rest — right from your iPhone.</strong></p>
+
+    <h4>What you need</h4>
+    <ul>
+      <li>An iPhone running iOS 17 or later</li>
+      <li>A Google account with access to at least one Google Ads account</li>
+      <li>About 10 minutes</li>
+    </ul>
+
+    <h4>Steps</h4>
+    <ol>
+      <li>Download Keywords from the <a href="https://apps.apple.com/pl/app/keywords-app/id6758259105">App Store</a> and open it.</li>
+      <li>Sign up with Google, Apple, or email.</li>
+      <li>During onboarding, tap <strong>Connect Google Ads</strong> and grant the requested permissions.</li>
+      <li>On the <strong>Ad Accounts</strong> screen, tap the account you want to work on.</li>
+      <li>If you're on a free plan, tap <strong>Free AI Scan</strong> in the top right. This runs a one-time AI analysis of your search terms.</li>
+      <li>Complete the <strong>Business Discovery</strong> setup — the app walks you through it. Takes about 15 seconds.</li>
+      <li>When prompted, confirm you want to run the AI scan. It typically takes 1–5 minutes.</li>
+      <li>When the scan finishes, your terms are grouped into clusters in the <strong>Clusters</strong> tab. Start triaging: swipe right to keep, swipe left to block.</li>
+      <li>Your decisions sync automatically if you're on a paid plan.</li>
+    </ol>
+
+    <h4>If something goes wrong</h4>
+    <ul>
+      <li><strong>"Google Ads permission required"</strong> — You skipped the Ads permission during sign-in. Tap <strong>Grant Access</strong> on the Accounts screen.</li>
+      <li><strong>Scan seems stuck</strong> — Scans can take up to 5 minutes. If nothing happens after that, tap <strong>Cancel</strong> and try again.</li>
+      <li><strong>No clusters after scan</strong> — If your account has very few search terms, the AI may not have enough data to cluster. You can still triage manually in the <strong>New</strong> tab.</li>
+    </ul>
+
+    <!-- CONCEPTS -->
+    <h2 id="concepts">Concepts &amp; Terminology</h2>
+
+    <table>
+      <tr><th>Term</th><th>What it means</th></tr>
+      <tr><td><strong>Search Term</strong></td><td>The exact phrase someone typed into Google before clicking your ad. Different from a keyword — this is real user intent.</td></tr>
+      <tr><td><strong>Triage</strong></td><td>Reviewing search terms and deciding: Keep, Block, or defer.</td></tr>
+      <tr><td><strong>Keep</strong></td><td>Mark a term as intentional — you want your ads to show for it.</td></tr>
+      <tr><td><strong>Block</strong></td><td>Mark a term to add as a negative keyword.</td></tr>
+      <tr><td><strong>Later</strong></td><td>Set a term aside without making a final decision.</td></tr>
+      <tr><td><strong>Handled</strong></td><td>A term covered by a negative keyword you've already pushed. Disappears from active tabs.</td></tr>
+      <tr><td><strong>Cluster</strong></td><td>A named group of related search terms.</td></tr>
+      <tr><td><strong>AI Cluster</strong></td><td>A cluster created by the AI scan. You can edit or override these.</td></tr>
+      <tr><td><strong>Negative Keyword</strong></td><td>A keyword added to Google Ads to prevent your ads from showing on irrelevant searches.</td></tr>
+      <tr><td><strong>Synced Account</strong></td><td>An account on your paid plan. Terms fetch weekly; decisions sync across devices.</td></tr>
+      <tr><td><strong>Discovery</strong></td><td>A one-time setup where the app analyzes your ads and website to understand your business. Included with the free scan.</td></tr>
+      <tr><td><strong>Business Context</strong></td><td>A description of your business and geography that guides the AI scan. Set during Discovery.</td></tr>
+      <tr><td><strong>Free Scan</strong></td><td>A one-time AI scan on the free plan so you can try it before subscribing.</td></tr>
+      <tr><td><strong>PMax</strong></td><td>Performance Max — a Google Ads campaign type. Keywords handles PMax terms alongside standard Search terms.</td></tr>
+    </table>
+
+    <!-- SIGNING UP -->
+    <h2 id="signing-up">Signing Up &amp; Connecting Google Ads</h2>
+
+    <p><strong>Sign up</strong> using Google, Apple, or email on the welcome screen.</p>
+
+    <h4>During onboarding</h4>
+    <ol>
+      <li>Who you're managing ads for (yourself, a business you work for, or clients).</li>
+      <li>Connect a Google Ads account.</li>
+      <li>Whether to enable push notifications (optional).</li>
+    </ol>
+
+    <h4>Connecting Google Ads</h4>
+    <ol>
+      <li>Tap <strong>Connect Google Ads</strong>.</li>
+      <li>Sign in with the Google account that has access to your Ads account.</li>
+      <li>Grant both the basic Google sign-in permissions <strong>and</strong> the Google Ads permission. If you skip the Ads permission, you'll see a "Grant Access" prompt on the Accounts screen.</li>
+    </ol>
+
+    <p><strong>Demo accounts:</strong> Two demo accounts — Vandelay Industries and Strickland Propane — appear automatically. Tap either to explore triage, clusters, and the Negative Matchmaker with sample data. Nothing affects any real campaigns.</p>
+
+    <!-- ACCOUNTS -->
+    <h2 id="accounts">Your Ad Accounts Screen</h2>
+
+    <p>Your home screen. Shows every Google Ads account accessible through your connected logins, in three sections:</p>
+
+    <ul>
+      <li><strong>Synced Accounts</strong> — Your paid, actively synced accounts. Green outline at top.</li>
+      <li><strong>Recent Accounts</strong> — The last 5 accounts you visited.</li>
+      <li><strong>By Google Login</strong> — All accounts grouped by login email. Tap to expand or collapse.</li>
+    </ul>
+
+    <h4>Account status badges</h4>
+    <table>
+      <tr><th>Badge</th><th>What it means</th></tr>
+      <tr><td><span class="badge badge-green">Synced</span></td><td>Active paid account — terms sync weekly, decisions sync across devices</td></tr>
+      <tr><td><span class="badge badge-orange">Setup needed</span></td><td>On your plan but Discovery hasn't been completed yet</td></tr>
+      <tr><td><span class="badge badge-purple">AI Scanned</span></td><td>You ran the free scan on this account</td></tr>
+      <tr><td><span class="badge badge-grey">Free</span></td><td>Not on your plan — local triage only</td></tr>
+    </table>
+
+    <p>Tap any account row to open it and start triaging.</p>
+
+    <!-- TRIAGE -->
+    <h2 id="triage">Search Term Triage</h2>
+
+    <p>Triage is the core workflow. Tap into an account and you'll see the <strong>Search Terms</strong> tab with five sub-tabs:</p>
+
+    <table>
+      <tr><th>Tab</th><th>What's here</th></tr>
+      <tr><td><strong>New</strong></td><td>Untriaged terms — your main working queue</td></tr>
+      <tr><td><strong>Clusters</strong></td><td>Terms grouped by cluster, awaiting a decision</td></tr>
+      <tr><td><strong>Later</strong></td><td>Terms you've parked</td></tr>
+      <tr><td><strong>Blocked</strong></td><td>Terms you've decided to block</td></tr>
+      <tr><td><strong>Keep</strong></td><td>Terms you've decided to keep</td></tr>
+    </table>
+
+    <h4>Making decisions</h4>
+    <p><strong>Swipe gestures (fastest):</strong> Swipe <strong>right</strong> to Keep, swipe <strong>left</strong> to Block.</p>
+    <p><strong>Toolbar buttons:</strong> The bottom toolbar shows contextual action buttons based on which tab you're on.</p>
+    <p><strong>Selecting multiple terms:</strong> Tap the checkbox on any term, then use the toolbar to act on all selected terms at once.</p>
+    <p><strong>Tap a term</strong> to see full metrics: impressions, clicks, cost, conversions, conversion value, CTR, CPC, CPA, and ROAS.</p>
+    <p><strong>Undo:</strong> After swiping, an undo option briefly appears. You can also find any term in its destination tab and move it back.</p>
+
+    <h4>Similar Terms</h4>
+    <p>When you keep or block a multi-word term, the app checks for similar terms elsewhere. If found, a sheet lets you act on all of them at once.</p>
+
+    <h4>Sorting and filtering</h4>
+    <p>Sort by spend, impressions, clicks, conversions, conversion value, CTR, or conversion rate. Filter to hide zero-conversion terms. Default: spend, highest first.</p>
+
+    <h4>Date range</h4>
+    <p>Tap the date display in the action bar: Last 7/14/28/30 days, This Month, Last Month, or custom.</p>
+
+    <h4>PMax terms</h4>
+    <p>Performance Max search terms appear alongside standard Search terms. PMax cost estimates (marked with ~) can be toggled in <strong>Settings</strong>.</p>
+
+    <!-- CLUSTERS -->
+    <h2 id="clusters">Clusters</h2>
+
+    <p>Clusters group related search terms so you can spot patterns and act on them together.</p>
+
+    <h4>Creating a cluster</h4>
+    <ol>
+      <li>Tap the <strong>Cluster</strong> button in the toolbar (or select multiple terms first).</li>
+      <li>Type a new cluster name or pick an existing one.</li>
+      <li>The term moves to the <strong>Clusters</strong> tab under that name.</li>
+    </ol>
+
+    <p>Clustering doesn't make a keep/block decision — it organizes terms for later. You can still keep or block directly from the Clusters tab.</p>
+
+    <h4>Working with clusters</h4>
+    <ul>
+      <li><strong>Tap a cluster row</strong> to open a detail sheet with all terms in that cluster.</li>
+      <li>From the detail sheet: search, select all, and take bulk actions.</li>
+      <li>On the Blocked tab, the cluster detail sheet includes a <strong>Negative Matcher</strong> button for selected terms.</li>
+      <li>Clusters persist after decisions — a blocked term stays in its cluster on the Blocked tab.</li>
+    </ul>
+
+    <h4>AI clusters vs. your clusters</h4>
+    <p>After an AI scan, clusters are created automatically. These are suggestions — moving a term manually or triaging it overrides the AI assignment permanently.</p>
+
+    <!-- NEGATIVES -->
+    <h2 id="negatives">Negative Keywords</h2>
+
+    <p>The <strong>Negative Matchmaker</strong> turns blocked terms into actual negative keywords and pushes them to Google Ads.</p>
+
+    <h4>Opening it</h4>
+    <ul>
+      <li>Swipe left on any term in the <strong>Blocked</strong> tab</li>
+      <li>Tap the purple negative match button in the Blocked tab toolbar</li>
+      <li>Tap the negative match button inside a cluster detail sheet</li>
+    </ul>
+
+    <h4>Building a negative keyword</h4>
+    <ol>
+      <li><strong>Word chips</strong> at the top show common words from your blocked terms. Tap to add, or type manually.</li>
+      <li>Choose a <strong>match type</strong>:
+        <ul>
+          <li><strong>Exact</strong> — Only blocks that exact phrase</li>
+          <li><strong>Phrase</strong> — Blocks searches containing that phrase in order</li>
+          <li><strong>Broad</strong> — Blocks searches containing all those words in any order</li>
+        </ul>
+      </li>
+      <li>Choose a <strong>scope</strong>:
+        <ul>
+          <li><strong>Acct</strong> — Account-level (applies everywhere)</li>
+          <li><strong>Camp</strong> — A specific campaign</li>
+          <li><strong>List</strong> — An existing shared negative keyword list</li>
+        </ul>
+      </li>
+      <li>Tap <strong>Add Negative</strong>.</li>
+    </ol>
+
+    <h4>Reviewing and pushing</h4>
+    <p>Pending negatives queue up before anything is sent. Tap any pending item to edit it. When ready, tap <strong>Push</strong> to send them all to Google Ads.</p>
+    <p><strong>Conflict detection:</strong> The app checks whether any negatives would block terms you've marked Keep. Conflicts are resolved one at a time.</p>
+    <p><strong>After pushing:</strong> Terms covered by your negatives are automatically marked Handled and disappear from active tabs.</p>
+
+    <h4>Suggestions</h4>
+    <p>Inside the Negative Matchmaker, tap the purple <strong>Suggest</strong> button to get automatic recommendations based on your blocked terms. Up to 10 suggestions, pre-selected and ready to review.</p>
+
+    <!-- AI SCAN -->
+    <h2 id="ai-scan">AI Scan</h2>
+
+    <p>The AI scan groups unclustered search terms into named clusters based on your business context. Two parts:</p>
+
+    <h4>Part 1: Business Discovery</h4>
+    <p>A one-time setup. The app pulls sample data from your account and generates a business description.</p>
+    <ol>
+      <li>Open a synced account (or start a free scan).</li>
+      <li>Discovery takes about 15 seconds.</li>
+      <li>Review the suggested description and geography, edit anything wrong, then tap <strong>Save &amp; Continue</strong>.</li>
+    </ol>
+
+    <h4>Part 2: Running the scan</h4>
+    <ol>
+      <li>Tap <strong>AI Scan</strong> in the action bar.</li>
+      <li>A progress banner shows while the scan runs (typically 1–5 minutes).</li>
+      <li>Tap <strong>Cancel</strong> to stop if needed.</li>
+      <li>When complete, clusters load and the view switches to the Clusters tab.</li>
+    </ol>
+
+    <!-- CAMPAIGNS -->
+    <h2 id="campaigns">Campaign Management</h2>
+
+    <p>Tap the <strong>Campaigns</strong> segment at the top of any account view.</p>
+
+    <ul>
+      <li><strong>Campaigns list</strong> — Name, type, status, and metrics (spend, ROAS, CPA). Toggle to pause or enable.</li>
+      <li><strong>Tap a campaign</strong> to drill into ad groups (or asset groups for PMax).</li>
+      <li><strong>Tap an ad group</strong> to see keywords (Search campaigns only).</li>
+      <li><strong>Campaign settings</strong> — Enabled status and location targeting.</li>
+      <li><strong>Filter by type</strong> — All, Search, PMax, Shopping, or Other.</li>
+    </ul>
+
+    <!-- BILLING -->
+    <h2 id="billing">Plans &amp; Billing</h2>
+
+    <table>
+      <tr><th></th><th>Free</th><th>Solo ($27/mo)</th><th>Pro ($47/mo)</th></tr>
+      <tr><td><strong>Google Ads accounts</strong></td><td>Unlimited (local only)</td><td>2 synced</td><td>10 synced</td></tr>
+      <tr><td><strong>Search terms</strong></td><td>Top 1,000 per fetch</td><td>Automated weekly</td><td>Automated weekly</td></tr>
+      <tr><td><strong>Triage sync</strong></td><td>Local only</td><td>Across devices</td><td>Across devices</td></tr>
+      <tr><td><strong>AI scan</strong></td><td>One-time free scan</td><td>Unlimited</td><td>Unlimited</td></tr>
+    </table>
+
+    <p><em>Launch pricing — discounted from normal rates.</em></p>
+    <p>Extra synced account slots: $27 one-time each.</p>
+
+    <h4>Subscribing</h4>
+    <p>Go to <strong>Settings</strong> (gear icon) &rarr; <strong>Subscription</strong> to view your plan and upgrade. Payment is handled by Apple through the App Store.</p>
+
+    <h4>Adding an account to your plan</h4>
+    <p>Tap an unsynced account. If you have slots, you'll be prompted to add it. If you're out of slots, you can purchase an extra slot or upgrade.</p>
+
+    <!-- SETTINGS -->
+    <h2 id="settings">Settings</h2>
+
+    <p>Tap the <strong>gear icon</strong> on the Ad Accounts screen.</p>
+
+    <table>
+      <tr><th>Setting</th><th>What it does</th></tr>
+      <tr><td><strong>Account</strong></td><td>Shows your email address</td></tr>
+      <tr><td><strong>Subscription</strong></td><td>View plan, slot usage, manage subscription</td></tr>
+      <tr><td><strong>PMax Estimation</strong></td><td>Toggle estimated cost display for PMax search terms</td></tr>
+      <tr><td><strong>Report a Bug</strong></td><td>Submit a bug report</td></tr>
+      <tr><td><strong>Ask a Question</strong></td><td>Send a question or request to the Keywords team</td></tr>
+      <tr><td><strong>Log Out</strong></td><td>Sign out</td></tr>
+      <tr><td><strong>Delete Account</strong></td><td>Permanently delete your account and all stored data</td></tr>
+      <tr><td><strong>About</strong></td><td>App version number</td></tr>
+    </table>
+
+    <!-- FAQ -->
+    <h2 id="faq">FAQ</h2>
+
+    <p class="faq-q">What's the difference between a keyword and a search term?</p>
+    <p class="faq-a">A keyword is what you bid on in Google Ads. A search term is the exact phrase a real person typed before clicking your ad. Keywords works with search terms — the raw data — so you can see what's actually driving your traffic and costs.</p>
+
+    <p class="faq-q">My search terms aren't loading. What do I do?</p>
+    <p class="faq-a">Make sure you've opened the account and waited for the fetch to complete. For synced accounts, terms load automatically from the server. If nothing appears, check your internet connection and tap the refresh button. If it persists, use <strong>Report a Bug</strong> in Settings.</p>
+
+    <p class="faq-q">Will my triage decisions be lost if I close the app?</p>
+    <p class="faq-a">No — decisions are saved locally immediately. On a paid plan, they also sync to the server automatically.</p>
+
+    <p class="faq-q">Can I undo a decision?</p>
+    <p class="faq-a">Yes — after swiping, an undo option briefly appears. You can also find the term in its destination tab (Keep or Blocked) and move it back to New using the toolbar.</p>
+
+    <p class="faq-q">What does the AI scan actually do?</p>
+    <p class="faq-a">It reads your unclustered search terms and groups related ones into named clusters. It doesn't automatically block or keep anything — that's still your call.</p>
+
+    <p class="faq-q">Can the AI scan override decisions I've already made?</p>
+    <p class="faq-a">No. The AI only clusters terms that haven't been manually triaged or clustered. Your decisions always take priority.</p>
+
+    <p class="faq-q">What is Discovery and do I have to do it?</p>
+    <p class="faq-a">Discovery is required before the AI scan. It helps the AI understand your business so it can cluster accurately. Takes about 15 seconds, and it's included with the free scan.</p>
+
+    <p class="faq-q">I manage multiple Google Ads accounts under different logins. Will they all show up?</p>
+    <p class="faq-a">Yes. Connect multiple Google logins and all accounts appear on the Ad Accounts screen, grouped by login email.</p>
+
+    <p class="faq-q">Will Keywords make changes to my Google Ads account automatically?</p>
+    <p class="faq-a">Only when you explicitly push negatives via the Negative Matchmaker. Everything else stays inside Keywords unless you take action.</p>
+
+    <p class="faq-q">What happens to my data if I cancel my subscription?</p>
+    <p class="faq-a">Your synced data remains while your subscription is active. After cancellation, stored search terms and server-side triage decisions are removed. Local decisions on your device are not affected. To delete everything immediately, tap <strong>Delete Account</strong> in Settings or use <strong>Ask a Question</strong> to contact us.</p>
+
+    <p class="faq-q">I'm on Solo but need more than 2 accounts. What are my options?</p>
+    <p class="faq-a">Purchase extra account slots ($27 one-time each) or upgrade to Pro (10 slots). Both options are in Settings.</p>
+
+    <p class="faq-q">Does the app work on iPad?</p>
+    <p class="faq-a">Not yet — Keywords is iPhone only. iPad support is planned.</p>
+
+    <p class="faq-q">Is there a web app?</p>
+    <p class="faq-a">Yes — <a href="https://app.keywords.app">app.keywords.app</a> gives you a full-screen, keyboard-driven triage experience on desktop. Your account and decisions are shared between the iOS app and the web app on a paid plan.</p>
+
+    <p class="faq-q">Is dark mode coming?</p>
+    <p class="faq-a">Planned but not yet available.</p>
+
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Keywords.app &mdash; <a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Service</a></p>
+</footer>
+
+</body>
+</html>
