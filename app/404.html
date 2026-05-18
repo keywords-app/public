@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Keywords</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content="0; url=https://app.keywords.app/" />
+    <link rel="canonical" href="https://app.keywords.app/" />
+    <title>Keywords — redirecting…</title>
     <script>
-      // SPA redirect for GitHub Pages
-      // Converts /app/login to /app/?route=/login so index.html can handle it
-      var path = window.location.pathname;
-      var base = '/app/';
-      if (path.startsWith(base) && path !== base) {
-        var route = path.slice(base.length - 1); // keep leading slash
-        var search = window.location.search;
-        window.location.replace(
-          base + '?route=' + encodeURIComponent(route) + (search ? '&' + search.slice(1) : '') + window.location.hash
-        );
-      }
+      window.location.replace("https://app.keywords.app/");
     </script>
   </head>
-  <body></body>
+  <body>
+    <p>
+      The Keywords web app has moved to
+      <a href="https://app.keywords.app/">app.keywords.app</a>.
+      Redirecting you now…
+    </p>
+  </body>
 </html>
