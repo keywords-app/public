@@ -15,6 +15,8 @@
 - Slotting is an **explicit, opt-in action** — the first account is NOT slotted automatically (corrected per user). Removing a synced account returns its slot; triage data is preserved server-side and restored on re-sync.
 - Kept "up to 1,000 terms per scan/fetch" — verified real: web-app `buildSearchTermsQuery` uses `LIMIT 1000 ORDER BY impressions DESC`; AI scan processes up to 1,000/run. Reframed away from being a free-tier-only cap.
 - Documented (§6) **guided triage** and **predictive scoring** (Keep/Kill pills). Confirmed by the user 2026-06-21: both are **live on iOS**, so the iOS-framed copy stands.
+- Correction: **negative keyword push works on every account, slotted or not** — it is NOT a slotted-only feature. Removed it from the "what a slotted account gets" list and called this out explicitly.
+- Deleted the stale, untracked `docs/keywords-app-pricing-spec.md` (described the retired Solo/Pro subscription model; canonical pricing lives in `keywords-shared/docs/contracts/`).
 
 ### 2026-04-06 — Hero Animation Density & Discovery Waterfall
 - Reduced `.ha-beat` padding from 24px to 16px for tighter framing
