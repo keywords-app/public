@@ -7,6 +7,15 @@
 
 ## Decisions
 
+### 2026-06-21 — help.html rewritten for slots + referral model
+- Replaced the subscription model (Free / Solo $27/mo / Pro $47/mo) with the unified **slots model**: free, 1 included account slot, earn more via referral, buy extra slots at **$10 one-time**. No platform split — web and iOS share the same go-to-market (verified against `keywords-shared/docs/contracts/slot-model-v1.md` + live `web-app`).
+- Dropped the Solo/Pro plan table, "launch pricing," and all `$27` / `/mo` strings. Removed the "Settings → Subscription" framing → **Settings → Account Slots / Add Extra Slot — $10**. Dropped "upgrade" as an out-of-slots path (now: buy a slot or refer a friend).
+- Added a **Refer a Friend** section (TOC + body): sign up via a friend's link → start with 2 slots; on connecting Google, both earn a slot; links are always web links (`app.keywords.app/r/<code>`). Per `referral-v1.md` the bonus fires on the referee's first Google login (OAuth connection), not on slotting a specific Ads account.
+- Retired all free-scan language (AI Scan now follows the slot/account model). Web app reworded from "for paid subscribers" → **free for all signed-in users**.
+- Slotting is an **explicit, opt-in action** — the first account is NOT slotted automatically (corrected per user). Removing a synced account returns its slot; triage data is preserved server-side and restored on re-sync.
+- Kept "up to 1,000 terms per scan/fetch" — verified real: web-app `buildSearchTermsQuery` uses `LIMIT 1000 ORDER BY impressions DESC`; AI scan processes up to 1,000/run. Reframed away from being a free-tier-only cap.
+- Documented (§6) **guided triage** and **predictive scoring** (Keep/Kill pills). Confirmed by the user 2026-06-21: both are **live on iOS**, so the iOS-framed copy stands.
+
 ### 2026-04-06 — Hero Animation Density & Discovery Waterfall
 - Reduced `.ha-beat` padding from 24px to 16px for tighter framing
 - Widened content areas: scan/clusters to 92%, sort to 94%
