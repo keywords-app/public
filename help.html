@@ -234,7 +234,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="#negatives">Negative Keywords</a></li>
         <li><a href="#ai-scan">AI Scan</a></li>
         <li><a href="#campaigns">Campaign Management</a></li>
-        <li><a href="#billing">Plans &amp; Billing</a></li>
+        <li><a href="#billing">Plans &amp; Slots</a></li>
+        <li><a href="#referral">Refer a Friend</a></li>
         <li><a href="#settings">Settings</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ol>
@@ -258,11 +259,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li>Sign up with Google, Apple, or email.</li>
       <li>During onboarding, tap <strong>Connect Google Ads</strong> and grant the requested permissions.</li>
       <li>On the <strong>Ad Accounts</strong> screen, tap the account you want to work on.</li>
-      <li>If you're on a free plan, tap <strong>Free AI Scan</strong> in the top right. This runs a one-time AI analysis of your search terms.</li>
+      <li>To unlock syncing and the AI scan, <strong>slot the account</strong> when prompted — your first slot is free. (Accounts you don't slot still work for local triage.)</li>
+      <li>Tap <strong>AI Scan</strong> in the top right to run an AI analysis of your search terms.</li>
       <li>Complete the <strong>Business Discovery</strong> setup — the app walks you through it. Takes about 15 seconds.</li>
       <li>When prompted, confirm you want to run the AI scan. It typically takes 1–5 minutes.</li>
       <li>When the scan finishes, your terms are grouped into clusters in the <strong>Clusters</strong> tab. Start triaging: swipe right to keep, swipe left to block.</li>
-      <li>Your decisions sync automatically if you're on a paid plan.</li>
+      <li>Your decisions sync automatically across your devices for slotted accounts.</li>
     </ol>
 
     <h4>If something goes wrong</h4>
@@ -286,10 +288,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <tr><td><strong>Cluster</strong></td><td>A named group of related search terms.</td></tr>
       <tr><td><strong>AI Cluster</strong></td><td>A cluster created by the AI scan. You can edit or override these.</td></tr>
       <tr><td><strong>Negative Keyword</strong></td><td>A keyword added to Google Ads to prevent your ads from showing on irrelevant searches.</td></tr>
-      <tr><td><strong>Synced Account</strong></td><td>An account on your paid plan. Terms fetch weekly; decisions sync across devices.</td></tr>
-      <tr><td><strong>Discovery</strong></td><td>A one-time setup where the app analyzes your ads and website to understand your business. Included with the free scan.</td></tr>
+      <tr><td><strong>Slot</strong></td><td>Capacity to fully sync one Google Ads account. Every user gets 1 free slot; earn more by referring friends or buy extra slots for $10 each.</td></tr>
+      <tr><td><strong>Synced Account</strong></td><td>An account using one of your slots. Terms fetch automatically; decisions sync across your devices.</td></tr>
+      <tr><td><strong>Discovery</strong></td><td>A one-time setup where the app analyzes your ads and website to understand your business. Runs the first time you scan an account.</td></tr>
       <tr><td><strong>Business Context</strong></td><td>A description of your business and geography that guides the AI scan. Set during Discovery.</td></tr>
-      <tr><td><strong>Free Scan</strong></td><td>A one-time AI scan on the free plan so you can try it before subscribing.</td></tr>
+      <tr><td><strong>Predictive Score</strong></td><td>A per-term estimate of how likely a term is worth keeping vs. blocking, shown as Keep/Kill pills on supported surfaces.</td></tr>
       <tr><td><strong>PMax</strong></td><td>Performance Max — a Google Ads campaign type. Keywords handles PMax terms alongside standard Search terms.</td></tr>
     </table>
 
@@ -320,7 +323,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>Your home screen. Shows every Google Ads account accessible through your connected logins, in three sections:</p>
 
     <ul>
-      <li><strong>Synced Accounts</strong> — Your paid, actively synced accounts. Green outline at top.</li>
+      <li><strong>Synced Accounts</strong> — Accounts using one of your slots, actively syncing. Green outline at top.</li>
       <li><strong>Recent Accounts</strong> — The last 5 accounts you visited.</li>
       <li><strong>By Google Login</strong> — All accounts grouped by login email. Tap to expand or collapse.</li>
     </ul>
@@ -328,10 +331,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h4>Account status badges</h4>
     <table>
       <tr><th>Badge</th><th>What it means</th></tr>
-      <tr><td><span class="badge badge-green">Synced</span></td><td>Active paid account — terms sync weekly, decisions sync across devices</td></tr>
-      <tr><td><span class="badge badge-orange">Setup needed</span></td><td>On your plan but Discovery hasn't been completed yet</td></tr>
-      <tr><td><span class="badge badge-purple">AI Scanned</span></td><td>You ran the free scan on this account</td></tr>
-      <tr><td><span class="badge badge-grey">Free</span></td><td>Not on your plan — local triage only</td></tr>
+      <tr><td><span class="badge badge-green">Synced</span></td><td>Active slotted account — terms fetch automatically, decisions sync across devices</td></tr>
+      <tr><td><span class="badge badge-orange">Setup needed</span></td><td>Using a slot but Discovery hasn't been completed yet</td></tr>
+      <tr><td><span class="badge badge-purple">AI Scanned</span></td><td>An AI scan has been run on this account</td></tr>
+      <tr><td><span class="badge badge-grey">Not slotted</span></td><td>Not using a slot — local triage only</td></tr>
     </table>
 
     <p>Tap any account row to open it and start triaging.</p>
@@ -365,6 +368,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <h4>Date range</h4>
     <p>Tap the date display in the action bar: Last 7/14/28/30 days, This Month, Last Month, or custom.</p>
+
+    <h4>Guided triage</h4>
+    <p>Instead of working one long list, you can run a <strong>guided sweep</strong> that walks you through the easy decisions first — terms that converted, terms that match your existing keywords, close broad-match variations, and high-cost terms that never converted. Each step surfaces a focused set so you can quickly keep the good ones and block the obvious waste.</p>
+
+    <h4>Predictive scoring</h4>
+    <p>Once you've made enough Keep/Block decisions on an account, you can run <strong>predictive scoring</strong> to estimate, for each remaining term, how likely it is worth keeping vs. blocking. Scores appear as <strong>Keep/Kill pills</strong> on the term, and you can sort by score to work the most confident picks first. Re-run it anytime to score new terms, or do a full rescore (available once a month).</p>
 
     <h4>PMax terms</h4>
     <p>Performance Max search terms appear alongside standard Search terms. PMax cost estimates (marked with ~) can be toggled in <strong>Settings</strong>.</p>
@@ -442,7 +451,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h4>Part 1: Business Discovery</h4>
     <p>A one-time setup. The app pulls sample data from your account and generates a business description.</p>
     <ol>
-      <li>Open a synced account (or start a free scan).</li>
+      <li>Open a slotted account.</li>
       <li>Discovery takes about 15 seconds.</li>
       <li>Review the suggested description and geography, edit anything wrong, then tap <strong>Save &amp; Continue</strong>.</li>
     </ol>
@@ -454,6 +463,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li>Tap <strong>Cancel</strong> to stop if needed.</li>
       <li>When complete, clusters load and the view switches to the Clusters tab.</li>
     </ol>
+    <p>Each scan processes up to <strong>1,000</strong> new search terms (highest-impression terms first). For large accounts, run the scan again to handle more.</p>
 
     <!-- CAMPAIGNS -->
     <h2 id="campaigns">Campaign Management</h2>
@@ -469,24 +479,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
 
     <!-- BILLING -->
-    <h2 id="billing">Plans &amp; Billing</h2>
+    <h2 id="billing">Plans &amp; Slots</h2>
 
-    <table>
-      <tr><th></th><th>Free</th><th>Solo ($27/mo)</th><th>Pro ($47/mo)</th></tr>
-      <tr><td><strong>Google Ads accounts</strong></td><td>Unlimited (local only)</td><td>2 synced</td><td>10 synced</td></tr>
-      <tr><td><strong>Search terms</strong></td><td>Top 1,000 per fetch</td><td>Automated weekly</td><td>Automated weekly</td></tr>
-      <tr><td><strong>Triage sync</strong></td><td>Local only</td><td>Across devices</td><td>Across devices</td></tr>
-      <tr><td><strong>AI scan</strong></td><td>One-time free scan</td><td>Unlimited</td><td>Unlimited</td></tr>
-    </table>
+    <p>Keywords is <strong>free</strong> — no subscription. Every user gets <strong>1 free account slot</strong>. A slot is what unlocks the full experience on a Google Ads account; you gain more slots by referring friends or buying extras.</p>
 
-    <p><em>Launch pricing — discounted from normal rates.</em></p>
-    <p>Extra synced account slots: $27 one-time each.</p>
+    <h4>What a slotted account gets</h4>
+    <ul>
+      <li>Automatic search term fetches and cross-device sync of your triage decisions</li>
+      <li>AI scan and AI clusters</li>
+      <li>Predictive scoring</li>
+      <li>Negative keyword push to Google Ads</li>
+    </ul>
+    <p>Accounts that aren't using a slot still work for <strong>local triage</strong> on your device.</p>
 
-    <h4>Subscribing</h4>
-    <p>Go to <strong>Settings</strong> (gear icon) &rarr; <strong>Subscription</strong> to view your plan and upgrade. Payment is handled by Apple through the App Store.</p>
+    <h4>Getting more slots</h4>
+    <ul>
+      <li><strong>Refer a friend</strong> — earn an extra slot free when they sign up and connect Google. See <a href="#referral">Refer a Friend</a>.</li>
+      <li><strong>Buy extra slots</strong> — <strong>$10 each, one-time</strong> (not a subscription).</li>
+    </ul>
 
-    <h4>Adding an account to your plan</h4>
-    <p>Tap an unsynced account. If you have slots, you'll be prompted to add it. If you're out of slots, you can purchase an extra slot or upgrade.</p>
+    <h4>Adding a slot</h4>
+    <p>Go to <strong>Settings</strong> (gear icon) &rarr; <strong>Account Slots</strong> to see your slot usage and tap <strong>Add Extra Slot — $10</strong>. Payment is handled by Apple through the App Store.</p>
+
+    <h4>Slotting an account</h4>
+    <p>Tap an account that isn't slotted yet. If you have a free slot, you'll be prompted to use it on that account. If you're out of slots, you can buy an extra slot or refer a friend to earn one.</p>
+
+    <!-- REFERRAL -->
+    <h2 id="referral">Refer a Friend</h2>
+
+    <p><strong>Sign up through a friend's link and you start with 2 account slots instead of 1.</strong> Then, when you connect your Google account, both you and the friend who referred you earn an additional slot — a free way for both of you to sync more accounts.</p>
+
+    <h4>How it works</h4>
+    <ol>
+      <li>Open <strong>Refer a Friend</strong> in the app to get your personal referral link.</li>
+      <li>Share it. Referral links are always web links (<code>app.keywords.app/r/&lt;code&gt;</code>) — your friend opens it in their browser and signs up there.</li>
+      <li>A friend who signs up through your link starts with <strong>2 slots</strong> instead of the usual 1.</li>
+      <li>When they connect their Google account, <strong>you both earn an extra slot</strong>.</li>
+    </ol>
+
+    <p>The earned slot is granted as soon as your friend connects their Google login (the Google sign-in that gives Keywords access to their Ads accounts) — they don't have to slot a specific Ads account first. After signing up on the web, your friend can keep using Keywords on the web or download the iOS app — their account is the same on both.</p>
 
     <!-- SETTINGS -->
     <h2 id="settings">Settings</h2>
@@ -496,7 +527,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <table>
       <tr><th>Setting</th><th>What it does</th></tr>
       <tr><td><strong>Account</strong></td><td>Shows your email address</td></tr>
-      <tr><td><strong>Subscription</strong></td><td>View plan, slot usage, manage subscription</td></tr>
+      <tr><td><strong>Account Slots</strong></td><td>View your slot usage and add extra slots ($10 each)</td></tr>
       <tr><td><strong>PMax Estimation</strong></td><td>Toggle estimated cost display for PMax search terms</td></tr>
       <tr><td><strong>Report a Bug</strong></td><td>Submit a bug report</td></tr>
       <tr><td><strong>Ask a Question</strong></td><td>Send a question or request to the Keywords team</td></tr>
@@ -515,7 +546,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="faq-a">Make sure you've opened the account and waited for the fetch to complete. For synced accounts, terms load automatically from the server. If nothing appears, check your internet connection and tap the refresh button. If it persists, use <strong>Report a Bug</strong> in Settings.</p>
 
     <p class="faq-q">Will my triage decisions be lost if I close the app?</p>
-    <p class="faq-a">No — decisions are saved locally immediately. On a paid plan, they also sync to the server automatically.</p>
+    <p class="faq-a">No — decisions are saved locally immediately. For slotted accounts, they also sync to the server automatically.</p>
 
     <p class="faq-q">Can I undo a decision?</p>
     <p class="faq-a">Yes — after swiping, an undo option briefly appears. You can also find the term in its destination tab (Keep or Blocked) and move it back to New using the toolbar.</p>
@@ -527,7 +558,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="faq-a">No. The AI only clusters terms that haven't been manually triaged or clustered. Your decisions always take priority.</p>
 
     <p class="faq-q">What is Discovery and do I have to do it?</p>
-    <p class="faq-a">Discovery is required before the AI scan. It helps the AI understand your business so it can cluster accurately. Takes about 15 seconds, and it's included with the free scan.</p>
+    <p class="faq-a">Discovery is required before the AI scan. It helps the AI understand your business so it can cluster accurately. It takes about 15 seconds and runs the first time you scan an account.</p>
 
     <p class="faq-q">I manage multiple Google Ads accounts under different logins. Will they all show up?</p>
     <p class="faq-a">Yes. Connect multiple Google logins and all accounts appear on the Ad Accounts screen, grouped by login email.</p>
@@ -535,17 +566,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="faq-q">Will Keywords make changes to my Google Ads account automatically?</p>
     <p class="faq-a">Only when you explicitly push negatives via the Negative Matchmaker. Everything else stays inside Keywords unless you take action.</p>
 
-    <p class="faq-q">What happens to my data if I cancel my subscription?</p>
-    <p class="faq-a">Your synced data remains while your subscription is active. After cancellation, stored search terms and server-side triage decisions are removed. Local decisions on your device are not affected. To delete everything immediately, tap <strong>Delete Account</strong> in Settings or use <strong>Ask a Question</strong> to contact us.</p>
+    <p class="faq-q">What happens if I remove a synced account?</p>
+    <p class="faq-a">Removing a synced account <strong>returns its slot</strong>, so you can use it on another account. Your triage decisions and AI clusters for that account are preserved on the server and restored if you re-sync it later. To delete everything immediately, tap <strong>Delete Account</strong> in Settings or use <strong>Ask a Question</strong> to contact us.</p>
 
-    <p class="faq-q">I'm on Solo but need more than 2 accounts. What are my options?</p>
-    <p class="faq-a">Purchase extra account slots ($27 one-time each) or upgrade to Pro (10 slots). Both options are in Settings.</p>
+    <p class="faq-q">I'm out of slots. How do I sync more accounts?</p>
+    <p class="faq-a">Buy an extra slot ($10 one-time each) in <strong>Settings &rarr; Account Slots</strong>, or refer a friend — you both earn a free slot when they sign up through your link and connect Google.</p>
 
     <p class="faq-q">Does the app work on iPad?</p>
     <p class="faq-a">Not yet — Keywords is iPhone only. iPad support is planned.</p>
 
     <p class="faq-q">Is there a web app?</p>
-    <p class="faq-a">Yes — <a href="https://app.keywords.app">app.keywords.app</a> gives you a full-screen, keyboard-driven triage experience on desktop. Your account and decisions are shared between the iOS app and the web app on a paid plan.</p>
+    <p class="faq-a">Yes — <a href="https://app.keywords.app">app.keywords.app</a> gives you a full-screen, keyboard-driven triage experience on desktop, free for anyone who's signed in. For <strong>slotted accounts</strong>, your decisions sync between the iOS app and the web app. Triage on accounts you haven't slotted stays local to the device you made it on.</p>
 
     <p class="faq-q">Is dark mode coming?</p>
     <p class="faq-a">Planned but not yet available.</p>
