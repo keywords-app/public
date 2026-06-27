@@ -8,386 +8,312 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MMPGCHP8');</script>
 <!-- End Google Tag Manager -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keywords.app — Google Ads Search Term Triage for iOS</title>
-  <meta name="description" content="A focused iOS companion for performance marketers who live in Google Ads. Check campaigns, triage search terms, and build negative keywords — all from your phone.">
-  <meta property="og:title" content="Keywords.app — Google Ads Search Term Triage for iOS">
-  <meta property="og:description" content="Cut search term review time from an hour to 10 minutes. Swipe to triage, generate negatives, push to Google Ads.">
-  <meta property="og:image" content="https://keywords.app/keywordsappicon1.png">
-  <meta property="og:url" content="https://keywords.app">
-  <meta property="og:type" content="website">
-  <link rel="preload" as="image" href="search-terms.webp" type="image/webp">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>keywords.app — Cut wasted Google Ads spend in 10 minutes</title>
+<meta name="description" content="Connect your Google Ads account. Our AI groups your search terms so you keep the winners, block the waste, and push negative keywords safely — in under 10 minutes.">
+<meta property="og:title" content="keywords.app — Cut wasted Google Ads spend in 10 minutes">
+<meta property="og:description" content="Connect your Google Ads account. Our AI groups your search terms so you keep the winners, block the waste, and push negative keywords safely — in under 10 minutes.">
+<meta property="og:image" content="https://keywords.app/keywordsappicon1.png">
+<meta property="og:url" content="https://keywords.app">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="web-hero-noclusters.webp" type="image/webp">
+<style>
+  :root{
+    --accent:#0A66D6;
+    --accent-dark:#0950AE;
+    --ink:#1d1d1f;
+    --body:#424245;
+    --muted:#6e6e73;
+    --soft:#86868b;
+    --gray:#f5f5f7;
+    --hairline:#e6e6e9;
+    --tint:#e8f0fb;
+    --radius:10px;
+    --radius-lg:16px;
+    --shadow:0 10px 30px rgba(20,30,50,.10);
+    --shadow-frame:0 24px 60px rgba(20,30,50,.16);
+  }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-      background: #f5f5f7;
-      color: #1d1d1f;
-      line-height: 1.5;
-    }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    color:var(--ink);
+    background:#fff;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3,p,ul{margin:0;}
+  ul{padding:0;list-style:none;}
+  img{display:block;max-width:100%;}
 
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
 
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding: 60px 20px 48px;
-      background: #fff;
-    }
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    font:inherit;font-weight:600;cursor:pointer;
+    border-radius:var(--radius);border:1px solid transparent;
+    white-space:nowrap;
+    transition:background .15s ease,border-color .15s ease,transform .15s ease,box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:var(--accent);color:#fff;
+    box-shadow:0 2px 8px rgba(10,102,214,.28);
+  }
+  .btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px);}
+  .btn-secondary{
+    background:#fff;color:var(--accent);border-color:var(--hairline);
+  }
+  .btn-secondary:hover{border-color:var(--accent);background:#f7faff;}
+  .btn-sm{font-size:15px;padding:11px 20px;}
+  .btn-md{font-size:17px;padding:14px 26px;}
+  .btn-lg{font-size:18px;padding:16px 32px;}
 
-    .hero img.logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
+  /* ---------- Header ---------- */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid #f0f0f2;
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:700;letter-spacing:-.01em;}
+  .brand .mark{
+    width:26px;height:26px;border-radius:7px;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;
+  }
+  .brand .tld{color:var(--soft);font-weight:500;}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .nav-links a{font-size:15px;font-weight:500;color:var(--body);}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.btn-primary{color:#fff;}
+  .nav-links a.btn-primary:hover{color:#fff;}
 
-    .hero h1 {
-      font-size: 44px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  /* ---------- Section primitives ---------- */
+  .band-gray{background:var(--gray);}
+  .eyebrow-label{
+    font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);
+  }
+  .section-head{text-align:center;max-width:720px;margin:0 auto;}
+  .section-head h2{font-size:34px;line-height:1.1;font-weight:700;letter-spacing:-.025em;margin-top:14px;}
+  .section-head p{font-size:19px;line-height:1.55;color:var(--muted);margin-top:16px;}
 
-    .hero .tagline {
-      font-size: 19px;
-      color: #6e6e73;
-      max-width: 600px;
-      margin: 0 auto 28px;
-      line-height: 1.6;
-    }
+  /* ---------- Hero ---------- */
+  .hero{text-align:center;padding:80px 0 0;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gray);border:1px solid #ececef;border-radius:980px;
+    padding:7px 15px;font-size:13px;font-weight:600;color:var(--body);
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);}
+  .hero h1{
+    font-size:60px;line-height:1.02;font-weight:800;letter-spacing:-.035em;
+    max-width:820px;margin:28px auto 0;
+  }
+  .hero .sub{
+    font-size:21px;line-height:1.45;color:var(--muted);
+    max-width:660px;margin:24px auto 0;
+  }
+  .hero .cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:34px;}
+  .hero .note{font-size:14px;color:var(--soft);}
+  .hero-shot{max-width:1040px;margin:56px auto 0;}
 
-    .hero .app-store-badge {
-      display: inline-block;
-      margin-bottom: 12px;
-    }
+  /* ---------- Browser frame ---------- */
+  .browser{
+    border-radius:var(--radius-lg);overflow:hidden;background:#fff;
+    border:1px solid var(--hairline);box-shadow:var(--shadow-frame);
+  }
+  .browser.flush-bottom{border-radius:var(--radius-lg) var(--radius-lg) 0 0;border-bottom:none;}
+  .browser .bar{
+    height:42px;display:flex;align-items:center;gap:8px;padding:0 16px;
+    background:var(--gray);border-bottom:1px solid var(--hairline);
+  }
+  .browser .bar .dot{width:11px;height:11px;border-radius:50%;background:#d2d2d7;}
+  .browser .url{
+    flex:1;max-width:340px;margin:0 auto;height:24px;border-radius:7px;
+    background:#fff;border:1px solid var(--hairline);
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;color:var(--soft);font-family:ui-monospace,'SF Mono',monospace;
+  }
+  .browser img{width:100%;height:auto;display:block;}
 
-    .hero .app-store-badge img {
-      height: 54px;
-    }
+  /* ---------- Stat strip ---------- */
+  .stats{padding:54px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+  .stats .row{display:flex;justify-content:center;gap:64px;flex-wrap:wrap;text-align:center;}
+  .stat .num{font-size:46px;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1;}
+  .stat .lbl{font-size:15px;color:var(--muted);margin-top:10px;max-width:200px;}
+  .stats .reserved{
+    text-align:center;margin-top:34px;font-size:13px;color:var(--soft);
+    letter-spacing:.02em;
+  }
 
-    .hero .support-link {
-      display: block;
-      font-size: 15px;
-      color: #06c;
-      text-decoration: none;
-      margin-bottom: 32px;
-    }
+  /* ---------- How it works ---------- */
+  .how{padding:96px 0;}
+  .how .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:32px;
+    margin-top:56px;
+  }
+  .step .n{
+    width:34px;height:34px;border-radius:50%;background:var(--tint);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;
+    margin-bottom:16px;
+  }
+  .step h3{font-size:19px;font-weight:600;letter-spacing:-.01em;}
+  .step p{font-size:15px;line-height:1.6;color:var(--muted);margin-top:8px;}
+  .how .foot{text-align:center;margin-top:48px;font-size:15px;color:var(--soft);}
 
-    .hero .support-link:hover {
-      text-decoration: underline;
-    }
+  /* ---------- Feature rows ---------- */
+  .feature{padding:96px 0;}
+  .feature .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .feature--reverse .fcopy{order:2;}
+  .feature--reverse .fshot{order:1;}
+  .label{
+    font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:18px;
+  }
+  .feature h2{font-size:34px;line-height:1.1;font-weight:700;letter-spacing:-.025em;}
+  .feature p{font-size:19px;line-height:1.6;color:var(--muted);margin-top:20px;max-width:480px;}
+  .feature .browser{box-shadow:0 18px 44px rgba(20,30,50,.14);}
+  .feature .browser.on-gray{box-shadow:var(--shadow-frame);}
 
-    .hero .hero-screenshot {
-      max-width: 280px;
-      height: auto;
-      border-radius: 24px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    }
+  /* Cross-platform lockup (no screenshot) */
+  .platforms{display:flex;gap:14px;flex-wrap:wrap;}
+  .platform-pill{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#fff;border:1px solid var(--hairline);border-radius:var(--radius);
+    padding:14px 18px;font-size:16px;font-weight:600;box-shadow:var(--shadow);
+  }
+  .platform-pill .tag{
+    font-size:12px;font-weight:600;color:var(--accent);background:var(--tint);
+    border-radius:980px;padding:3px 10px;
+  }
+  .platform-pill.soon{color:var(--muted);}
 
-    /* Problem */
-    .problem {
-      padding: 60px 20px;
-      background: #f5f5f7;
-    }
+  /* ---------- Also on iPhone ---------- */
+  .ios{padding:96px 0;}
+  .ios .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .ios .phones{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .phone{
+    width:152px;border-radius:28px;background:#fff;padding:7px;
+    border:1px solid var(--hairline);box-shadow:var(--shadow-frame);
+  }
+  .phone:nth-child(2){margin-top:-18px;}
+  .phone img{width:100%;height:auto;border-radius:26px;display:block;}
+  .ios h2{font-size:34px;line-height:1.1;font-weight:700;letter-spacing:-.025em;margin-top:14px;}
+  .ios p{font-size:19px;line-height:1.6;color:var(--muted);margin-top:18px;max-width:460px;}
+  .appstore{display:inline-block;margin-top:26px;}
+  .appstore img{height:54px;width:auto;}
+  .appstore-fallback{
+    margin-top:26px;display:inline-flex;align-items:center;gap:9px;
+    background:var(--gray);border:1px solid var(--hairline);border-radius:var(--radius);
+    padding:12px 18px;font-size:15px;font-weight:500;color:var(--body);
+  }
 
-    .problem .inner {
-      max-width: 680px;
-      margin: 0 auto;
-    }
+  /* ---------- Pricing ---------- */
+  .pricing{padding:96px 0;}
+  .price-card{
+    max-width:520px;margin:48px auto 0;background:#fff;
+    border:1px solid var(--hairline);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow);padding:40px;
+  }
+  .price-card .tier{font-size:15px;font-weight:600;color:var(--accent);letter-spacing:.02em;}
+  .price-card .amount{font-size:54px;font-weight:800;letter-spacing:-.03em;margin-top:8px;line-height:1;}
+  .price-card .amount span{font-size:18px;font-weight:600;color:var(--muted);letter-spacing:0;}
+  .price-card .amount small{display:block;font-size:15px;font-weight:500;color:var(--muted);margin-top:8px;}
+  .price-card .feats{margin:28px 0;display:grid;gap:13px;}
+  .price-card .feats li{display:flex;gap:11px;font-size:16px;color:var(--body);line-height:1.4;}
+  .price-card .feats svg{flex-shrink:0;margin-top:2px;color:var(--accent);}
+  .price-card .btn{width:100%;}
+  .price-extra{
+    max-width:520px;margin:18px auto 0;text-align:center;
+    font-size:15px;color:var(--muted);line-height:1.6;
+  }
+  .price-extra strong{color:var(--ink);}
+  .price-guarantee{
+    max-width:520px;margin:14px auto 0;text-align:center;
+    font-size:14px;color:var(--soft);
+  }
 
-    .problem h2 {
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 24px;
-      text-align: center;
-    }
+  /* ---------- Trust / privacy ---------- */
+  .trust{padding:96px 0;}
+  .trust .points{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+    max-width:980px;margin:52px auto 0;
+  }
+  .trust-card{
+    background:#fff;border:1px solid var(--hairline);border-radius:var(--radius-lg);
+    padding:28px;box-shadow:var(--shadow);
+  }
+  .trust-card .ic{
+    width:40px;height:40px;border-radius:10px;background:var(--tint);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .trust-card h3{font-size:18px;font-weight:600;letter-spacing:-.01em;}
+  .trust-card p{font-size:15px;line-height:1.6;color:var(--muted);margin-top:8px;}
+  .partner-slot{text-align:center;margin-top:34px;font-size:13px;color:var(--soft);}
 
-    .problem p {
-      font-size: 17px;
-      color: #1d1d1f;
-      margin-bottom: 16px;
-      line-height: 1.7;
-    }
+  /* ---------- Final CTA ---------- */
+  .final{padding:104px 0;text-align:center;}
+  .final h2{font-size:42px;line-height:1.06;font-weight:800;letter-spacing:-.03em;max-width:640px;margin:0 auto;}
+  .final p{font-size:19px;color:var(--muted);margin:18px auto 0;}
+  .final .cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:32px;}
+  .final .note{font-size:14px;color:var(--soft);}
 
-    .problem .social-proof {
-      margin-top: 28px;
-      padding: 20px 24px;
-      border-left: 4px solid #06c;
-      background: #fff;
-      border-radius: 0 12px 12px 0;
-      font-size: 17px;
-      font-weight: 500;
-      color: #1d1d1f;
-      line-height: 1.6;
-    }
+  /* ---------- Footer ---------- */
+  footer{padding:40px 0;border-top:1px solid var(--hairline);background:#fff;}
+  footer .row{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  footer .copy{font-size:14px;color:var(--soft);}
+  footer .links{display:flex;gap:24px;}
+  footer .links a{font-size:14px;color:var(--muted);}
+  footer .links a:hover{color:var(--ink);}
 
-    /* How It Works */
-    .how-it-works {
-      padding: 60px 20px;
-      background: #fff;
-    }
+  /* ---------- Motion ---------- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
 
-    .how-it-works h2 {
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 48px;
-      text-align: center;
-    }
-
-    .how-it-works .steps {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      margin-bottom: 48px;
-    }
-
-    .step:last-child {
-      margin-bottom: 0;
-    }
-
-    .step.reverse {
-      flex-direction: row-reverse;
-    }
-
-    .step-content {
-      flex: 1;
-    }
-
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      background: #06c;
-      color: #fff;
-      border-radius: 50%;
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .step-content h3 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .step-content p {
-      font-size: 17px;
-      color: #6e6e73;
-      line-height: 1.6;
-    }
-
-    .step-image {
-      flex-shrink: 0;
-    }
-
-    .step-image img {
-      width: 220px;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    }
-
-    /* Why It Works */
-    .why-it-works {
-      padding: 60px 20px;
-      background: #f5f5f7;
-    }
-
-    .why-it-works h2 {
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-
-    .why-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .why-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 28px 24px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    }
-
-    .why-card .card-icon {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .why-card h3 {
-      font-size: 19px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .why-card p {
-      font-size: 15px;
-      color: #6e6e73;
-      line-height: 1.6;
-    }
-
-    /* Features Grid */
-    .features-grid {
-      padding: 60px 20px;
-      background: #fff;
-    }
-
-    .features-grid h2 {
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-
-    .features-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      max-width: 800px;
-      margin: 0 auto;
-      list-style: none;
-    }
-
-    .features-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .feature-icon {
-      width: 36px;
-      height: 36px;
-      background: #f5f5f7;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    .feature-text h3 {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .feature-text p {
-      font-size: 15px;
-      color: #6e6e73;
-      line-height: 1.5;
-    }
-
-    /* Final CTA */
-    .final-cta {
-      padding: 60px 20px;
-      background: #f5f5f7;
-      text-align: center;
-    }
-
-    .final-cta h2 {
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .final-cta p {
-      font-size: 19px;
-      color: #6e6e73;
-      margin-bottom: 28px;
-    }
-
-    .final-cta .app-store-badge img {
-      height: 54px;
-    }
-
-    /* Footer */
-    footer {
-      padding: 30px 20px;
-      background: #fff;
-      border-top: 1px solid #e5e5e5;
-      text-align: center;
-      font-size: 14px;
-      color: #6e6e73;
-    }
-
-    footer a {
-      color: #06c;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    footer .links {
-      margin-top: 8px;
-    }
-
-    footer .links a {
-      margin: 0 12px;
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .hero .tagline {
-        font-size: 17px;
-      }
-
-      .hero .hero-screenshot {
-        max-width: 220px;
-      }
-
-      .step {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .step.reverse {
-        flex-direction: column;
-      }
-
-      .step-image img {
-        width: 180px;
-      }
-
-      .why-cards {
-        grid-template-columns: 1fr;
-      }
-
-      .features-list {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  /* ---------- Responsive ---------- */
+  @media (max-width:880px){
+    .nav-links a.nav-only{display:none;}
+    .hero{padding-top:56px;}
+    .hero h1{font-size:40px;}
+    .hero .sub{font-size:18px;}
+    .section-head h2{font-size:28px;}
+    .how{padding:64px 0;}
+    .how .steps{grid-template-columns:1fr 1fr;gap:28px 24px;}
+    .feature{padding:64px 0;}
+    .feature .grid{grid-template-columns:1fr;gap:36px;}
+    .feature h2{font-size:28px;}
+    .feature--reverse .fcopy,.feature--reverse .fshot{order:0;}
+    .ios{padding:64px 0;}
+    .ios .grid{grid-template-columns:1fr;gap:44px;}
+    .ios h2{font-size:28px;}
+    .pricing,.trust{padding:64px 0;}
+    .trust .points{grid-template-columns:1fr;}
+    .price-card{padding:32px 24px;}
+    .stats .row{gap:40px;}
+    .final{padding:72px 0;}
+    .final h2{font-size:32px;}
+  }
+  @media (max-width:520px){
+    .how .steps{grid-template-columns:1fr;}
+    .phone{width:132px;}
+    .phone:nth-child(2){margin-top:0;}
+  }
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -395,170 +321,345 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/">
+        <span class="mark">k</span>
+        <span>keywords<span class="tld">.app</span></span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-only" href="#pricing">Pricing</a>
+        <a class="nav-only" href="https://app.keywords.app/start">Log in</a>
+        <a class="btn btn-primary btn-sm" href="https://app.keywords.app/start/signup">Get Started Free</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <img src="logo.webp" alt="Keywords.app logo" class="logo" width="120" height="120">
-      <h1>Stop Spending Hours Doing<br>A 10 Minute Job</h1>
-      <p class="tagline">A focused iOS companion for performance marketers who live in Google Ads. Check campaigns, triage search terms, and build negative keywords — all from your phone.</p>
-      <a href="https://apps.apple.com/us/app/keywords-app/id6758259105?itscg=30200&itsct=apps_box_badge&mttnsubad=6758259105" class="app-store-badge">
-        <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1771372800" alt="Download on the App Store" style="width: 246px; height: 82px; vertical-align: middle; object-fit: contain;">
-      </a>
-      <a href="support.html" class="support-link">Get Support</a>
-      <img src="search-terms.webp" alt="Search term triage interface" class="hero-screenshot" width="640" height="1393" fetchpriority="high">
-    </div>
-  </section>
 
-  <!-- Problem -->
-  <section class="problem">
-    <div class="inner">
-      <h2>Why Search Term Reviews Keep Getting Put Off</h2>
-      <p>Hundreds of search terms across multiple campaigns. Each one needs a decision. Each negative keyword needs to be added manually.</p>
-      <p>You do the math. An hour minimum. Maybe two if you're thorough. You've got client calls, campaigns to optimize, proposals to write. So you close the tab. You'll do it next week.</p>
-      <p>Meanwhile, your clients are paying for clicks on "free," "cheap," and "how to do it myself."</p>
-      <div class="social-proof">One beta tester cut over a third off their new client's spend in less than 10 minutes with keywords.app.</div>
-    </div>
-  </section>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow"><span class="dot"></span>Built for Google Ads managers</span>
+        <h1>Cut wasted Google Ads spend in 10&nbsp;minutes</h1>
+        <p class="sub">Connect your Google Ads account. Our AI groups your search terms so you keep the winners, block the waste, and push negative keywords safely — in under 10&nbsp;minutes.</p>
+        <div class="cta">
+          <a class="btn btn-primary btn-lg" href="https://app.keywords.app/start/signup">Get Started Free</a>
+          <span class="note">No credit card required.</span>
+        </div>
 
-  <!-- How It Works -->
-  <section class="how-it-works">
-    <div class="container">
-      <h2>Three Steps. Ten Minutes. Done.</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-content">
-            <span class="step-number">1</span>
-            <h3>Swipe Through Search Terms</h3>
-            <p>Left to block. Right to keep. The app shows you every search term triggering your ads. No menus. No clicking through campaign structures. Just swipe.</p>
-          </div>
-          <div class="step-image">
-            <img src="search-terms.webp" alt="Swipe to triage search terms" width="640" height="1393" loading="lazy">
-          </div>
-        </div>
-        <div class="step reverse">
-          <div class="step-content">
-            <span class="step-number">2</span>
-            <h3>Generate Negative Matches In Seconds</h3>
-            <p>After you've swiped through your terms, use the negative match generator. It turns your blocked terms into negative keywords in seconds. No more typing them out one by one.</p>
-          </div>
-          <div class="step-image">
-            <img src="negatives.webp" alt="Negative match generator" width="440" height="957" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-content">
-            <span class="step-number">3</span>
-            <h3>Push Directly To Google Ads</h3>
-            <p>One tap sends your negative keywords straight to Google Ads. Campaign level, ad group level, or account level. The app remembers every decision. Next time you review, you'll only see the new ones.</p>
-          </div>
-          <div class="step-image">
-            <img src="pushnegatives.webp" alt="Push negatives to Google Ads" width="440" height="952" loading="lazy">
+        <div class="hero-shot">
+          <div class="browser flush-bottom">
+            <div class="bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="url">app.keywords.app</span>
+            </div>
+            <img src="web-hero-noclusters.webp" width="1600" height="900" fetchpriority="high"
+                 alt="keywords.app dashboard showing search-term triage with keep and block decisions">
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Why It Works -->
-  <section class="why-it-works">
-    <div class="container">
-      <h2>Why This Actually Works</h2>
-      <div class="why-cards">
-        <div class="why-card">
-          <div class="card-icon">🧠</div>
-          <h3>Remembers Your Decisions</h3>
-          <p>Make a decision once. Never waste time on that search term again. Every review session gets faster because the app knows what you've already seen.</p>
+    <!-- ===== Stat strip ===== -->
+    <section class="stats">
+      <div class="wrap">
+        <div class="row">
+          <div class="stat">
+            <div class="num">10%+</div>
+            <div class="lbl">average spend saved in month one</div>
+          </div>
+          <div class="stat">
+            <div class="num">&lt; 15 min</div>
+            <div class="lbl">per account, for the entire first month</div>
+          </div>
+          <div class="stat">
+            <div class="num">125+</div>
+            <div class="lbl">ad accounts tested in beta</div>
+          </div>
         </div>
-        <div class="why-card">
-          <div class="card-icon">⚠️</div>
-          <h3>Conflict Detection</h3>
-          <p>About to block a search term that's actually converting? The app warns you before you pull the trigger. No more accidentally blocking your best performers.</p>
+        <!-- Reserved slot: customer logos / app-store ratings drop in here later (epic Step 3/5). -->
+        <p class="reserved">Trusted by Google Ads managers and agencies in beta.</p>
+      </div>
+    </section>
+
+    <!-- ===== How it works ===== -->
+    <section class="how band-gray reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow-label">How it works</span>
+          <h2>From connected to optimized in four steps</h2>
         </div>
-        <div class="why-card">
-          <div class="card-icon">🔒</div>
-          <h3>Your Data Stays On Your Device</h3>
-          <p>Google OAuth with limited scopes. Campaign data stored locally on your phone. Not on our servers. Not in the cloud. Your clients' data stays yours.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <h3>Connect your account</h3>
+            <p>Sign in with Google. We pull your search terms with read access and limited scopes.</p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <h3>AI groups your terms</h3>
+            <p>Review clusters grouped by meaning and intent instead of scrolling hundreds of terms. If one term in a cluster is waste, they usually all are.</p>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <h3>Keep or block</h3>
+            <p>Tag whole clusters at once, or keep and block any single term — with search, filters, and suggested negatives to move fast.</p>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <h3>Push negatives, safely</h3>
+            <p>The Negative Match Maker checks every negative against your converting searches before it pushes to Google Ads — so you never block a winner.</p>
+          </div>
+        </div>
+        <p class="foot">End to end: about 10 minutes. Average savings: ~10%.</p>
+      </div>
+    </section>
+
+    <!-- ===== Feature: AI clustering (white, shot right) ===== -->
+    <section class="feature reveal">
+      <div class="wrap grid">
+        <div class="fcopy">
+          <div class="label">AI clustering</div>
+          <h2>Stop scrolling. Start grouping.</h2>
+          <p>Our AI reads every search term and organizes them into clusters by meaning and intent, so you make one decision instead of hundreds.</p>
+        </div>
+        <div class="fshot browser">
+          <div class="bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url">app.keywords.app/clusters</span>
+          </div>
+          <img src="web-clustering.webp" width="1280" height="960"
+               alt="Search terms grouped into AI clusters by meaning and intent" loading="lazy">
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Features Grid -->
-  <section class="features-grid">
-    <div class="container">
-      <h2>Everything You Need To Manage Google Ads On The Go</h2>
-      <ul class="features-list">
-        <li>
-          <span class="feature-icon">📊</span>
-          <div class="feature-text">
-            <h3>Check Performance Anywhere</h3>
-            <p>See how your accounts, campaigns, ad groups, and keywords are performing. One tap to pause or enable anything that needs attention.</p>
+    <!-- ===== Feature: Negative Match Maker (gray, shot left) ===== -->
+    <section class="feature feature--reverse band-gray reveal">
+      <div class="wrap grid">
+        <div class="fcopy">
+          <div class="label">Negative keywords</div>
+          <h2>Build negatives in seconds — without blocking your winners</h2>
+          <p>The Negative Match Maker turns your blocked terms into negative keywords and checks every one against your converting searches before pushing them to Google Ads.</p>
+        </div>
+        <div class="fshot browser on-gray">
+          <div class="bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url">app.keywords.app/negatives</span>
           </div>
-        </li>
-        <li>
-          <span class="feature-icon">🧭</span>
-          <div class="feature-text">
-            <h3>Navigate Like You're At Your Desk</h3>
-            <p>Drill down from accounts to campaigns to ad groups to keywords with full metrics at every level.</p>
-          </div>
-        </li>
-        <li>
-          <span class="feature-icon">👆</span>
-          <div class="feature-text">
-            <h3>Triage Search Terms In Minutes</h3>
-            <p>Swipe to keep or block. The app remembers your decisions so you never review the same term twice.</p>
-          </div>
-        </li>
-        <li>
-          <span class="feature-icon">🚫</span>
-          <div class="feature-text">
-            <h3>Build Negative Keywords Instantly</h3>
-            <p>The negative match generator turns your blocked terms into negative keywords in seconds. Push directly to Google Ads.</p>
-          </div>
-        </li>
-        <li>
-          <span class="feature-icon">⚠️</span>
-          <div class="feature-text">
-            <h3>Conflict Detection Protects Your Winners</h3>
-            <p>The app warns you before you accidentally block a search term that's actually making you money.</p>
-          </div>
-        </li>
-        <li>
-          <span class="feature-icon">🔒</span>
-          <div class="feature-text">
-            <h3>Privacy-First Design</h3>
-            <p>Your data stays on your device. We use Google OAuth with limited scopes. Campaign performance data is never stored on our servers.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
+          <img src="web-negatives.webp" width="1280" height="960"
+               alt="Negative Match Maker checking negatives against converting search terms" loading="lazy">
+        </div>
+      </div>
+    </section>
 
-  <!-- Final CTA -->
-  <section class="final-cta">
-    <div class="container">
-      <h2>Stop Putting Off Search Term Reviews</h2>
-      <p>Cut your search term review from an hour to 10 minutes.</p>
-      <a href="https://apps.apple.com/us/app/keywords-app/id6758259105?itscg=30200&itsct=apps_box_badge&mttnsubad=6758259105" class="app-store-badge">
-        <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1771372800" alt="Download on the App Store" style="width: 246px; height: 82px; vertical-align: middle; object-fit: contain;">
-      </a>
-    </div>
-  </section>
+    <!-- ===== Feature: Push to Google Ads (white, shot right) ===== -->
+    <section class="feature reveal">
+      <div class="wrap grid">
+        <div class="fcopy">
+          <div class="label">One-click sync</div>
+          <h2>Push straight to Google Ads</h2>
+          <p>Send negatives at the account, campaign, or ad-group level. We remember every decision — next time you only see what's new.</p>
+        </div>
+        <div class="fshot browser">
+          <div class="bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url">app.keywords.app/push</span>
+          </div>
+          <img src="web-push.webp" width="1280" height="960"
+               alt="Pushing negative keywords to Google Ads at account, campaign, or ad-group level" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Feature: Live savings (gray, shot left) ===== -->
+    <section class="feature feature--reverse band-gray reveal">
+      <div class="wrap grid">
+        <div class="fcopy">
+          <div class="label">Proof</div>
+          <h2>Watch the savings add up</h2>
+          <p>Estimated savings — typically over 10% — update live as you work. Show your boss or client exactly what you saved.</p>
+        </div>
+        <div class="fshot browser on-gray">
+          <div class="bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url">app.keywords.app/savings</span>
+          </div>
+          <img src="web-savings.webp" width="1280" height="960"
+               alt="Live estimated savings updating as search terms are triaged" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Feature: Multi-account (white, shot right) ===== -->
+    <section class="feature reveal">
+      <div class="wrap grid">
+        <div class="fcopy">
+          <div class="label">For agencies</div>
+          <h2>Built for managing many accounts</h2>
+          <p>Switch between client accounts fast. One free account to start; add more as you grow.</p>
+        </div>
+        <div class="fshot browser">
+          <div class="bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url">app.keywords.app/accounts</span>
+          </div>
+          <img src="web-accounts.webp" width="1280" height="960"
+               alt="Multi-account switcher for managing several Google Ads accounts" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Feature: Cross-platform (gray, no screenshot) ===== -->
+    <section class="feature feature--reverse band-gray reveal">
+      <div class="wrap grid">
+        <div class="fcopy">
+          <div class="label">Coming Aug 1</div>
+          <h2>Google today, Microsoft next</h2>
+          <p>One free account covers Google Ads and Microsoft Ads for the same business. Microsoft Ads and Android land August 1.</p>
+        </div>
+        <div class="fshot">
+          <div class="platforms">
+            <span class="platform-pill">Google Ads <span class="tag">Live</span></span>
+            <span class="platform-pill soon">Microsoft Ads <span class="tag">Aug 1</span></span>
+            <span class="platform-pill soon">Android <span class="tag">Aug 1</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Also on iPhone ===== -->
+    <section class="ios reveal">
+      <div class="wrap grid">
+        <div>
+          <span class="eyebrow-label">Also on iPhone</span>
+          <h2>Triage on the go</h2>
+          <p>The Keywords iPhone app lets you check performance, swipe to keep or block search terms, and build negatives — from anywhere. Your decisions sync with the web.</p>
+
+          <!-- App Store badge — LIVE state (default). -->
+          <a class="appstore" href="https://apps.apple.com/us/app/keywords-app/id6758259105?itscg=30200&itsct=apps_box_badge&mttnsubad=6758259105">
+            <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1771372800"
+                 alt="Download on the App Store" style="width:182px;height:auto;object-fit:contain;">
+          </a>
+          <!-- Launch-day FALLBACK state: if Apple review lags, add [hidden] to the .appstore link
+               above and remove [hidden] from the line below. -->
+          <p class="appstore-fallback" hidden>New iPhone version updating — live on the App Store shortly.</p>
+        </div>
+        <div class="phones">
+          <div class="phone">
+            <img src="ios-search-terms.webp" width="1206" height="2622"
+                 alt="Keywords iPhone app: swipe to keep or block search terms" loading="lazy">
+          </div>
+          <div class="phone">
+            <img src="ios-performance.webp" width="1206" height="2622"
+                 alt="Keywords iPhone app: account and campaign performance" loading="lazy">
+          </div>
+          <div class="phone">
+            <img src="ios-negatives.webp" width="1206" height="2622"
+                 alt="Keywords iPhone app: building negative keywords on mobile" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Pricing ===== -->
+    <section class="pricing band-gray reveal" id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow-label">Pricing</span>
+          <h2>Simple, predictable pricing</h2>
+          <p>Priced on what you use, not what your clients spend.</p>
+        </div>
+
+        <div class="price-card">
+          <div class="tier">Free</div>
+          <div class="amount">$0 <span>forever</span>
+            <small>1 account — covers Google Ads + Microsoft Ads for the same business.</small>
+          </div>
+          <ul class="feats">
+            <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.5 3.5L15 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>AI search-term clusters &amp; predictive scoring</li>
+            <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.5 3.5L15 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Negative keyword suggestions &amp; fast match builder</li>
+            <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.5 3.5L15 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Built-in error checking &amp; AI scan</li>
+            <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.5 3.5L15 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sync to Google Ads</li>
+            <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.5 3.5L15 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>iOS app — Android &amp; Microsoft Ads Aug 1</li>
+          </ul>
+          <a class="btn btn-primary btn-md" href="https://app.keywords.app/start/signup">Get Started Free</a>
+        </div>
+
+        <p class="price-extra">Need more accounts? <strong>Refer a friend</strong> to earn one free, or buy extras at <strong>$10 each — one-time</strong>, not a subscription.</p>
+        <p class="price-guarantee">30-day money-back guarantee. If it's not working for you, get a full refund.</p>
+      </div>
+    </section>
+
+    <!-- ===== Trust / privacy ===== -->
+    <section class="trust reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow-label">Security &amp; privacy</span>
+          <h2>Your account access, on your terms</h2>
+        </div>
+        <div class="points">
+          <div class="trust-card">
+            <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            <h3>Limited OAuth scopes</h3>
+            <p>You connect through Google OAuth with read-and-manage scopes only. You stay in control of the connection and can revoke it anytime.</p>
+          </div>
+          <div class="trust-card">
+            <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 11V8a6 6 0 0112 0v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="4.5" y="11" width="15" height="9" rx="2.2" stroke="currentColor" stroke-width="1.8"/></svg></div>
+            <h3>We never touch your budgets</h3>
+            <p>Keywords builds and pushes negative keywords. It never posts ads, changes budgets, or edits campaigns on your behalf.</p>
+          </div>
+          <div class="trust-card">
+            <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3C8 6 5 6 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6s-3 0-7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Encrypted, end to end</h3>
+            <p>Your data is encrypted in transit and at rest. We store only what's needed to remember your decisions and keep your accounts in sync.</p>
+          </div>
+        </div>
+        <!-- Google Partner badge slot — show only once the status is real (messaging kit: Confirm before publishing). -->
+        <p class="partner-slot"></p>
+      </div>
+    </section>
+
+    <!-- ===== Final CTA ===== -->
+    <section class="final band-gray reveal">
+      <div class="wrap">
+        <h2>Ready to stop wasting ad spend?</h2>
+        <p>Start free with one account. No credit card required.</p>
+        <div class="cta">
+          <a class="btn btn-primary btn-lg" href="https://app.keywords.app/start/signup">Get Started Free</a>
+          <span class="note">No credit card required.</span>
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>&copy; 2026 In House Advantage LLC</p>
-      <p class="links">
-        <a href="terms.html">Terms of Service</a>
-        <a href="privacy.html">Privacy Policy</a>
+    <div class="wrap row">
+      <span class="copy">&copy; 2026 In House Advantage LLC</span>
+      <nav class="links">
+        <a href="help.html">Help</a>
         <a href="support.html">Support</a>
-      </p>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
     </div>
   </footer>
+
+  <script>
+    // Fade-up on scroll (respects prefers-reduced-motion via CSS).
+    (function(){
+      var els = document.querySelectorAll('.reveal');
+      if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+        });
+      },{threshold:.12});
+      els.forEach(function(e){io.observe(e);});
+    })();
+  </script>
 
 </body>
 </html>
