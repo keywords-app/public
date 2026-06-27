@@ -11,6 +11,23 @@
 
 ## Decisions
 
+### 2026-06-27 — Reconcile doc pages + fix data-accuracy copy (public#5)
+- Restyled `help/support/privacy/terms.html` to the new web-first look via a shared
+  **`doc.css`** (tokens, Inter, frosted sticky header with single Get Started Free
+  CTA, matching footer, document typography, tables, badges, TOC, cards). Each page
+  drops its old inline `<style>` and links `doc.css`; index.html keeps its own inline
+  styles (home is self-contained). Header/footer markup normalized across all four.
+- **Corrected the data-storage copy** to the real model (per the user): Google Ads
+  data stays **on the device until the user syncs (slots) an account**; once synced,
+  search terms + triage decisions + AI clusters are stored server-side to sync across
+  devices and the web app. Removed the absolute "never on our servers / device-only"
+  claim from privacy.html (§1 summary, §2.3, §5 retention), terms.html (§5), and
+  support.html (FAQ "Is my data safe?"). help.html already described slotting/sync
+  correctly — left as-is. Removing a synced account preserves server data for re-sync;
+  deletion happens on account delete / deletion request.
+- ⚠️ Legal wording (privacy/terms) was updated for accuracy but should get a final
+  human/legal review before relying on it.
+
 ### 2026-06-26 — Web-first marketing home (public#3, epic Step 2)
 - Rebuilt `index.html` from the iOS-only page into the full 9-section web-first home
   by extending the locked Claude Design draft: sticky nav · hero · stat strip ·

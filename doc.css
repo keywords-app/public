@@ -1,0 +1,148 @@
+/* doc.css — shared styling for keywords.app content pages
+   (help / support / privacy / terms). Mirrors the web-first home tokens.
+   The home (index.html) keeps its own inline styles; this file keeps the
+   secondary pages consistent with it. */
+
+:root{
+  --accent:#0A66D6;
+  --accent-dark:#0950AE;
+  --ink:#1d1d1f;
+  --body:#424245;
+  --muted:#6e6e73;
+  --soft:#86868b;
+  --gray:#f5f5f7;
+  --hairline:#e6e6e9;
+  --tint:#e8f0fb;
+  --radius:10px;
+  --radius-lg:16px;
+  --shadow:0 10px 30px rgba(20,30,50,.10);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{display:block;max-width:100%;}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font:inherit;font-weight:600;cursor:pointer;
+  border-radius:var(--radius);border:1px solid transparent;white-space:nowrap;
+  transition:background .15s ease,border-color .15s ease,transform .15s ease,box-shadow .15s ease;
+}
+.btn:hover{text-decoration:none;}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 2px 8px rgba(10,102,214,.28);}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px);color:#fff;}
+.btn-sm{font-size:15px;padding:11px 20px;}
+.btn-md{font-size:17px;padding:14px 26px;}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid #f0f0f2;
+}
+.site-header .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.brand{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:700;letter-spacing:-.01em;color:var(--ink);}
+.brand:hover{text-decoration:none;}
+.brand .mark{
+  width:26px;height:26px;border-radius:7px;background:var(--accent);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;
+}
+.brand .tld{color:var(--soft);font-weight:500;}
+
+/* ---------- Document body ---------- */
+main{padding:64px 0;background:#fff;}
+main .container{max-width:760px;margin:0 auto;padding:0 32px;}
+
+h1{font-size:40px;font-weight:800;letter-spacing:-.03em;margin:0 0 8px;line-height:1.05;}
+h2{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:44px 0 16px;}
+h3{font-size:19px;font-weight:600;letter-spacing:-.01em;margin:28px 0 12px;}
+h4{font-size:17px;font-weight:600;margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--body);margin:0 0 12px;}
+ul,ol{font-size:16px;line-height:1.7;color:var(--body);margin:0 0 12px;padding-left:24px;}
+ul ul{margin-top:8px;}
+li{margin-bottom:8px;}
+strong{color:var(--ink);}
+code{
+  font-family:ui-monospace,'SF Mono',monospace;font-size:.92em;
+  background:var(--gray);border:1px solid var(--hairline);border-radius:6px;padding:1px 6px;
+}
+
+.subtitle,.intro{font-size:18px;color:var(--muted);line-height:1.55;margin-bottom:40px;}
+.effective-date{font-size:15px;color:var(--soft);margin-bottom:44px;}
+
+/* Section dividers used by the help page's top-level h2s */
+.divider-h2 h2{border-top:1px solid var(--hairline);padding-top:24px;}
+.divider-h2 h2:first-of-type{border-top:none;padding-top:0;}
+
+/* ---------- Tables ---------- */
+table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:15px;}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--hairline);vertical-align:top;}
+th{font-weight:600;background:var(--gray);color:var(--ink);}
+
+/* ---------- Badges (product-semantic colors kept) ---------- */
+.badge{display:inline-block;padding:2px 9px;border-radius:980px;font-size:13px;font-weight:600;}
+.badge-green{background:#e3f4e8;color:#1d7a3a;}
+.badge-orange{background:#fff3cd;color:#8a6100;}
+.badge-purple{background:#efe2fb;color:#6f42c1;}
+.badge-grey{background:#eceef1;color:#495057;}
+
+/* ---------- TOC (help) ---------- */
+.toc{background:var(--gray);border:1px solid var(--hairline);border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:40px;}
+.toc h3{margin-top:0;margin-bottom:12px;}
+.toc ol{margin-bottom:0;}
+.toc li{margin-bottom:4px;}
+
+/* ---------- FAQ ---------- */
+.faq-q{font-weight:600;color:var(--ink);margin-top:20px;margin-bottom:4px;}
+.faq-a{margin-bottom:16px;}
+.faq{border-top:1px solid var(--hairline);padding-top:40px;margin-top:8px;}
+.faq h2{border-top:none;padding-top:0;margin-top:0;}
+.faq-item{border-bottom:1px solid var(--hairline);padding:20px 0;}
+.faq-item:last-child{border-bottom:none;}
+.faq-item h3{margin-top:0;}
+
+/* ---------- Support page components ---------- */
+.contact-options{display:grid;gap:24px;margin-bottom:48px;}
+.contact-card{
+  background:#fff;border:1px solid var(--hairline);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow);padding:32px 28px;text-align:center;
+}
+.contact-card h2{margin:0 0 8px;font-size:22px;border-top:none;padding-top:0;}
+.contact-card p{margin:0 auto 18px;max-width:420px;color:var(--muted);}
+.in-app-section{text-align:center;margin-bottom:48px;}
+.in-app-section h2{border-top:none;padding-top:0;}
+.in-app-section p{color:var(--muted);max-width:480px;margin:0 auto 24px;}
+.in-app-section img{max-width:280px;margin:0 auto;border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,.12);}
+
+/* ---------- Footer ---------- */
+.site-footer{padding:40px 0;border-top:1px solid var(--hairline);background:#fff;margin-top:24px;}
+.site-footer .row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.site-footer .copy{font-size:14px;color:var(--soft);}
+.site-footer .links{display:flex;gap:24px;flex-wrap:wrap;}
+.site-footer .links a{font-size:14px;color:var(--muted);}
+.site-footer .links a:hover{color:var(--ink);text-decoration:none;}
+
+/* ---------- Responsive ---------- */
+@media (max-width:600px){
+  main{padding:48px 0;}
+  main .container,.wrap{padding:0 22px;}
+  h1{font-size:32px;}
+  h2{font-size:23px;}
+  .in-app-section img{max-width:220px;}
+}
