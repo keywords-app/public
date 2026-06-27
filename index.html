@@ -126,6 +126,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .hero .cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:34px;}
   .hero .note{font-size:14px;color:var(--soft);}
+  .refer-banner{
+    display:inline-flex;align-items:center;gap:8px;margin-top:20px;
+    max-width:560px;text-align:left;
+    background:var(--tint);border:1px solid #cfe0f7;border-radius:var(--radius);
+    padding:12px 18px;font-size:15px;font-weight:500;color:var(--accent-dark);line-height:1.45;
+  }
+  .refer-banner[hidden]{display:none;}
   .hero-shot{max-width:1040px;margin:56px auto 0;}
 
   /* ---------- Browser frame ---------- */
@@ -347,6 +354,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a class="btn btn-primary btn-lg" href="https://app.keywords.app/start/signup">Get Started Free</a>
           <span class="note">No credit card required.</span>
         </div>
+
+        <!-- Referral acknowledgment — shown by the ?refer capture script when an active code exists. -->
+        <p class="refer-banner" id="referBanner" hidden>🎁 Your friend sent you here — you'll start with 2 accounts instead of 1.</p>
 
         <div class="hero-shot">
           <div class="browser flush-bottom">
@@ -658,6 +668,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
       },{threshold:.12});
       els.forEach(function(e){io.observe(e);});
+    })();
+  </script>
+
+  <script>
+    // Referral capture: keywords.app/?refer=<code> seeds a .keywords.app cookie the
+    // web app reads at signup. Regex + cookie attributes are byte-identical to
+    // web-app#85 (src/lib/referral.ts) so both surfaces agree on what's valid.
+    (function(){
+      var RE = /^[A-Za-z0-9]{1,32}$/;
+      function valid(c){ return typeof c === 'string' && RE.test(c); }
+
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('refer');
+
+      // Set the shared cookie when the URL carries a valid code.
+      if (valid(fromUrl)) {
+        document.cookie = 'referral_code=' + encodeURIComponent(fromUrl) +
+          '; Domain=.keywords.app; Path=/; Max-Age=2592000; SameSite=Lax; Secure';
+      }
+
+      // Read an existing valid code out of the shared cookie (mirrors parseReferralCookie).
+      function cookieCode(){
+        var parts = document.cookie ? document.cookie.split(';') : [];
+        for (var i = 0; i < parts.length; i++){
+          var eq = parts[i].indexOf('=');
+          if (eq === -1) continue;
+          if (parts[i].slice(0, eq).trim() !== 'referral_code') continue;
+          var val;
+          try { val = decodeURIComponent(parts[i].slice(eq + 1).trim()); } catch (e) { return null; }
+          return valid(val) ? val : null;
+        }
+        return null;
+      }
+
+      // Active code = the just-parsed URL param, else the existing cookie.
+      var active = valid(fromUrl) ? fromUrl : cookieCode();
+
+      if (active) {
+        // Carry the code on every Get Started Free CTA (fallback if cookies are blocked).
+        var ctas = document.querySelectorAll('a[href*="start/signup"]');
+        for (var j = 0; j < ctas.length; j++){
+          var href = ctas[j].getAttribute('href');
+          if (href.indexOf('refer=') === -1) {
+            ctas[j].setAttribute('href',
+              href + (href.indexOf('?') === -1 ? '?' : '&') + 'refer=' + encodeURIComponent(active));
+          }
+        }
+        var banner = document.getElementById('referBanner');
+        if (banner) banner.hidden = false;
+      }
+
+      // Scrub ?refer from the visible URL.
+      if (params.has('refer')) {
+        params.delete('refer');
+        var qs = params.toString();
+        history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+      }
     })();
   </script>
 
