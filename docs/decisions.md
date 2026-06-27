@@ -11,6 +11,25 @@
 
 ## Decisions
 
+### 2026-06-27 — Home referral capture, ?refer= (public#7, epic keywords-shared#14)
+- Added a tiny dependency-free inline script to `index.html` that captures
+  `keywords.app/?refer=<code>`: validates `^[A-Za-z0-9]{1,32}$`, sets a shared
+  cookie `referral_code=<code>; Domain=.keywords.app; Path=/; Max-Age=2592000;
+  SameSite=Lax; Secure`, then — if an active code exists (URL param **or** existing
+  cookie) — appends `?refer=<code>` to every `start/signup` CTA (cookie-blocked
+  fallback) and shows the hero acknowledgment banner. Finally scrubs `?refer` from
+  the URL via `history.replaceState`.
+- Regex + cookie write string are **byte-identical to web-app#85** (`src/lib/
+  referral.ts` `isValidReferralCode` / `buildReferralCookie`) so both surfaces agree.
+  Cookie parse mirrors web-app's `parseReferralCookie` (split `;`, exact name match,
+  `decodeURIComponent`, re-validate).
+- Banner: `.refer-banner` styled to home tokens (tint bg / accent-dark text — green/
+  red stay reserved to product UI), `hidden` by default, shown only on active code.
+- Local test (file://, so the Secure/Domain cookie can't persist) confirmed the
+  URL-param path: valid code → banner + 4 CTAs carry the code + URL cleaned; invalid
+  (`bad code`) → no-op (no banner/CTA) but URL still cleaned; no param → nothing.
+  Full cross-surface cookie flow QAs on prod. Sequenced after the web-app cookie-read.
+
 ### 2026-06-27 — Reconcile doc pages + fix data-accuracy copy (public#5)
 - Restyled `help/support/privacy/terms.html` to the new web-first look via a shared
   **`doc.css`** (tokens, Inter, frosted sticky header with single Get Started Free
