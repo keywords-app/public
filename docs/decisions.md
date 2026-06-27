@@ -1,11 +1,46 @@
 # Design Decisions
 
 ## Next Steps
-- Produce remaining image assets for placeholders in funnel-start.html
+- Confirm-before-publishing items now live on the home (messaging kit): beta stats
+  (10%+ / <15 min / 125+), trust/privacy wording, "we never touch budgets" vs real
+  OAuth scopes, Aug 1 Microsoft/Android dates, Google Partner badge (slot left empty).
+- Light reconcile of help/support/privacy/terms styling to the new Apple-clean look
+  (deferred from the home PR — fast-follow).
 - Web app team: integrate funnel designs into app framework at /start route
 - Web app team: wire up actual auth, Google Ads OAuth, Stripe, and scan flows
 
 ## Decisions
+
+### 2026-06-26 — Web-first marketing home (public#3, epic Step 2)
+- Rebuilt `index.html` from the iOS-only page into the full 9-section web-first home
+  by extending the locked Claude Design draft: sticky nav · hero · stat strip ·
+  how-it-works (4 steps) · 6 alternating feature sections · "Also on iPhone" ·
+  pricing · trust/privacy · final CTA · footer. Tokens used verbatim (Inter, accent
+  `#0A66D6`, neutrals, 10/16px radii, two shadows).
+- Single CTA everywhere → `https://app.keywords.app/start/signup` ("Get Started Free").
+  Nav reconciled to real destinations only: Pricing (anchor) · Log in
+  (`app.keywords.app/start`) · Get Started Free. Dropped the draft's invented
+  Product/Customers/Resources links.
+- Wired the 9 release-build screenshots as real `<img>` (local relative paths) into
+  the browser-frame / phone-frame slots: hero `web-hero-noclusters`; features
+  `web-clustering` · `web-negatives` · `web-push` · `web-savings` · `web-accounts`;
+  cross-platform uses a logo/"Aug 1" pill lockup (no screenshot, per shot list); iOS
+  `ios-search-terms` · `ios-performance` · `ios-negatives` in phone frames.
+- App Store badge ships in the LIVE state with a documented launch-day FALLBACK
+  (hidden `.appstore-fallback` line; toggle `[hidden]` if Apple review lags).
+- **Privacy claim corrected:** dropped the old "data stays on your device / never on
+  our servers" line (false for the web app). Trust section is web-accurate — limited
+  OAuth scopes, never touches budgets, encrypted in transit and at rest.
+- Carried over GTM (`GTM-MMPGCHP8`) + meta/OG; title/description updated to web-first.
+- Kept `img-src/` PNG masters versioned (committed both webp + masters, per the user's
+  correction — not gitignored).
+- Retired stale variants: `index2.html`, `index3.html`, `keywords-landing-v4.html`,
+  `funnel-start.html`. (`pricing-options.html` left as-is — out of scope.)
+- **Tooling note:** headless Chrome (`--window-size=390`) imposes a fixed ~485px
+  layout floor on *any* page (old `index.html` and the approved draft measure it too),
+  so its mobile screenshots/clientWidth are misleading. The real responsiveness signal
+  is `scrollWidth === clientWidth` (no horizontal overflow), which held at all widths.
+  Verify mobile on a real device, not headless screenshots.
 
 ### 2026-06-21 — help.html rewritten for slots + referral model
 - Replaced the subscription model (Free / Solo $27/mo / Pro $47/mo) with the unified **slots model**: free, 1 included account slot, earn more via referral, buy extra slots at **$10 one-time**. No platform split — web and iOS share the same go-to-market (verified against `keywords-shared/docs/contracts/slot-model-v1.md` + live `web-app`).
