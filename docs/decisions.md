@@ -1,11 +1,11 @@
 # Design Decisions
 
 ## Next Steps
-- Confirm-before-publishing items now live on the home (messaging kit): beta stats
-  (10%+ / <15 min / 125+), trust/privacy wording, "we never touch budgets" vs real
-  OAuth scopes, Aug 1 Microsoft/Android dates, Google Partner badge (slot left empty).
-- Light reconcile of help/support/privacy/terms styling to the new Apple-clean look
-  (deferred from the home PR — fast-follow).
+- **Confirm-before-publishing: ALL CLEARED for launch (2026-06-27).** Beta stats
+  (10%+ / <15 min / 125+) confirmed current · "we never touch budgets" confirmed
+  accurate vs OAuth scopes · Aug 1 Microsoft/Android dates confirmed · legal/privacy
+  wording reviewed & cleared · Google Partner badge: **not adding at this time**
+  (home keeps the empty `.partner-slot`, renders nothing — fill only if that changes).
 - Web app team: integrate funnel designs into app framework at /start route
 - Web app team: wire up actual auth, Google Ads OAuth, Stripe, and scan flows
 
@@ -25,8 +25,8 @@
   support.html (FAQ "Is my data safe?"). help.html already described slotting/sync
   correctly — left as-is. Removing a synced account preserves server data for re-sync;
   deletion happens on account delete / deletion request.
-- ⚠️ Legal wording (privacy/terms) was updated for accuracy but should get a final
-  human/legal review before relying on it.
+- Legal wording (privacy/terms) was updated for accuracy. **Reviewed and cleared
+  for launch by the user on 2026-06-27.**
 
 ### 2026-06-26 — Web-first marketing home (public#3, epic Step 2)
 - Rebuilt `index.html` from the iOS-only page into the full 9-section web-first home
