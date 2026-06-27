@@ -1,11 +1,16 @@
 # Design Decisions
 
 ## Next Steps
+- **Public site is launch-ready.** Web-first home (#3), reconciled doc pages (#5/#6),
+  and home referral capture (#7) are all merged and live; referral cross-surface
+  flow verified on prod 2026-06-27. No open work blocking on this repo.
 - **Confirm-before-publishing: ALL CLEARED for launch (2026-06-27).** Beta stats
   (10%+ / <15 min / 125+) confirmed current · "we never touch budgets" confirmed
   accurate vs OAuth scopes · Aug 1 Microsoft/Android dates confirmed · legal/privacy
   wording reviewed & cleared · Google Partner badge: **not adding at this time**
   (home keeps the empty `.partner-slot`, renders nothing — fill only if that changes).
+- Remaining epic work is on other surfaces (not this repo): `/start` funnel re-skin
+  (keywords-shared#13 Step 4, web-app) · launch-day polish/coordination (Step 5).
 - Web app team: integrate funnel designs into app framework at /start route
 - Web app team: wire up actual auth, Google Ads OAuth, Stripe, and scan flows
 
@@ -28,7 +33,8 @@
 - Local test (file://, so the Secure/Domain cookie can't persist) confirmed the
   URL-param path: valid code → banner + 4 CTAs carry the code + URL cleaned; invalid
   (`bad code`) → no-op (no banner/CTA) but URL still cleaned; no param → nothing.
-  Full cross-surface cookie flow QAs on prod. Sequenced after the web-app cookie-read.
+  Sequenced after the web-app cookie-read. **Prod cross-surface flow (cookie set →
+  signup on app.keywords.app reads it → cleared on success) tested & working 2026-06-27.**
 
 ### 2026-06-27 — Reconcile doc pages + fix data-accuracy copy (public#5)
 - Restyled `help/support/privacy/terms.html` to the new web-first look via a shared
