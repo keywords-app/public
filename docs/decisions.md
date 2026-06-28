@@ -16,6 +16,21 @@
 
 ## Decisions
 
+### 2026-06-28 — Mobile pricing/login discoverability on the home
+- Mobile (<880px) hides the Pricing + Log in nav links, so the only header control
+  was Get Started Free and pricing was a long scroll away. Two additions:
+  - **"See pricing ↓"** link under the hero CTA (`.hero-pricing-link`, all viewports,
+    smooth-scrolls to `#pricing`) — pricing affordance at the decision point.
+  - **Mobile header CTA relabels on scroll:** at the top it reads **"Sign Up / Log In"**
+    (the hero already shows the big Get Started button), then switches to
+    **"Get Started Free"** once the hero CTA scrolls out of view (IntersectionObserver
+    on `.hero .cta`, gated to `matchMedia('(max-width:880px)')`). Both states keep the
+    same `app.keywords.app/start/signup` destination — the signup page (web-app) is
+    being updated to make login easy from there. HTML default stays "Get Started Free"
+    (no-JS safe). Scroll-flip verified by reasoning (proven IO pattern) + at-rest states
+    in headless; needs a real-device eyeball.
+- Still open (other surface): pricing/reassurance strip on the web-app signup page.
+
 ### 2026-06-27 — Home referral capture, ?refer= (public#7, epic keywords-shared#14)
 - Added a tiny dependency-free inline script to `index.html` that captures
   `keywords.app/?refer=<code>`: validates `^[A-Za-z0-9]{1,32}$`, sets a shared

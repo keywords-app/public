@@ -733,5 +733,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     })();
   </script>
 
+  <script>
+    // Mobile only: the floating header CTA reads "Sign Up / Log In" at the top
+    // (the hero already shows the big Get Started button), then switches to
+    // "Get Started Free" once the hero CTA scrolls away. Same destination either way.
+    (function(){
+      var cta = document.querySelector('.site-header a.btn-primary');
+      var heroCta = document.querySelector('.hero .cta');
+      if (!cta || !heroCta) return;
+      var mq = window.matchMedia('(max-width: 880px)');
+      var pastHero = false;
+
+      function render(){
+        cta.textContent = (mq.matches && !pastHero) ? 'Sign Up / Log In' : 'Get Started Free';
+      }
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function(entries){
+          pastHero = !entries[0].isIntersecting;
+          render();
+        }, { threshold: 0 }).observe(heroCta);
+      }
+      if (mq.addEventListener) { mq.addEventListener('change', render); }
+      else if (mq.addListener) { mq.addListener(render); }
+      render();
+    })();
+  </script>
+
 </body>
 </html>
