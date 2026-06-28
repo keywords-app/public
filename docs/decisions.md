@@ -30,6 +30,9 @@
   `decodeURIComponent`, re-validate).
 - Banner: `.refer-banner` styled to home tokens (tint bg / accent-dark text — green/
   red stay reserved to product UI), `hidden` by default, shown only on active code.
+  Shown in two places: under the hero CTA and (added 2026-06-27) under the pricing
+  card's Get Started button (`.refer-banner--card`, full-width to match the button).
+  The script reveals **all** `.refer-banner` elements (querySelectorAll), not one by id.
 - Local test (file://, so the Secure/Domain cookie can't persist) confirmed the
   URL-param path: valid code → banner + 4 CTAs carry the code + URL cleaned; invalid
   (`bad code`) → no-op (no banner/CTA) but URL still cleaned; no param → nothing.

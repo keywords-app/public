@@ -133,6 +133,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding:12px 18px;font-size:15px;font-weight:500;color:var(--accent-dark);line-height:1.45;
   }
   .refer-banner[hidden]{display:none;}
+  .refer-banner--card{display:flex;width:100%;max-width:none;margin-top:16px;}
   .hero-shot{max-width:1040px;margin:56px auto 0;}
 
   /* ---------- Browser frame ---------- */
@@ -595,6 +596,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.5 3.5L15 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>iOS app — Android &amp; Microsoft Ads Aug 1</li>
           </ul>
           <a class="btn btn-primary btn-md" href="https://app.keywords.app/start/signup">Get Started Free</a>
+          <p class="refer-banner refer-banner--card" hidden>🎁 Your friend sent you here — you'll start with 2 accounts instead of 1.</p>
         </div>
 
         <p class="price-extra">Need more accounts? <strong>Refer a friend</strong> to earn one free, or buy extras at <strong>$10 each — one-time</strong>, not a subscription.</p>
@@ -715,8 +717,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               href + (href.indexOf('?') === -1 ? '?' : '&') + 'refer=' + encodeURIComponent(active));
           }
         }
-        var banner = document.getElementById('referBanner');
-        if (banner) banner.hidden = false;
+        var banners = document.querySelectorAll('.refer-banner');
+        for (var k = 0; k < banners.length; k++){ banners[k].hidden = false; }
       }
 
       // Scrub ?refer from the visible URL.
