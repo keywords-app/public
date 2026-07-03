@@ -16,6 +16,29 @@
 
 ## Decisions
 
+### 2026-07-03 — Pages now deploys via GitHub Actions (Static HTML), not branch
+- **Why:** a GitHub Pages incident jammed the legacy "Deploy from a branch" path —
+  the `build` job kept succeeding and uploading the artifact, but the `Deploy to
+  GitHub Pages` step failed at "Getting Pages deployment status" with
+  *"Deployment failed, try again later."* Four+ consecutive commits failed to
+  publish (including the ™ change); status page falsely showed "operational."
+- **Fix:** switched **Settings → Pages → Source** from "Deploy from a branch" to
+  **GitHub Actions**, using the built-in **Static HTML** starter workflow →
+  `.github/workflows/static.yml` (uploads repo root `path: '.'`, `deploy-pages@v5`,
+  runs on push to `main` + `workflow_dispatch`, no Jekyll). This published cleanly
+  via the Actions path when the branch path could not — matching what other users
+  reported during the incident.
+- **Now:** every push to `main` deploys through `static.yml` automatically. CNAME
+  (keywords.app) preserved; whole repo is uploaded as-is (docs/, img-src/, etc. are
+  harmless extra files, same as before). This is a fine permanent home — it skips
+  the pointless Jekyll build.
+- ⚠️ **Claude's gh token lacks the `workflow` scope**, so it cannot create/edit
+  `.github/workflows/*`. Any future change to `static.yml` must be done via the
+  GitHub UI or by a user whose token has `workflow` scope. (The workflow itself was
+  committed through the UI's Static HTML "Configure" flow.)
+- Minor: bumped the header ™ (`.brand .tm`) from 9px→12px and soft→muted color —
+  it was nearly invisible at 9px.
+
 ### 2026-06-28 — Mobile pricing/login discoverability on the home
 - Mobile (<880px) hides the Pricing + Log in nav links, so the only header control
   was Get Started Free and pricing was a long scroll away. Two additions:

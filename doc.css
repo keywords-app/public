@@ -64,7 +64,7 @@ img{display:block;max-width:100%;}
   display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;
 }
 .brand .tld{color:var(--soft);font-weight:500;}
-.brand .tm{font-size:9px;font-weight:600;color:var(--soft);vertical-align:super;line-height:0;margin-left:1px;}
+.brand .tm{font-size:12px;font-weight:600;color:var(--muted);vertical-align:super;line-height:0;margin-left:1px;}
 
 /* ---------- Document body ---------- */
 main{padding:64px 0;background:#fff;}
