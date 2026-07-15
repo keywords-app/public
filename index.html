@@ -194,6 +194,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .feature h2{font-size:34px;line-height:1.1;font-weight:700;letter-spacing:-.025em;}
   .feature p{font-size:19px;line-height:1.6;color:var(--muted);margin-top:20px;max-width:480px;}
+  .feature .flist{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:14px;max-width:500px;}
+  .feature .flist li{position:relative;padding-left:22px;font-size:16px;line-height:1.55;color:var(--muted);}
+  .feature .flist li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--accent);}
+  .feature .flist strong{color:var(--ink);font-weight:600;}
   .feature .browser{box-shadow:0 18px 44px rgba(20,30,50,.14);}
   .feature .browser.on-gray{box-shadow:var(--shadow-frame);}
 
@@ -437,7 +441,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="fcopy">
           <div class="label">Fast triage</div>
           <h2>Triage your search terms in minutes, not hours</h2>
-          <p>Every search term is a keeper, a waste, or a maybe — and there are hundreds to get through. Our AI groups them into clusters by intent and scores each one, so you clear whole batches with a single decision instead of judging terms one row at a time.</p>
+          <p>You might have hundreds — or thousands — of search terms to sort into keep, block, or maybe. What makes it fast:</p>
+          <ul class="flist">
+            <li><strong>Filter and search instantly</strong> — narrow to the exact terms you want and flag them keep or block in one click.</li>
+            <li><strong>AI clusters</strong> — terms grouped by intent, so one decision clears a whole set.</li>
+            <li><strong>Never decide twice</strong> — we remember every keep and block, so the same term never comes back.</li>
+          </ul>
         </div>
         <div class="fshot browser">
           <div class="bar">
