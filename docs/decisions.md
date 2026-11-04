@@ -16,6 +16,17 @@
 
 ## Decisions
 
+### 2026-11-04 — Help: Guest Access + Suggested negatives (public#15)
+- Added `#guest-access` section to `help.html` (after Plans & Slots), a "Suggested
+  negatives" subsection in Negative Keywords (server engine vs on-device split), a guest
+  note in Campaign Management, a no-slot line in Plans & Slots, 3 glossary rows, 3 FAQs.
+- Source of truth: keywords-shared decisions/contracts listed in the issue. Button label
+  used is **Suggest Negatives** (issue vocabulary); old copy said "Suggest".
+- Founder confirmed (2026-11-04): no per-seat charge for guests is correct. Decided
+  NOT to state suggestion counts in docs (no use to readers, a promise to track).
+- Verified against iOS code (eye main): shared accounts show under "SHARED WITH YOU"
+  with a "Leave account" menu; guests don't get the Campaigns tab on iOS.
+
 ### 2026-07-03 — Pages now deploys via GitHub Actions (Static HTML), not branch
 - **Why:** a GitHub Pages incident jammed the legacy "Deploy from a branch" path —
   the `build` job kept succeeding and uploading the artifact, but the `Deploy to
