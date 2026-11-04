@@ -16,6 +16,17 @@
 
 ## Decisions
 
+### 2026-11-04 — Help: Guest Access + Suggested negatives (public#15)
+- Added `#guest-access` section to `help.html` (after Plans & Slots), a "Suggested
+  negatives" subsection in Negative Keywords (server engine vs on-device split), a guest
+  note in Campaign Management, a no-slot line in Plans & Slots, 3 glossary rows, 3 FAQs.
+- Source of truth: keywords-shared decisions/contracts listed in the issue. Button label
+  used is **Suggest Negatives** (issue vocabulary); old copy said "Suggest".
+- ⚠️ **Confirm with founder:** "no slot / no per-seat charge for guests" wording (in
+  Guest Access + Plans & Slots).
+- Not verified against the shipped iOS UI: how a shared account is labeled on the
+  Ad Accounts screen (no badge documented), and the server engine's suggestion count.
+
 ### 2026-07-03 — Pages now deploys via GitHub Actions (Static HTML), not branch
 - **Why:** a GitHub Pages incident jammed the legacy "Deploy from a branch" path —
   the `build` job kept succeeding and uploading the artifact, but the `Deploy to

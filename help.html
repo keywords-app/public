@@ -53,6 +53,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="#ai-scan">AI Scan</a></li>
         <li><a href="#campaigns">Campaign Management</a></li>
         <li><a href="#billing">Plans &amp; Slots</a></li>
+        <li><a href="#guest-access">Guest Access</a></li>
         <li><a href="#referral">Refer a Friend</a></li>
         <li><a href="#settings">Settings</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -110,6 +111,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <tr><td><strong>Synced Account</strong></td><td>An account using one of your slots. Terms fetch automatically; decisions sync across your devices.</td></tr>
       <tr><td><strong>Discovery</strong></td><td>A one-time setup where the app analyzes your ads and website to understand your business. Runs the first time you scan an account.</td></tr>
       <tr><td><strong>Business Context</strong></td><td>A description of your business and geography that guides the AI scan. Set during Discovery.</td></tr>
+      <tr><td><strong>Owner</strong></td><td>The person who connected a Google Ads account to Keywords. Owners manage who has access to it.</td></tr>
+      <tr><td><strong>Guest</strong></td><td>Someone an owner has invited to work on one ad account. See <a href="#guest-access">Guest Access</a>.</td></tr>
+      <tr><td><strong>Suggested Negatives</strong></td><td>Negative keywords proposed for you from your triaged terms, each showing how many terms it would block. See <a href="#suggested-negatives">Suggested negatives</a>.</td></tr>
       <tr><td><strong>Predictive Score</strong></td><td>A per-term estimate of how likely a term is worth keeping vs. blocking, shown as Keep/Kill pills on supported surfaces.</td></tr>
       <tr><td><strong>PMax</strong></td><td>Performance Max — a Google Ads campaign type. Keywords handles PMax terms alongside standard Search terms.</td></tr>
     </table>
@@ -258,8 +262,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p><strong>Conflict detection:</strong> The app checks whether any negatives would block terms you've marked Keep. Conflicts are resolved one at a time.</p>
     <p><strong>After pushing:</strong> Terms covered by your negatives are automatically marked Handled and disappear from active tabs.</p>
 
-    <h4>Suggestions</h4>
-    <p>Inside the Negative Matchmaker, tap the purple <strong>Suggest</strong> button to get automatic recommendations based on your blocked terms. Up to 10 suggestions, pre-selected and ready to review.</p>
+    <h4 id="suggested-negatives">Suggested negatives</h4>
+    <p>Inside the Negative Matchmaker, tap the purple <strong>Suggest Negatives</strong> button to get negative keywords proposed for you, based on the search terms you've triaged.</p>
+
+    <p><strong>For synced accounts</strong>, suggestions come from the Keywords server:</p>
+    <ul>
+      <li>Each suggestion shows <strong>how many search terms it would block</strong>.</li>
+      <li>It <strong>never suggests</strong> a negative that would block a term you marked <strong>Keep</strong>, or one of the account's own bid keywords.</li>
+      <li><strong>Conflicts are listed separately</strong> from the suggestions. A hard conflict would block a term you marked Keep or a bid keyword. A softer conflict also catches terms you haven't decided on yet, so check those before you add them.</li>
+      <li><strong>Dismiss</strong> a suggestion to remove it. A short <strong>Undo</strong> appears right after. Dismissals are remembered for that account and carry across your devices.</li>
+      <li>After you push, the terms those negatives block are marked <strong>Handled</strong>.</li>
+    </ul>
+
+    <p><strong>For demo accounts and accounts that aren't synced</strong>, Suggest Negatives uses the on-device tool, which gives up to 10 suggestions based on your blocked terms, pre-selected and ready to review. The app shows a note to sync the account for smarter suggestions.</p>
 
     <!-- AI SCAN -->
     <h2 id="ai-scan">AI Scan</h2>
@@ -296,6 +311,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><strong>Filter by type</strong> — All, Search, PMax, Shopping, or Other.</li>
     </ul>
 
+    <p><strong>Guests can't manage campaigns.</strong> On an account shared with you as a guest, pausing or enabling campaigns, ad groups, and keywords, and changing location targeting, don't work. See <a href="#guest-access">Guest Access</a>.</p>
+
     <!-- BILLING -->
     <h2 id="billing">Plans &amp; Slots</h2>
 
@@ -321,6 +338,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <h4>Slotting an account</h4>
     <p>Tap an account that isn't slotted yet. If you have a free slot, you'll be prompted to use it on that account. If you're out of slots, you can buy an extra slot or refer a friend to earn one.</p>
+
+    <p>Guests don't use a slot, and there is no per-seat charge for inviting them. See <a href="#guest-access">Guest Access</a>.</p>
+
+    <!-- GUEST ACCESS -->
+    <h2 id="guest-access">Guest Access</h2>
+
+    <p>Guest access lets an account <strong>owner</strong> invite someone else — a colleague, a freelancer, a client — to work on a Google Ads account in Keywords, without sharing a Google login.</p>
+
+    <h4>Inviting a guest</h4>
+    <ul>
+      <li>An owner invites a person by <strong>email</strong> to <strong>one ad account</strong>. Access is per ad account, not your whole Keywords account.</li>
+      <li>The invite is tied to the email address it was sent to. A different email address can't accept it.</li>
+    </ul>
+
+    <h4>Accepting an invite</h4>
+    <p><strong>Invites are accepted on the web</strong>, even if you mostly use the iPhone app.</p>
+    <ol>
+      <li>Open the invite link from the email in a browser.</li>
+      <li>If you don't have a Keywords account yet, sign up as normal, then accept the invite.</li>
+      <li>Open the iOS app. The shared account now appears there.</li>
+    </ol>
+
+    <h4>What a guest can do</h4>
+    <ul>
+      <li>Fetch search terms</li>
+      <li>Cluster and triage them</li>
+      <li>Use the AI tools</li>
+      <li>Complete the business-context setup</li>
+      <li>Build negatives and <strong>push them to Google Ads</strong></li>
+    </ul>
+    <p>Pushes go through the owner's Google connection. Guests never see or receive the owner's Google credentials.</p>
+
+    <h4>What only the owner can do</h4>
+    <ul>
+      <li>Invite guests and remove them</li>
+      <li>Billing and slots</li>
+      <li>Connect or disconnect Google</li>
+      <li>Delete the account</li>
+    </ul>
+
+    <h4>Known limitation: campaign controls</h4>
+    <p>Guests don't manage campaigns. <strong>Pausing or enabling campaigns, ad groups, and keywords, and changing location targeting, don't work for guests.</strong> Ask the account owner to make those changes.</p>
+
+    <h4>Leaving or removing access</h4>
+    <ul>
+      <li>A guest can <strong>leave</strong> an account at any time.</li>
+      <li>An owner can <strong>revoke</strong> a guest's access at any time.</li>
+    </ul>
+
+    <h4>If a push or Suggest Negatives fails</h4>
+    <p>Guests work through the owner's Google connection. If that connection has lapsed, a guest's negative push or Suggest Negatives will fail. <strong>Ask the account owner to reconnect Google.</strong></p>
+
+    <h4>Slots and cost</h4>
+    <p>Guests don't take a slot, and there is no per-seat charge for guests.</p>
 
     <!-- REFERRAL -->
     <h2 id="referral">Refer a Friend</h2>
@@ -367,6 +438,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <p class="faq-q">Can I undo a decision?</p>
     <p class="faq-a">Yes — after swiping, an undo option briefly appears. You can also find the term in its destination tab (Keep or Blocked) and move it back to New using the toolbar.</p>
+
+    <p class="faq-q">I was invited to an ad account. Why can't I accept in the app?</p>
+    <p class="faq-a">Invites are accepted on the web. Open the invite link in a browser, sign in (or sign up) with the email address the invite was sent to, and accept. The shared account then appears in the iOS app.</p>
+
+    <p class="faq-q">As a guest, why can't I pause a campaign?</p>
+    <p class="faq-a">Pausing or enabling campaigns, ad groups, and keywords, and changing location targeting, don't work for guests. Ask the account owner to do it.</p>
+
+    <p class="faq-q">My negative push failed on a shared account.</p>
+    <p class="faq-a">Pushes on a shared account use the owner's Google connection. If it has lapsed, the push (and Suggest Negatives) fails. Ask the account owner to reconnect Google.</p>
 
     <p class="faq-q">What does the AI scan actually do?</p>
     <p class="faq-a">It reads your unclustered search terms and groups related ones into named clusters. It doesn't automatically block or keep anything — that's still your call.</p>
