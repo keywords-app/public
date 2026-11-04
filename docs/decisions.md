@@ -16,6 +16,17 @@
 
 ## Decisions
 
+### 2026-11-04 — Pages deploy back to "Deploy from a branch" (supersedes 2026-07-03)
+- **Why:** after merging PR #16, the Actions `deploy` job (static.yml) sat in "queued"
+  with no runner for 10+ minutes — no billing banner, githubstatus all clear. Two stale
+  "pages build and deployment" runs from 2026-07-03 were also still queued and were
+  cancelled; unclear whether they were the blocker.
+- **Fix:** Settings → Pages → Source switched back to **Deploy from a branch** (main, /).
+  A branch build then published cf6e573 and the help page went live.
+- **Now:** pushes to `main` deploy via the legacy branch path; `static.yml` is unused
+  (left in place; stuck queued runs #9/#10 to be cancelled in the UI — our gh token has
+  no `workflow` scope). If the branch path jams again, the Actions path is the fallback.
+
 ### 2026-11-04 — Help: Guest Access + Suggested negatives (public#15)
 - Added `#guest-access` section to `help.html` (after Plans & Slots), a "Suggested
   negatives" subsection in Negative Keywords (server engine vs on-device split), a guest
