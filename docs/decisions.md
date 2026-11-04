@@ -16,6 +16,12 @@
 
 ## Decisions
 
+### 2026-11-04 — Product name is "Keywords.app" in copy
+- **Rule (founder):** when copy refers to the app by name, write **Keywords.app**, not
+  "Keywords". Applied across help.html, index.html, app/index.html, app/404.html (f0de48a).
+- **Not covered:** "Negative Keywords" (feature name) and the generic word "keywords".
+  New copy should follow the rule; privacy/terms/support/pricing had no bare mentions.
+
 ### 2026-11-04 — Pages deploy back to "Deploy from a branch" (supersedes 2026-07-03)
 - **Why:** after merging PR #16, the Actions `deploy` job (static.yml) sat in "queued"
   with no runner for 10+ minutes — no billing banner, githubstatus all clear. Two stale
